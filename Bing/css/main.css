@@ -1,0 +1,285 @@
+*{
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+/* main */
+.wrapper>main>.contact{
+    height: 960px;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper>main>.contact>h3{
+    text-align: center;
+    font-size: 2rem;
+}
+.wrapper>main>.contact>.contact-line{
+    margin: 0 20px ;
+    padding: 60px 45px;
+    border-radius: 30px;
+    box-shadow: 0px 10px 30px 0 rgb(228, 228, 228);
+}
+.wrapper>main>.contact>.contact-line>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.wrapper>main>.contact h4{
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.wrapper>main>.contact>.contact-line>div>.email{
+    width: 430px;
+    height: 260px;
+    cursor: pointer;
+    background-image: url('https://www.bing.co.kr/img/main/sec04_backimg01.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    border-radius: 35px;
+
+    padding: 30px;
+}
+.wrapper>main>.contact>.contact-line>div>.email>p{
+    font-size: 0.9rem;
+    margin-top: 0;
+}
+.wrapper>main>.contact>.contact-line>div>.email>div{
+    width: 160px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: rgba(240, 31, 31, 0.856);
+    text-align: center;
+    line-height: 45px;
+    margin-top: 20px;
+}
+.wrapper>main>.contact>.contact-line>div>.email>div>a{
+    color: white;
+    text-decoration: none;
+    padding: 30px 0;
+}
+
+.wrapper>main>.contact>.contact-line>div>.call{
+    width: 430px;
+    height: 260px;
+    background-image: url('https://www.bing.co.kr/img/main/sec04_backimg02.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    border-radius: 35px;
+
+
+    padding: 30px;
+}
+.wrapper>main>.contact>.contact-line>div>.call>.call-number{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 0;
+}
+.wrapper>main>.contact>.contact-line>div>.call .call-time{
+    color: rgba(240, 31, 31, 0.856);
+    font-weight: 600;
+}
+
+.wrapper>main>.contact>.contact-line>.etc{
+    height: 120px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.wrapper>main>.contact>.contact-line>.etc>div{
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.wrapper>main>.contact>.contact-line>.etc a{
+    color: black;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.wrapper>main>.contact>.contact-line>.etc>div:hover a{
+    background-color: rgba(240, 31, 31, 0.856);
+    color: white;
+    border-radius: 30px;
+}
+
+
+.wrapper>main>.contact>.contact-line>ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.wrapper>main>.contact>.contact-line>ul>li{
+    width: 590px;
+    height: 80px;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    text-align: left;
+    line-height: 80px;
+    border-radius: 30px;
+    justify-content: space-between;
+    cursor: pointer;
+
+    box-shadow: inset 0px 5px 10px 0 rgb(228, 228, 228);
+}
+.wrapper>main>.contact>.contact-line>ul>li a{
+    display: none;
+}
+.wrapper>main>.contact>.contact-line>ul>li:hover{
+    font-weight: 900;
+}
+
+.wrapper>main>.contact>.contact-line>ul>li:hover a{
+    display: flex;
+    background-color: rgba(240, 31, 31, 0.856);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    animation-name: moving;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
+@keyframes moving{
+    from{transform: scale(0);}
+    to{transform: scale(1);}
+}
+
+.wrapper>main>.report{
+    margin-bottom: 100px;
+}
+.wrapper>main>.report>h3{
+    text-align: center;
+    font-size: 2rem;
+}
+.wrapper>main>.report>.safety{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper>main>.report>.safety>.safety1,
+.wrapper>main>.report>.safety>.safety2{
+    width: 470px;
+    height: 230px;
+    border-radius: 30px;
+    box-shadow: inset 5px 10px 40px 10px rgb(228, 228, 228);
+    padding: 65px 25px;
+}
+.wrapper>main>.report>.safety p{
+    text-align: center;
+    font-size: 0.9rem;
+    height: 40px;
+}
+.wrapper>main>.report>.safety>.safety2>p{
+    line-height: 40px;
+}
+.wrapper>main>.report>.safety> div div:nth-child(2){
+    margin-top: 20px;
+    padding: 0 120px;
+}
+.wrapper>main>.report>.safety> div div:nth-child(2)>a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    width: 160px;
+    line-height: 40px;
+    display: block;
+    border-radius: 30px;
+    background-color: rgba(240, 31, 31, 0.856);
+
+}
+
+
+/* footer */
+.wrapper>footer{
+    height: 390px;
+    background-color: rgb(14, 14, 14);
+    padding: 30px 50px;
+}
+
+.wrapper>footer>.f-section1{
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper>footer>.f-section1>.f-logo{}
+.wrapper>footer>.f-section1>.f-logo>img{}
+.wrapper>footer>.f-section1>.f-logo-right{
+    display: flex;
+    list-style: none;    
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+.wrapper>footer>.f-section1>.f-logo-right>li{
+    margin-left: 20px;
+}
+.wrapper>footer>.f-section1>.f-logo-right>li>a{
+    color: rgb(177, 177, 177);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.wrapper>footer>.f-section2{}
+.wrapper>footer>.f-section2>ul{
+    list-style: none;
+    padding: 0;
+}
+.wrapper>footer>.f-section2>ul>li{
+    color: rgb(209, 209, 209);
+    font-size: 1rem;
+    margin: 30px 0 20px;
+}
+
+.wrapper>footer>.f-section3{
+    display: flex;
+    margin-top: 80px;
+    margin-right: 50px;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrapper>footer>.f-section3>.f-section3-left{
+    color: rgb(177, 177, 177);
+    text-align: center;
+    line-height: 70px;
+}
+.wrapper>footer>.f-section3>.f-section3-right{
+    display: flex;
+}
+.wrapper>footer>.f-section3>.f-section3-right>.f-link-bubble{
+    border-radius: 50%;
+    margin-left: 15px;
+    box-shadow: 0 5px 10px 0px rgb(0, 0, 0);
+}
+.wrapper>footer>.f-section3>.f-section3-right>.f-link-bubble>a{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    width: 70px;
+    height: 70px;
+}
+.wrapper>footer>.f-section3>.f-section3-right>.f-link-bubble>a>img{
+    display: block;
+}

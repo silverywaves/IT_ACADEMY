@@ -1,12 +1,36 @@
-*{
-    margin: 0;
+
+.wrapper>main>.box>.contact .contact-line{
+    height: auto;
     padding: 0;
-    box-sizing: border-box;
+
 }
-body{
-    width : 100vw;
-    margin : 0 auto;
-    display: flex;
+.mo{
+    display: none;
+}
+
+.wrapper>main>.box>.contact .contact-line>div{
     justify-content: center;
-    align-items: center;   
+    align-items: center;
+}
+.wrapper>main>.box>.contact .contact-line>div>.email{
+    margin: 0;
+    cursor: pointer;
+    border-radius: 35px;
+    height: 10vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+.wrapper>main>.box>.contact .contact-line>div>.email>div{
+    display: none;
+
+}
+
+.wrapper>main>.box>.contact .contact-line>div>.call{
+    height: 10vh;
+    width: 100%;
+}
+
+.report{
 }

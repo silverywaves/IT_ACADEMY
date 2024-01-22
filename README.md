@@ -2,15 +2,19 @@
 
 
 ### 📄 HTML&CSS
-
+* NOTION
+* BASIC PRACTICE 
+* MINI PROJECT - CLONE CODING
 
 
 ### 📄 JAVA SCRIPT
-
+* NOTION
+* BASIC PRACTICE 
 
 
 ### 📄 DATABASE
-
+* NOTION
 
 
 ### 📄 JAVA
+* NOTION

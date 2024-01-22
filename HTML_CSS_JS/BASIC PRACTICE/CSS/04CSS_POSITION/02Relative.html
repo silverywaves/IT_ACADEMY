@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            border: 1px solid;
+            background-color: tomato;
+        }
+        div:nth-child(1){
+            position: relative;     /*static 기본값. top&left 적용안됨*/
+            top: 10px;
+            left: 10px;
+            right: 0;
+            bottom: 0;
+        }
+        div:nth-child(2){
+            position: relative;
+            top: 30px;
+            left: 30px;
+        }
+        div:nth-child(3){
+            position: relative;
+            top: -10px;
+            left: -20px;
+        }
+        div:nth-child(4){
+            position: relative;
+            top: 20vh;           /*vh : viewport 단위*/
+        }
+    </style>
+</head>
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper{}
+
+        .wrapper>header{}
+        .wrapper>header>.top-header{
+            display: flex;
+            width: 100%;
+            justify-content: right;
+
+        }
+        .wrapper>header>.top-header>ul{
+            list-style: none;
+            display: flex;
+            margin: 0px;
+            padding: 0px;
+
+        }
+        .wrapper>header>.top-header>ul>li{
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            position: relative;
+
+        }
+        .wrapper>header>.top-header>ul>li>a{
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+        .wrapper>header>.top-header>ul>li::after{
+            content: '|';
+            position: absolute;
+            top: 0;
+            left: 99%;
+        }
+        .wrapper>header>.top-header>ul>li:last-child::after{
+            content: '';
+        }
+        .wrapper>header>nav{}
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header>
+            <div class="top-header">
+                <ul>
+                    <li style="width: 200px;">
+                        <a href="">JWG1323@naver.com</a>
+                    </li>
+                    <li>
+                        <a href="">나의메뉴</a>
+                    </li>
+                    <li>
+                        <a href="">고객센터</a>
+                    </li>
+                    <li>
+                        <a href="">로그아웃</a>
+                    </li>
+                </ul>
+            </div>
+            <nav></nav>
+        </header>
+        <main></main>
+        <footer></footer>
+    </div>
+
+</body>
+</html>

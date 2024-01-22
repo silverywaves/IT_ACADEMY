@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* 전체선택자(*) */
+        *{
+            margin: 20px;
+        }
+
+        /* 요소선택자(div,span,ul) */
+        div{
+            width: 150px;
+            height: 150px;
+            border: 1px solid;
+        }
+        p{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+        }
+
+        /* id선택자(#id) */
+        #id_01{
+            background-color: greenyellow;
+        }
+
+        /* class선택자(.class) */
+        .group{
+            background-color: aquamarine;
+        }
+
+        /* 그룹선택자(,) */
+        #id_01,.group{
+            border: 5px solid hotpink;
+        }
+
+        
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="group"></div>
+    <div id="id_01"></div>
+    <div></div>
+    <div>
+        <p class="group"></p>
+        <div class="group"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,13 +1,13 @@
 # 💻 STUDY 🖥
 
 
-## 📄 HTML&CSS
+### 📄 HTML&CSS
 
 
-## 📄 JAVA SCRIPT
+### 📄 JAVA SCRIPT
 
 
-## 📄 DATABASE
+### 📄 DATABASE
 
 
-## 📄 JAVA
+### 📄 JAVA

@@ -9,7 +9,7 @@
 
 ### 📄 JAVA SCRIPT
 * NOTION
-* BASIC PRACTICE 
+* [BASIC PRACTICE](https://github.com/silverywaves/IT_ACADEMY/tree/b77c0ec891bb68db8c4891be51fc6f60eab55b9e/JAVA_SCRIPT/%EA%B8%B0%EC%B4%88%EB%AC%B8%EB%B2%95) 
 
 
 ### 📄 DATABASE

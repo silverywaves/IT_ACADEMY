@@ -8,7 +8,7 @@
 
 
 ### 📄 DATABASE
-* THEORY
+* [THEORY](https://github.com/silverywaves/IT_ACADEMY/tree/a31025037af789a33b5af57d77762034ef169927/DATABASE)
   
 
 ### 📄 JAVA

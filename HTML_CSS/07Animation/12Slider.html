@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        
+        .container{
+            width: 1300px;
+            height: 300px;
+            border: 1px solid gray;
+            margin: 200px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            /* position: relative; */
+        }
+        .container>.slider{
+            width: 1200px;
+            height: 200px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+
+            animation: moving 30s linear infinite;
+        }
+        .container>.slider:hover{
+            animation-play-state: paused;
+        }
+
+        .container>.slider>.slide{
+            border: 1px solid gray;
+            width: 200px;
+            height: 150px;
+            flex-shrink: 0;
+            flex-basis: 200px;
+            display: flex;
+            margin: 10px;
+            justify-content: center;
+            align-items: center;
+
+            background-color: white;
+            transition: 0.3s;
+        }
+        .container>.slider>.slide:hover{
+            transform: scale(1.5);
+        }
+
+        @keyframes moving{
+            0%,100%{transform: translateX(0px);}
+            10%{transform: translateX(-220px);}
+            20%{transform: translateX(-440px);}
+            30%{transform: translateX(-660px);}
+            40%{transform: translateX(-880px);}
+            50%{transform: translateX(-1100px);}
+            60%{transform: translateX(-880px);}
+            70%{transform: translateX(-660px);}
+            80%{transform: translateX(-440px);}
+            90%{transform: translateX(-220px);}
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="slider">
+            <div class="slide">1</div>
+            <div class="slide">2</div>
+            <div class="slide">3</div>
+            <div class="slide">4</div>
+            <div class="slide">5</div>
+            <div class="slide">6</div>
+            <div class="slide">7</div>
+            <div class="slide">8</div>
+            <div class="slide">9</div>
+            <div class="slide">10</div>
+        </div>
+    </div>
+
+</body>
+</html>

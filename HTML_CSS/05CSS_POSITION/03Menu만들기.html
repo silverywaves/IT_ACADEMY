@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* common */
+        *{}
+        body{}
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* wrapper */
+        .wrapper{}
+
+        /* wrapper>header */
+        .wrapper>header{}
+        .wrapper>header>.top-header{}
+
+        /* wrapper>header>nav */
+        .wrapper>header>nav{
+            /*border: 1px solid;*/
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper>header>nav>.menu{
+            border: 1px solid red;
+            width: 100%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .wrapper>header>nav>.menu>li{
+            border: 1px solid green;
+            height: 75px;
+            width: 150px;
+            text-align: center;
+            line-height: 75px;
+
+            position: relative;
+
+        }
+        .wrapper>header>nav>.menu>li>a{
+            border: 1px solid orange;
+            display: block;
+        }
+
+        .wrapper>header>nav>.menu>li>.submenu{
+            display: none;
+            border: 1px solid blueviolet;
+
+            position: absolute;
+            width: 150px;
+            top: 75px;
+            left: 0;
+        }
+        /* .menu:hover 시 전체 .submenu 표시 */
+        .wrapper>header>nav>.menu:hover .submenu{
+            display: block;
+        }
+        /* .menu>li:hover 시 해당 .sbumenu만 표시
+        .wrapper>header>nav>.menu>li:hover .submenu{
+            display: block;
+        } */
+
+        .wrapper>header>nav>.menu>li>.submenu>li{
+            border: 1px solid;
+            height: 35px;
+            line-height: 35px;
+        }
+        .wrapper>header>nav>.menu>li>.submenu>li>a{
+            display: block;
+        }
+
+
+        /* wrapper>main{}
+        wrapper>main>section{}
+
+        wrapper>footer{} */
+    </style>
+
+</head>
+<body>
+    <!--.wrapper>header>.top-header+nav^main>section^footer-->
+    <div class="wrapper">
+        <header>
+            <div class="top-header"></div>
+            <nav>
+                <!--.menu>li*4>a{MENU0$}+.submenu>li*4>a{SUBMENU0$}-->
+                <ul class="menu">
+                    <li>
+                        <a href="">MENU01</a>
+                        <ul class="submenu">
+                            <li><a href="">SUBMENU01</a></li>
+                            <li><a href="">SUBMENU02</a></li>
+                            <li><a href="">SUBMENU03</a></li>
+                            <li><a href="">SUBMENU04</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">MENU02</a>
+                        <ul class="submenu">
+                            <li><a href="">SUBMENU01</a></li>
+                            <li><a href="">SUBMENU02</a></li>
+                            <li><a href="">SUBMENU03</a></li>
+                            <li><a href="">SUBMENU04</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">MENU03</a>
+                        <ul class="submenu">
+                            <li><a href="">SUBMENU01</a></li>
+                            <li><a href="">SUBMENU02</a></li>
+                            <li><a href="">SUBMENU03</a></li>
+                            <li><a href="">SUBMENU04</a></li>
+                        </ul class="submenu">
+                    </li>
+                    <li>
+                        <a href="">MENU04</a>
+                        <ul class="submenu">
+                            <li><a href="">SUBMENU01</a></li>
+                            <li><a href="">SUBMENU02</a></li>
+                            <li><a href="">SUBMENU03</a></li>
+                            <li><a href="">SUBMENU04</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section></section>
+        </main>
+        <footer></footer>
+    </div>
+
+</body>
+</html>

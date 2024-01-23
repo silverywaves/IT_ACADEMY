@@ -152,3 +152,10 @@ delete from tbl_user where user_id='user10';
 delete from 테이블명 where 열이름=값;
 
 ---------------------------------------------------
+
+[DCL]
+grant
+
+revoke
+
+deny

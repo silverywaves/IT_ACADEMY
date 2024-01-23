@@ -14,5 +14,5 @@
 ### 📄 JAVA
 * THEORY
 * BASIC PRACTICE
-* [API]([https://docs.oracle.com/javase/8/docs/api/](https://docs.oracle.com/en/java/javase/17/docs/api/)https://docs.oracle.com/en/java/javase/17/docs/api/)
+* [API](https://docs.oracle.com/javase/8/docs/api/](https://docs.oracle.com/en/java/javase/17/docs/api/)https://docs.oracle.com/en/java/javase/17/docs/api/)
   

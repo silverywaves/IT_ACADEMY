@@ -129,7 +129,6 @@ alter table tbl_user add column user_tel varchar(30) null after user_name;
 
 Drop 삭제
 [열삭제] alter table 테이블명 drop column 열이름(컬럼명)
-        alter table 테이블명 drop 컬럼명
 
 Show 조회
 show databases;

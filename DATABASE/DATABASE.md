@@ -57,6 +57,7 @@ RDBMS에서 데이터를 다루고 관리하는 데 사용하는 데이터베이
 
 ## 리다이렉션(REDIRECTION)
 셀이 명령의 표준 입력이 오는 곳과 표준 출력이 나가는 곳을 바꿈
+[데이터 백업 및 복구 명령에 적용](https://github.com/silverywaves/IT_ACADEMY/blob/6d8943afe8b4f960b1f2e210c0c1f738e8f7df4f/DATABASE/3Import_Export.txt)
 
 * 표준 출력 리다이렉트
    * ">" : 명령의 출력을 화면 대신 지정된 파일로 리다이렉트

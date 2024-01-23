@@ -8,6 +8,20 @@ Running: mysqldump.exe --defaults-file="C:\Users\ADMINI~1\AppData\Local\Temp\tmp
 
 * sql 파일 : 메모장으로 열수는 있으나 양이 많아서 로딩 한참걸릴 수 있음
 
+++++++++++++++++++++++++++++++++++++++++++++++
+
+mysqldump -u root -p [dbname] > [filename].sql
+> : 리다이렉션기호 => sql 파일로 내보내겠다는 뜻
+mysqldump -u root -p testdb > testdb_bak.sql
+
+**리다이렉션**
+C:\Users\Administrator\Downloads\새 폴더 (2)>echo "HELLO WORLD"
+"HELLO WORLD"
+
+출력장치를 파일로 저장
+C:\Users\Administrator\Downloads\새 폴더 (2)>echo "HELLO WORLD" > a.txt
+새폴더에 들어가보면 파일 생성되어있음
+
 
 ----데이터복원----
 data import/restore : 데이터 가져오기
@@ -16,3 +30,23 @@ import from self-contained file > 백업파일불러오기
 11:51:17 Restoring C:\Users\Administrator\Downloads\TESTDB_BAK.sql
 Running: mysql.exe --defaults-file="C:\Users\ADMINI~1\AppData\Local\Temp\tmpkrhs3xuo.cnf"  --protocol=tcp --host=localhost --user=root --port=3306 --default-character-set=utf8 --comments --database=testdb  < "C:\\Users\\Administrator\\Downloads\\TESTDB_BAK.sql"
 11:51:18 Import of C:\Users\Administrator\Downloads\TESTDB_BAK.sql has finished
+
+++++++++++++++++++++++++++++++++++++++++++++++
+mysql -u root -p [dbname] < [filename].sql
+
+----------------------------------------------
+
+** 외부파일 가져오기
+REST API : 서버의 자원을 클라이언트에 구애받지 않고(환경에 상관없이) 사용할 수 있게 하는 설계방식
+=> JSON : 키, 값으로 구성된 정렬되지 않은 속성의 집합
+
+공공데이터포털(가입완료) -> 자료다운(csv) -> 워크벤처 -> table data import wizard(csv,json으로만 가능) 
+스타일링 되어있는 것은 x. 데이터값만 있어야 열로 뽑아낼 수 있음
+공공데이터포털 -> 자료다운(xls) -> 엑셀에서 다른이름으로 저장 -> csv로 확장자명 변경하여 저장 -> 워크벤처 -> table data import wizard 
+
+* 기상청단기예보조회 JSON 파일 불러오기
+공공데이터포털 -> 자료다운 -> 대괄호값(obj) 제외 삭제 후 json 저장 -> 워크벤처 -> table data import wizard
+SELECT * FROM testdb.20240123기상청단기예보조회;
+
+-- ref.개수 확인 --
+SELECT count(*) FROM testdb.20240123기상청단기예보조회; + Ctrl + Enter

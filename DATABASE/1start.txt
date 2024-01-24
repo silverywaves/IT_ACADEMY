@@ -1,0 +1,192 @@
+다운로드 이후 환경변수 설정(c:\programfiles\MYSQL\bin)
+실행창(window+R) -> sysdm.cpl -> 고급 -> 환경변수 -> 시스템변수 , path-> 편집 -> 새로만들기
+-> 'C:\Program Files\MySQL\MySQL Server 8.0\bin'경로 추가 -> 확인
+
+MYSQL 접속
+TUI : 실행창 -> cmd -> mysql -u root(유저명) -p -h ServerIP
+QUI 접속 : workbench -> Local접속세션버튼 클릭
+
+* 참고 : 보안을 위해 root 계정은 localhost에서만 접근이 가능하고 외부에서는 접근이 불가능하도록 설정이 되어 있음
+
+-------------------------------------------------
+cmd -> service.msc -> MySQL실행되어있는지 확인
+--------------------------------------------------
+
+** DB 조회
+    show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+
+* information_schema
+    DB의 메타데이터 보관. MySQL 서버 안의 데이터베이스, 테이블, 칼럼타입, 접근권한 등
+    각 데이터베이스의 정의를 확인할 수 있음
+* performance_schema
+    MySQL Server가 운영중일 때 실행단의 여러 작업들을 모니터링할 때 사용
+    쿼리문이 입력되었을 때, 이를 분해, 해석하고 작업하는 일련의 단계들이 잘 진행되는지 모니터링
+* mysql
+    시스템 데이터베이스. MySQL 서버가 운영될 때 필요한 정보들을 가지고 있음
+    권한 관리, 각종 프로그램들, 로그, 기타 매뉴얼 관련 자료 포함
+* sys
+    MySQL 서버의 유저/호스트/세션/쿼리실행 등 MySQL 서버 실행 중의 이력 확인
+
+---------------------------------------------------
+
+** DB위치 지정
+    use mysql;
+Database changed
+
+---------------------------------------------------
+
+** DB 생성
+    create database testd[=데이터베이스명];
+Query OK,
+
+    show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| testdb             |
+| world              |
++--------------------+
+
+---------------------------------------------------
+
+** DB 삭제
+    drop database test2db;        // drop DB명;
+Query OK, 1 row affected (0.02 sec)
+
+---------------------------------------------------
+
+** Table 생성(TUI)  - GUI 생략
+    use testdb;             // DB 선택
+show tables;
+mysql> create table tbl_user(
+    -> user_id varchar(10) primary key,
+    -> user_password varchar(100) not null,
+    -> user_name varchar(45) not null );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_testdb |
++------------------+
+| tbl_user         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> desc tbl_user;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | varchar(10)  | NO   | PRI | NULL    |       |
+| user_password | varchar(100) | NO   |     | NULL    |       |
+| user_name     | varchar(45)  | NO   |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+---------------------------------------------------
+
+** Table 수정
+Database changed
+    mysql> create table tbl_user[=테이블명](
+    -> user_id[=컬럼명] varchar(10)[=자료형] primary key[=제약조건],
+    -> user_password varchar(100) not null,
+    -> user_name varchar(45) not null );
+Query OK, 0 rows affected (0.02 sec)
+
+---------------------------------------------------
+
+** Table 확인
+    show tables;
++------------------+
+| Tables_in_testdb |
++------------------+
+| tbl_user         |
++------------------+
+1 row in set (0.00 sec)
+
+** Table 구조
+    desc tbl_user;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | varchar(10)  | NO   | PRI | NULL    |       |
+| user_password | varchar(100) | NO   |     | NULL    |       |
+| user_name     | varchar(45)  | NO   |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+---------------------------------------------------
+
+** Tbl삭제
+    drop table tbl_user;            // drop 테이블명;
+Query OK, 0 rows affected (0.01 sec)
+
+---------------------------------------------------
+
+** Source가져오기
+    source sql파일명;
+
+---------------------------------------------------
+
+[DDL]
+
+Create 생성
+create table tbl_prosduct(
+prod_id int primary key,
+prod_category varchar(100) not null);
+create table 테이블명(열1 자료형 [제약조건],열2 자료형 [제약조건]..);
+
+Alter 변경
+alter table tbl_user add column user_tel varchar(30) null after user_name;
+[열추가] alter table 테이블명 add column 열이름 자료형 [제약조건] [after 열이름]
+[열수정] alter table 테이블명 change column 기존열이름 바꿀열이름 변경자료형 [제약조건]
+
+Drop 삭제
+[열삭제] alter table 테이블명 drop column 열이름(컬럼명)
+
+Show 조회
+show databases;
+
+---------------------------------------------------
+
+[DML]
+
+INSERT 삽입
+insert into testdb.tbl_user(user_id,user_name,user_phone) values('user10','홍길동','010');
+insert into 테이블명(열1,열2...) values(값1,값2...);
+
+SELECT 조회
+select * from tbl_user;
+select * from 테이블명;
+
+UPDATE 수정
+update tbl_user set user_name='철수' where user_id='user20';
+update 테이블명 set 열이름=값,열이름=값 where 열이름=값;
+
+DELETE 삭제
+delete from tbl_user where user_id='user10';
+delete from 테이블명 where 열이름=값;
+
+---------------------------------------------------
+
+[DCL]
+grant
+
+revoke
+
+deny

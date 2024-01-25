@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>edu</display-name>
+
+    <!-- 경로 : src-> main -> webapp -> WEB-INF -->
+
+	<!--  <servlet>
+		<servlet-name>first</servlet-name>
+		<servlet-class>com.edu.test.FirstServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>first</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping> -->
+
+
+	<!-- <servlet>
+		<servlet-name>addInfo</servlet-name>	4. 지정된 service() 메소드 실행
+		<servlet-class>com.edu.test._7_AdditionalInfoServlet</servlet-class>	3. 같은 이름 찾음
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>addInfo</servlet-name>	2. 지정된 이름과 같은 이름을 servlet 태그의 servlet-name 에서 찾음
+		<url-pattern>/addInfo/*</url-pattern>	1. 클라이언트로부터 url 요청 수신	
+	</servlet-mapping>
+	// * : 특수문자. 해당 자리에 어떤 경로(path)가 와도 상관x  -->
+
+</web-app>

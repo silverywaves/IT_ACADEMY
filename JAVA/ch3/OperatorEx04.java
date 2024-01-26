@@ -1,6 +1,6 @@
 package ch3;
 
-public class OperatorEx4 {
+public class OperatorEx04 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

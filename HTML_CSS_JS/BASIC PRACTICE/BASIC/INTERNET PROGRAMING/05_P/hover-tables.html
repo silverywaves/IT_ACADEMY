@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hoverable Table</title>
+  <style>
+    h2, p{text-align: center;}
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin:auto;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #DDD;
+    }
+    th:hover {background-color: Gold;}
+    td:hover {background-color: dodgerblue;}
+    tr:hover {background-color: #D6EEEE;}
+    tr.heading:hover{background-color: khaki;}
+    </style>
+</head>
+<body>
+  <h2>Hoverable Table</h2>
+<p>Move the mouse over the table rows to see the effect.</p>
+
+<table>
+  <tr class="heading">
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Points</th>
+  </tr>
+  <tr>
+    <td>Peter</td>
+    <td>Griffin</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>Lois</td>
+    <td>Griffin</td>
+    <td>$150</td>
+  </tr>
+  <tr>
+    <td>Joe</td>
+    <td>Swanson</td>
+    <td>$300</td>
+  </tr>
+  <tr>
+    <td>Cleveland</td>
+    <td>Brown</td>
+    <td>$250</td>
+  </tr>
+</table>
+</body>
+</html>

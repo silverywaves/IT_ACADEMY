@@ -11,7 +11,7 @@ public class OperatorEx29 {
 		System.out.printf("~p = %d \t%s%n", ~p, toBinaryString(~p));
 		System.out.printf("~p+1 = %d \t%s%n", ~p+1, toBinaryString(~p+1));	// p 에 대한 음의 정수
 		System.out.printf("~~p = %d \t%s%n", ~~p, toBinaryString(~~p));		// p 에 비트 전환 연산 2번 적용 => 원래의 값
-																			// 단, 연산결과 타입은 byte 가 아닌 int
+											// 단, 연산결과 타입은 byte 가 아닌 int
 		System.out.println();
 		System.out.printf("n = %d%n", n);									// 음의 정수 n
 		System.out.printf("~(n-1) = %d%n", ~(n-1));							// n 에 대한 양의 정수

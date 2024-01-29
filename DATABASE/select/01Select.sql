@@ -9,9 +9,9 @@ desc usertbl;
 desc buytbl;
 
 -- 01 Select
-select * from usertbl;
-select userid, birthyear from usertbl;							-- 열이름 대소문자 구분x
-select userid as '아이디', birthyear as '생년월일' from usertbl;	-- as '': 별칭 등록
+select * from usertbl;                              -- 테이블 내 전체 열 가져오기
+select userid, birthyear from usertbl;							-- 테이블 내 특정 열 가져오기 : 열이름 대소문자 구분x
+select userid as '아이디', birthyear as '생년월일' from usertbl;	-- as '' from : 별칭 지정
 select 
 userid as '아이디', birthyear as '생년월일', concat(mobile1, '-', mobile2) as '연락처'
 from usertbl;
@@ -27,7 +27,7 @@ select * from usertbl where birthyear >= 1970 and height >= 180;	-- and 연산�
 select * from usertbl where birthyear >= 1970 or height >= 180;		-- or 연산자 ([참 or 거짓], [거짓 or 참], [참 or 참])을 만족하는 경우
 
 select * from usertbl where height >= 170 and height <= 180;
-select * from usertbl where height between 170 and 180;
+select * from usertbl where height between 170 and 180;           -- between A and B : A 에서 B 사이
 
 -- 04 in(포함문자열 - 완성된 문자열), like(포함문자열 - 미완선된 문자열 필터링)
 select * from usertbl where addr in ('서울', '경남');
@@ -71,7 +71,7 @@ select * from usertbl where birthyear<(select birthyear from usertbl where name=
 
 -- 지역이 '경남'인 height 보다 큰 행 출력
 select height from usertbl where addr='경남';
--- select * from usertbl where height>(select height from usertbl where addr in('경남'));	// Error : Subquery returns mor than 1 row
+-- select * from usertbl where height>(select height from usertbl where addr in('경남'));	// Error : Subquery returns mor than 1 row(하나 이상의 값 반환시 오류)
 -- all(모든 조건을 만족하는)
 select * from usertbl where height>all(select height from usertbl where addr in('경남'));
 -- any(어느 조건이든 하나 이상 만족)

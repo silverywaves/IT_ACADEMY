@@ -6,7 +6,7 @@ public class OperatorEx15 {
 		// TODO Auto-generated method stub
 		char lowerCase = 'a';
 		char upperCase = (char)(lowerCase - 32);	// char - int = int 
-													// => 연산 후 char 형으로 다시 형변환
+								// => 연산 후 char 형으로 다시 형변환
 		System.out.println(upperCase);
 	}
 

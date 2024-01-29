@@ -1,3 +1,5 @@
+-- 소스파일 cmd로 불러오기 mysql> source SampleDB.sql
+
 -- 00 확인	(--띄어쓰기 : 주석)
 use shopdb;
 show tables;

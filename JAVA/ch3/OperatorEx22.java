@@ -11,7 +11,7 @@ public class OperatorEx22 {
 		
 		System.out.printf("10.0==10.0f %b%n", 10.0==10.0f);	// 10.0f : 오차없이 저장 가능 -> double 형변환해도 오차 x
 		System.out.printf("0.1==0.1f %b%n", 0.1==0.1f);		// false 인 이유 : 실수형은 근사값으로 저장 
-															// -> 저장할 때 2진수로 변환하는 과정에서 오차 발생
+									// -> 저장할 때 2진수로 변환하는 과정에서 오차 발생
 		System.out.printf("f=%19.17f%n", f);
 		System.out.printf("d=%19.17f%n", d);
 		System.out.printf("d2=%19.17f%n", d2);

@@ -143,7 +143,8 @@ Query OK, 0 rows affected (0.01 sec)
 
 ---------------------------------------------------
 
-[DDL]
+[DDL- Data Definition LAnguage]
+- 데이터베이스 개체를 생성/삭제/변경하는 역할
 
 Create 생성
 create table tbl_prosduct(
@@ -164,7 +165,8 @@ show databases;
 
 ---------------------------------------------------
 
-[DML]
+[DML - Data Manipulation Language]
+- 데이터를 조작(선택, 삽입, 수정, 삭제)하는데 사용되는 언어
 
 INSERT 삽입
 insert into testdb.tbl_user(user_id,user_name,user_phone) values('user10','홍길동','010');
@@ -184,8 +186,13 @@ delete from 테이블명 where 열이름=값;
 
 ---------------------------------------------------
 
-[DCL]
+[DCL - Data Control Language]
+- 권한부여/철회에 사용되는 구문
 grant
+grant 권한 리스트 on 객체명 to 사용자 리스트
+권한 리스트 : select, insert, delete, update, references 중 한 개 이상
+사용자 리스트 : 권한을 부여받는 사용자들의 리스트
+=> 사용자 리스트에게 객체명에 대한 권한 리스트를 실행할 권리를 부여한다는 의미
 
 revoke
 

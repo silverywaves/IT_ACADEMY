@@ -1,5 +1,3 @@
--- 소스파일 cmd로 불러오기 mysql> source SampleDB.sql
-
 -- 00 확인	(--띄어쓰기 : 주석)
 use shopdb;
 show tables;
@@ -9,9 +7,9 @@ desc usertbl;
 desc buytbl;
 
 -- 01 Select
-select * from usertbl;                              -- 테이블 내 전체 열 가져오기
-select userid, birthyear from usertbl;							-- 테이블 내 특정 열 가져오기 : 열이름 대소문자 구분x
-select userid as '아이디', birthyear as '생년월일' from usertbl;	-- as '' from : 별칭 지정
+select * from usertbl;
+select userid, birthyear from usertbl;							-- 열이름 대소문자 구분x
+select userid as '아이디', birthyear as '생년월일' from usertbl;	-- as '': 별칭 등록
 select 
 userid as '아이디', birthyear as '생년월일', concat(mobile1, '-', mobile2) as '연락처'
 from usertbl;
@@ -27,7 +25,7 @@ select * from usertbl where birthyear >= 1970 and height >= 180;	-- and 연산�
 select * from usertbl where birthyear >= 1970 or height >= 180;		-- or 연산자 ([참 or 거짓], [거짓 or 참], [참 or 참])을 만족하는 경우
 
 select * from usertbl where height >= 170 and height <= 180;
-select * from usertbl where height between 170 and 180;           -- between A and B : A 에서 B 사이
+select * from usertbl where height between 170 and 180;
 
 -- 04 in(포함문자열 - 완성된 문자열), like(포함문자열 - 미완선된 문자열 필터링)
 select * from usertbl where addr in ('서울', '경남');
@@ -71,7 +69,7 @@ select * from usertbl where birthyear<(select birthyear from usertbl where name=
 
 -- 지역이 '경남'인 height 보다 큰 행 출력
 select height from usertbl where addr='경남';
--- select * from usertbl where height>(select height from usertbl where addr in('경남'));	// Error : Subquery returns mor than 1 row(하나 이상의 값 반환시 오류)
+-- select * from usertbl where height>(select height from usertbl where addr in('경남'));	// Error : Subquery returns mor than 1 row
 -- all(모든 조건을 만족하는)
 select * from usertbl where height>all(select height from usertbl where addr in('경남'));
 -- any(어느 조건이든 하나 이상 만족)
@@ -90,4 +88,62 @@ select * from buytbl where amount>any(select amount from buytbl where userid lik
 -- Q3. amount 가 5인 행의 price 보다 큰 행 (서브쿼리+all)
 select price from buytbl where amount=5;
 select * from buytbl where price>all(select price from buytbl where amount=5);
+
+
+-- 05 Select Order by	: 정렬
+use shopdb;
+select * from usertbl;		-- 보통 primary key 오름차순 기준으로 정렬되어있음
+select * from usertbl order by mDate asc;		-- asc 오름차순 정렬 (기본값)
+select * from usertbl order by mDate desc;		-- desc 내림차순 정렬
+select * from usertbl where birthyear>=1970 order by mdate;		-- order by 는 where 보다 나중에 사용
+select * from usertbl order by height,name;		-- , : 같은 값 대상으로 2차 정렬 가능
+
+-- 06 distinct		: 중복되는 값들을 하나로 묶음
+select distinct addr from usertbl;			-- 단일열 앞에 distinct 사용
+select distinct addr,userid from usertbl;	-- userid 가 각 달라서 distinct가 의미없음
+
+-- 07 limit
+select * from usertbl;
+select * from usertbl limit 3;		-- 0번 인덱스부터 3개 출력
+select * from usertbl limit 2,3;	-- 2번 인덱스부터 3개 출력
+
+-- 08 테이블 복사
+-- 08-01 구조 + 값 복사(PK,FK 복사 X)
+create table tbl_buy_copy(select * from buytbl);
+select * from tbl_buy_copy;		
+desc tbl_buy_copy;				-- 키열 공란 확인
+desc buytbl;
+
+create table tbl_buy_copy2(select userid,prodname,amount from buytbl);
+select * from tbl_buy_copy2;
+
+-- 08-02 구조만 복사(값x, pk 복사 O, FK 복사 x, index 설정 O)
+create table tbl_buy_copy3 like buytbl;
+select * from tbl_buy_copy3;
+
+-- 08-03 데이터만 복사
+insert into tbl_buy_copy3 select * from buytbl where amount>=3;
+select * from tbl_buy_copy3;
+
+
+-- Quiz
+-- Q1. userId 순으로 오름차순 정렬
+select * from buytbl order by userid asc;
+-- Q2. price 순으로 내림차순 정렬
+select * from buytbl order by price desc;
+-- Q3. amount 순으로 오름차순 prodName 순으로 내림차순 정렬
+select * from buytbl order by amount, prodname desc;
+-- Q4. prodName 을 오름차순으로 정렬시 중복 제거
+select distinct prodname from buytbl order by prodname asc;
+-- Q5. userId 열의 검색시 중복된 아이디 제거하고 select
+select distinct userid from buytbl;
+-- Q6. 구매양(amount)가 3 이상인 행을 prodName 내림차순으로 정렬
+select * from buytbl where amount>=3 order by prodname desc;
+-- Q7. usertbl 의 addr 가 서울, 경기인 값들을 CUsertbl 에 복사
+-- create table CUsertbl like usertbl;
+-- insert into CUsertbl select * from usertbl where addr in('서울','경기');
+create table cusertbl(select * from usertbl where addr in('서울','경기'));
+select * from cusertbl;
+
+
 

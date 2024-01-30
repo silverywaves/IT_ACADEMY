@@ -53,7 +53,7 @@ select productvendor,sum(quantityinstock) from products group by productvendor;
 -- 02 select group by + having
 use shopdb;
 -- 집계 결과 열에선 where 사용 불가. having 으로 사용
-select userid, sum(amount) as '구매총량' from buytbl group by userid having sum(amount)>5;	-- o	
+select userid, sum(amount) as '구매총량' from buytbl group by userid having sum(amount)>5;	  -- o	
 select userid, sum(amount) as '구매총량' from buytbl group by userid having '구매총량'>5;		-- x
 
 select userid, truncate(avg(amount*price),2) as '구매평균액' 
@@ -68,10 +68,10 @@ select num,groupname,sum(price*amount) from buytbl group by groupname,num with r
 select *,sum(price*amount) from buytbl group by groupname,num with rollup;
 
 select num,groupname,sum(price*amount) from buytbl group by groupname,num with rollup;		-- 그룹 기준 부분합&총합
-select groupname,sum(price*amount) from buytbl group by groupname with rollup;				-- 그룹 기준 총합
+select groupname,sum(price*amount) from buytbl group by groupname with rollup;				    -- 그룹 기준 총합
 
-select addr,avg(height) from usertbl group by addr;								-- 지역별 키의 평균
-select addr,avg(height) from usertbl group by addr with rollup;					-- 전체 평균키
+select addr,avg(height) from usertbl group by addr;								            -- 지역별 키의 평균
+select addr,avg(height) from usertbl group by addr with rollup;					      -- 전체 평균키
 select userid,addr,avg(height) from usertbl group by addr,userid with rollup;	-- 메인그룹을 잘 선정해야함
 
 
@@ -84,7 +84,8 @@ select userid,prodname,sum(price*amount) from buytbl group by prodname,userid ha
 -- Q3. price 가격이 가장 큰 행과 작은 행의 userid, prodname, price 출력
 select distinct userid,prodname,price from buytbl where price=(select max(price) from buytbl) or price=(select min(price) from buytbl);
 -- Q4. 다음 행 중에 그룹네임이 있는 행만 출력
-select * from buytbl having groupname!='null';			-- select * from buytbl where groupname is not null;
+select * from buytbl where groupname!='null';
+-- select * from buytbl where groupname is not null;
 -- Q5. prodname 별로 총합 구하기(rollup 사용)
 select prodname,sum(price*amount) from buytbl group by prodname with rollup;
 select num,prodname,sum(price*amount) from buytbl group by prodname,num with rollup;

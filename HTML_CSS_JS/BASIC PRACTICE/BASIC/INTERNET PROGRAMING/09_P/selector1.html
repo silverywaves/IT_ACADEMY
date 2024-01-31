@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태그, 클래스, 아이디 선택자</title>
+  <style>
+    p.myClass {
+      text-align: center;
+      color: blue;
+    }
+    #myID {
+      text-align: right;
+      color: gold;
+      font-size: 2em;
+    }
+    p.large {
+      font-size: 150%;
+      color: greenyellow;
+    }
+  </style>
+</head>
+
+<body>
+    <h1 class="myClass">이 제목은 영향을 받지 않음</h1>
+    <p class="myClass">이 문단은 가운데 정렬, 파란색</p>
+    <p ID="myID">이 문단은 오른쪽 정렬, 황금색, 16*2=32px</p>
+    <p class="myClass large">이 문단은 가운데 정렬, 연초록색, 그리고 1.5배 크기</p>
+</body>
+
+</html>

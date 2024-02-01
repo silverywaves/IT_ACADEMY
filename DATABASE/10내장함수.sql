@@ -1,4 +1,4 @@
--- 내장함수
+-- 내장함수 https://velog.io/@wngud4950/MySQL-%EB%82%B4%EC%9E%A5%ED%95%A8%EC%88%98-%EC%A0%95%EB%A6%AC
 -- ------------------------------------------------------------------
 -- Concat(), concat_ws() : 두 개 이상의 문자열 결합
 select concat('hello', '-', 'world',5,6);

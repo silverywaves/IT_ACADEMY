@@ -56,7 +56,7 @@ int tmp = arr.length;      // arr.length 값은 5 -> tmp 에 5 저장
   2. 기존 배열의 내용을 새로운 배열에 복사
 ```
   - 길이 변경시 많은 비용 발생 -> 처음부터 기존의 2배정도의 길이로 생성하는 것이 좋음
-  - [Ex4]() 참고
+  - [Ex4](https://github.com/silverywaves/IT_ACADEMY/blob/0b2ca97d21fa8692c1938971ec5906938b90d497/JAVA/ch5/ArrayEx04.java) 참고
 
 
 ---

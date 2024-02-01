@@ -9,6 +9,11 @@
 	<form action="queryTest" method="GET">		<!-- GUI 환경의 입출력 도구들을 출력, 서버 프로그램의 URI를 설정 -->
 		<!-- 서버에서 처리하는 작업단위로 폼을 나누어 사용
 			 GET : 서버의 데이터를 가져오는 작업 / POST : 서버의 데이터를 수정하는 작업 -->
+
+		<!-- GET 방식으로 실행 및 전송 시켰을 때, 서버 전달 값이 주소줄에 모두 노출
+			=> 데이터 길이가 255바이트 미만, 외부에 노출되어도 상관 없는 데이터 전달
+			질의 문자열이 URI에 포함되어 전달되어 인코딩/디코딩 필요 x, 처리 속도 빠름 -->
+		
 		ID : <input type="text" name="id"><br>
 		비밀번호 : <input type="password" name="pwd"><br>
 		이름 : <input type="text" name="name"><br>

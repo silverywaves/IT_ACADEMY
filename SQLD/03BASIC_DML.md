@@ -234,19 +234,19 @@ Q. NULL 값에 대한 산술 연산의 결과는?
   - 숫자 데이터는 작은 따옴표 없이 사용
 
 - 두 가지 유형으로 입력 가능
-  - insert into 테이블명 (column_list) values (value_list);
-    - 일부 칼럼에 대응되는 값만 입력
-    - 칼럼 순서는 실제 테이블의 칼럼 순서와 무관
-    - 정의하지 않은 칼럼은 null 값이 입력됨
+1. insert into 테이블명 (column_list) values (value_list);
+  - 일부 칼럼에 대응되는 값만 입력
+  - 칼럼 순서는 실제 테이블의 칼럼 순서와 무관
+  - 정의하지 않은 칼럼은 null 값이 입력됨
 ```
   insert into player(player_id, player_name, team_id, birth_date)
   values('2999001', '손흥민', 'K07', '1999-01-01');
 ```
 
-   - insert into 테이블명 values (전체 column의 value_list);
-     - 전체 칼럼에 대응되는 값을 모두 입력
-     - **전체 칼럼의 모든 값을 순서대로 입력**해야 함
-     - 빈 값은 null 또는 작은따옴표 둘('')로 입력(주의 : ' ' 이 아님)
+2. insert into 테이블명 values (전체 column의 value_list);
+  - 전체 칼럼에 대응되는 값을 모두 입력
+  - **전체 칼럼의 모든 값을 순서대로 입력**해야 함
+  - 빈 값은 null 또는 작은따옴표 둘('')로 입력(주의 : ' ' 이 아님)
       
 ```
   insert into player

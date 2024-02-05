@@ -243,10 +243,11 @@ Q. NULL 값에 대한 산술 연산의 결과는?
   values('2999001', '손흥민', 'K07', '1999-01-01');
 ```
 
-  - insert into 테이블명 values (전체 column의 value_list);
-    - 전체 칼럼에 대응되는 값을 모두 입력
-    - **전체 칼럼의 모든 값을 순서대로 입력**해야 함
-    - 빈 값은 null 또는 작은따옴표 둘('')로 입력(주의 : ' ' 이 아님)
+   - insert into 테이블명 values (전체 column의 value_list);
+     - 전체 칼럼에 대응되는 값을 모두 입력
+     - **전체 칼럼의 모든 값을 순서대로 입력**해야 함
+     - 빈 값은 null 또는 작은따옴표 둘('')로 입력(주의 : ' ' 이 아님)
+      
 ```
   insert into player
   values('2999002', '이승우', 'K07', '', '', '2010', 'MF', '10', NULL, NULL, NULL, NULL, NULL);

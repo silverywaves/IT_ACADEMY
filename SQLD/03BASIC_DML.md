@@ -26,9 +26,8 @@
 
 
 ---
-
+### 레코드 조회
 #### SELECT
-- select
   - 테이블에 존재하는 레코드의 값을 조회
   - 관심있는 일부 칼럼에 대해서만 정보를 조회
     
@@ -53,14 +52,14 @@
 
 <br>
 
-- select *
+#### select *
   - select * from 테이블명;
     - 해당 테이블의 모든 칼럼값 조회
 
 <br>
 
 
-- select - 별칭 사용
+#### select - 별칭 사용
   - 조회 결과에 일종의 별칭(ALIAS)을 부여하여 칼럼 레이블 변경
   - 칼럼명과 별칭 사이에 AS 키워드 사용 (optional)
   - 별칭이 공백, 특수문자 등을 포함하는 경우 큰 따옴표 사용
@@ -71,7 +70,6 @@
 ---
 
 #### ORDER BY
-- order by
   - 출력시 정렬 기준 설정
   - SQL 문장의 맨 마지막에 위치
   - select 문에 없는 필드도 order by 사용 가능
@@ -90,8 +88,7 @@
 
 ---
 
-#### WHERE
-- where 절
+#### WHERE 절
   - 특정 조건을 만족하는 데이터를 한정하기 위해 사용
   - select ~ from ~ where ~ 형태로 사용
 
@@ -226,6 +223,7 @@ Q. NULL 값에 대한 산술 연산의 결과는?
 
 ---
 
+### 레코드 삽입
 #### INSERT
 - 테이블에 한 건의 레코드를 추가함
   - 여러 건 입력시 insert all ~ 구문 활용
@@ -235,18 +233,18 @@ Q. NULL 값에 대한 산술 연산의 결과는?
 
 - 두 가지 유형으로 입력 가능
 1. insert into 테이블명 (column_list) values (value_list);
-  - 일부 칼럼에 대응되는 값만 입력
-  - 칼럼 순서는 실제 테이블의 칼럼 순서와 무관
-  - 정의하지 않은 칼럼은 null 값이 입력됨
+    - 일부 칼럼에 대응되는 값만 입력
+    - 칼럼 순서는 실제 테이블의 칼럼 순서와 무관
+    - 정의하지 않은 칼럼은 null 값이 입력됨
 ```
   insert into player(player_id, player_name, team_id, birth_date)
   values('2999001', '손흥민', 'K07', '1999-01-01');
 ```
 
 2. insert into 테이블명 values (전체 column의 value_list);
-  - 전체 칼럼에 대응되는 값을 모두 입력
-  - **전체 칼럼의 모든 값을 순서대로 입력**해야 함
-  - 빈 값은 null 또는 작은따옴표 둘('')로 입력(주의 : ' ' 이 아님)
+    - 전체 칼럼에 대응되는 값을 모두 입력
+    - **전체 칼럼의 모든 값을 순서대로 입력**해야 함
+    - 빈 값은 null 또는 작은따옴표 둘('')로 입력(주의 : ' ' 이 아님)
       
 ```
   insert into player
@@ -254,4 +252,59 @@ Q. NULL 값에 대한 산술 연산의 결과는?
 ```
 
 
+#### INSERT ALL
+  - 동시에 여러 레코드를 추가하는 경우
+    - 테이블 생성 후 초기 데이터 일괄 업로드
+    - 기존 테이블의 레코드 조회 후 다른 테이블에 삽입
 
+  - ex) Table1 에서 레코드를 반환하여 Table2, Table3 에 분할 저장
+    
+```
+  insert all
+    into table2 values (id, name)
+    into table3 values (di, salary)
+  select id, name, salary from table1;
+```
+
+  - 반드시 select 문을 사용해야 함
+
+  - 새로운 값을 직접 입력하는 경우 아래와 같이 DUAL 테이블 사용
+    - DUAL : 하나의 칼럼(DUMMY)에 하나의 값('X')을 저장하고 있음
+
+  - ex) stadium 테이블에 두 레코드를 한꺼번에 삽입하는 경우
+
+![insert_all](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/197d2c75-e7e5-4897-88c4-a7afb6283c36)
+
+
+---
+
+### 레코드 삭제
+#### DELETE
+  - 테이블에 존재하는 전체 레코드 삭제
+    - DELETE 테이블명 / DELETE FROM 테이블명
+   
+  - 일반적으로는 where 절을 사용하여 특정 레코드 삭제
+
+  - ex) ('TP1', '임시경기장1') 삭제
+
+![delete](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/f7c3e87b-5cd1-47b7-bc94-c182e8bbd076)
+
+
+    
+---
+
+### 레코드 갱신
+#### UPDATE
+  - 테이블에 존재하는 전체 레코드의 값 변경
+    - update 테이블명 set 칼럼명 = 새로운 값
+    - ex) player 테이블에서 모든 레코드의 position 을 'GK'로 변경
+
+![update1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d0af484b-9628-449a-a27e-7912a67177df)
+
+    
+  - 일반적으로는 where절을 사용하여 특정 레코드의 값 변경
+    - ex) ('TP2', '임시경기장2') 의 레코드값 ('TP2', '우리경기장') 으로 변경
+   
+![update2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c2a01996-9851-4b88-8a0d-ff5be5a47386)
+
+  

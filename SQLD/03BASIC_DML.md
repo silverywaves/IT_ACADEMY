@@ -51,12 +51,14 @@
 
 ![select_distinct2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/68849933-516b-4b81-a9db-ab31ae4a0970)
 
----
+<br>
 
 - select *
   - select * from 테이블명;
     - 해당 테이블의 모든 칼럼값 조회
-   
+
+<br>
+
 
 - select - 별칭 사용
   - 조회 결과에 일종의 별칭(ALIAS)을 부여하여 칼럼 레이블 변경
@@ -96,7 +98,9 @@
 ![where](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/099c20f2-600e-4d43-bfc9-c6890261e823)
 
 
-- where 연산자
+---
+
+#### 연산자
 
 
 ![where_연산자](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/e406fcc4-590d-4b7f-bcaf-6ae383e5fd35)
@@ -107,10 +111,11 @@
 ![where_연산자_우선순위](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/84e5dcd7-c35a-44af-b0d5-96577c8a7b40)
 
 
-- 산술 연산자
-  - NUMBER 와 DATE 자료형에 대해 적용
-  - *, /, +, -
-  - 연산자는 select 문에도 사용 가능
+<br>
+
+##### 산술 연산자
+- NUMBER 와 DATE 자료형에 대해 적용
+- 연산자는 select 문에도 사용 가능
 
 ![산술연산자](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/5ab91a10-fbae-490b-9222-5afc581700bc)
 
@@ -123,6 +128,99 @@ Q. NULL 값에 대한 산술 연산의 결과는?
 ![산술null](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c85f367c-6dad-4d12-9db4-10e93d542e21)
 
 
+
+<br>
+
+##### 비교 연산자
+- 모든 자료형에 대해 적용
+- 문자열의 크기 비교는 사전 순으로 수행
+  - ex) '01' < '02' < '1' < '11' < '2'
+- NULL에는 비교 연산자 사용 불가   
+
+
+![비교null](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/5030e92a-149a-4956-b01b-f74cb16d115a)
+
+
+<br>
+
+##### 논리 연산자
+- 모든 자료형에 대해 적용
+- NOT > AND > OR
+- 진리표
+ 
+![진리표](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/847d1f9b-d742-4f18-8845-06e008744db7)
+
+
+<br>
+
+##### SQL 연산자
+- 합성(연결) 연산자 - 문자열과 문자열을 연결함
+  - 방법1 함수 : concat(str1, str2) <- 두 개의 인자만 연결 가능
+  - 방법2 연산자 : str1 || str2     <- 이항 연산 여러번 가능, 두 개 이상의 인자 연결 가능
+
+![SQL연산자](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/78a5fc05-4365-4566-a42f-d31dbd30420e)
+
+<br>
+
+- BETWEEN
+  - 항상 and 와 함께 사용
+  - ex) height between 170 and 180
+
+<br>
+
+- NOT BETWEEN
+  - BETWEEN 의 반대, or 개념 
+  - ex) height < 170 or height > 180 
+
+
+<br>
+
+- IN
+
+
+![in](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d3bf6160-91f0-4f76-a4ee-1b125e427b2b)
+
+<br>
+
+- NOT IN
+
+![not_in](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/edf7a246-0a15-4b35-8d8e-71dccc2e12f4)
+
+
+<br>
+
+- LIKE
+  - 문자열 비교 연산
+  - 와일드카드 사용 가능
+    - '%' : 임의의 문자 N개
+    - '_' : 임의의 문자 1개
+      
+   
+![like1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/1ed9089b-0371-4e56-9dc8-29901f1bb339)
+
+
+![like2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/ed0649dc-58c2-43a6-94a1-c4169aba8253)
+
+
+<br>
+#### 출력 개수 지정
+- ROWNUM (TOP N개의 레코드 반환)
+  - 사용자가 아닌 시스템이 관리하는 Pseudo Column(= 쓸 수는 있지만 진짜 컬럼은 X)
+    - 채번, 출력 개수 지정 등에 활용 가능
+
+  - 여러 행을 반환할 때
+    - rownum = 3  // 불가능 => top~n개 추출이라 등호는 1 제외 사용불가
+    - rownum <=3  // 가능
+    - rownum <4   // 가능
+   
+  - 한 행만 반환할 때
+    - rownum = 1   // 가능 -> 등호 예외적 사용 가능
+    - rownum <= 1  // 가능
+    - rownum < 2   // 가능
+
+  - 테이블 내의 unique 한 값 설정에도 사용 가능
+    - rownum을 이용하여 id 필드 생성
+    - update 테이블명 set 칼럼명 = rownum;
 
 
 

@@ -115,11 +115,10 @@
 ![산술연산자](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/5ab91a10-fbae-490b-9222-5afc581700bc)
 
 
-```
-  Q. NULL 값에 대한 산술 연산의 결과는?
+
+Q. NULL 값에 대한 산술 연산의 결과는?
 ![산술null](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c85f367c-6dad-4d12-9db4-10e93d542e21)
 
-```
 
 
 

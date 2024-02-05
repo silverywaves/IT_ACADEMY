@@ -308,3 +308,15 @@ Q. NULL 값에 대한 산술 연산의 결과는?
 ![update2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c2a01996-9851-4b88-8a0d-ff5be5a47386)
 
   
+
+#### UPDATE 와 ROWNUM 을 이용한 채번
+  - 테이블 내의 unique한 일련번호를 생성하는 경우
+
+  - Q. player 테이블에 row_id 라는 빈 열을 추가하고 rownum 값을 row_id로 복사
+```
+  alter table player add(row_id NUMBER);    // 열 추가
+  update player set row_id = rownum         // rownum 으로 값 변경
+
+  select row_id, player_name from player
+  where row_id = 3;                         // rownum 은 = 사용불가지만, row_id는 실제존재 칼럼이라 3번째 값만 출력
+```

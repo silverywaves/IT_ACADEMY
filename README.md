@@ -19,3 +19,9 @@
 
 ### 📄 SERVLET
 * THEORY
+
+
+### 📄 CERTIFICATION
+* [ADsP](https://github.com/silverywaves/IT_ACADEMY/tree/eb37b9659a6777dded9b9f20138e44dcf36fdc64/ADsP)
+* [cosPro2]
+* [SQLD]

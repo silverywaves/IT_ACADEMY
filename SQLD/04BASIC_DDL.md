@@ -33,6 +33,7 @@
   );
 ```
 
+
 ---
 
 ### Data Types
@@ -54,5 +55,9 @@
 
 ---
 
-
-
+#### 제약 조건 지정
+<div>
+create table player1(
+  player_id char(7) <span style="color:red">primary key</span>
+);
+</div>

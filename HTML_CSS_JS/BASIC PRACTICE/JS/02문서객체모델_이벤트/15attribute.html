@@ -1,0 +1,27 @@
+<!--    classList 속성과 setAttribute() 메서드
+    classList 속성으로 class 속성값을 추가/삭제하면 기존 요소가 가지고 있던 값을 보존하면서 추가/삭제
+    setAttribute() 메서드는 아예 속성값을 새로 설정 -> 기존 class 속성값 보존X
+-->
+<style>
+    .red-color{
+        color: red;
+    }
+    .fz20{
+        font-size: 20px;
+    }
+</style>
+
+
+<!-- <a href="#" class="fz20">link</a>
+<script>
+    const aEl = document.querySelector("a");
+    // a 태그의 기존 class 속성값 보존하면서 red-color 값 추가  <a href="#" class="fz20 red-color">link</a>
+    aEl.classList.add("red-color");
+</script> -->
+
+<a href="#" class="fz20">link</a>
+<script>
+    const aEl = document.querySelector("a");
+    // a 태그의 기존 class 속성값 보존X red-color 값 설정   <a href="#" class="red-color">link</a>
+    aEl.setAttribute("class", "red-color");
+</script>

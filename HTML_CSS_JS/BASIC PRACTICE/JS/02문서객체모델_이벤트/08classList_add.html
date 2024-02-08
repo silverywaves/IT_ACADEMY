@@ -1,0 +1,23 @@
+<!--
+    JS 로 class 속성 조작하여 스타일 적용하기
+        => classList 속성의 add(), remove(), toggle() 메서드 사용
+        <노드>.classList.add("class 속성값");   // 추가
+        <노드>.classList.remove("class 속성값");   // 삭제
+        <노드>.classList.toggle("class 속성값");   // 추가와 삭제 반복
+-->
+
+<style>
+.red-color{
+    color: red;
+}
+.fz20{
+    font-size: 20px;
+}
+</style>
+
+<p id="text">text</p>   <!-- p 태그에 id 속성만 있음 -->
+<script>
+    const pEl = document.querySelector("#text");    // 노드 선택하기
+    pEl.classList.add("red-color");     /* class 속성값 추가 */
+    pEl.classList.add("fz20");
+</script>

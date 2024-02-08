@@ -1,0 +1,14 @@
+<style>
+    .red-color{
+        color: red;
+    }
+    .fz20{
+        font-size: 20px;
+    }
+    </style>
+
+<p id="text" class="red-color fz20">text</p>
+<script>
+    const pEl = document.querySelector("#text"); 
+    pEl.classList.remove("red-color", "fz20");     // 삭제
+</script>

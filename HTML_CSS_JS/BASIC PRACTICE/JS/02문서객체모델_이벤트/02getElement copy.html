@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "title">title</h1>
+    <p class="text">text-1</p>
+    <p class="text">text-2</p>
+    <script>
+        const el = document.getElementById("title");            // id 속성값이 title 인 요소 노드 1개 선택
+        console.log(el);
+        const classEl = document.getElementsByClassName("text");    // class 속성값이 text인 요소 노드 모두 선택
+        console.log(classEl);
+        console.log(classEl[0]);   
+        console.log(classEl[1]);  
+        const tagEls = document.getElementsByName("p"); // p 태그에 해당하는 요소 노드 모두 선택
+        console.log(tagEls);
+        console.log(tagEls[0]);
+        console.log(tagEls[1]);
+    </script>
+</body>
+</html>
+
+<!--
+    < 속성으로 노드 선택 >
+    1. 모든 노드 탐색
+        parentNode  : 부모 노드 반환
+        childNodes  : 모든 자식 노드 반환
+        firstChild  : 첫번째 자식 노드 반환
+        lastChile   : 마지막 자식 노드 반환
+        previousSibling : 이전 형제 노드 반환
+        nextSibling : 다음 형제 노드 반환
+    2. 요소 노드 탐색
+        parentElement   : 부모 요소 노드 반환
+        children    : 자식 요소 노드 반환
+        firstElementChild   : 첫번째 자식 요소 노드 반환
+        lastElementChild    : 마지막 자식 요소 노드 반환
+        previousElementSibling  : 이전 요소 노드 반환
+        nextElementSibling  : 다음 요소 노드 반환
+    
+    < 메서드로 노드 선택 >
+    getElementById(id 속성값)   : id 속성값과 일치하는 요소 노드를 1개만 선택
+    getElementByClassName(class 속성값) : class 속성값과 일치하는 요소 노드를 모두 선택
+    getElementByTagName(태그명) : 태그명과 일치하는 요소 노드 모두 선택
+-->

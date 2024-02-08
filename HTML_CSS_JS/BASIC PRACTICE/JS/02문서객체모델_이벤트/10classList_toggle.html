@@ -1,0 +1,17 @@
+<style>
+    .red-color{
+        color: red;
+    }
+    .fz20{
+        font-size: 20px;
+    }
+    </style>
+
+<p id="text">text</p>
+<script>
+    const pEl = document.querySelector("#text"); 
+    // 1초마다 toggle() 메서드 반복 실행
+    setInterval(function(){
+        pEl.classList.toggle("red-color");  // 1초마다 빨간색과 검은색으로 바뀜
+    }, 1000);
+</script>

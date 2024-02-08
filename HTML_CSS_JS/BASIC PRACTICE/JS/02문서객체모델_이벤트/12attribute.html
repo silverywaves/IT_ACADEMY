@@ -1,0 +1,22 @@
+<!-- 메서드로 속성 조작하기
+    <노드>.getAttribute("속성명");  :   속성값을 가져옴     -- 모든 속성의 상위 메서드(classList, dataset 가능)
+    <노드>.setAttribute("속성명", "속성값") : 속성값 설정   -- 모든 속성의 상위 메서드(classList, dataset 가능)
+    <노드>.removeAttribute("속성명");   : 속성 삭제
+-->
+<!-- 
+<a href="https://weverse.io/?hl=ko">위버스</a>
+<script>
+    const aEl = document.querySelector("a");    // a 태그에 해당하는 요소노드 선택
+    const href = aEl.getAttribute("href");      // href 속성값 가져옴
+    console.log(href);
+</script> -->
+
+
+<a href="https://weverse.io/?hl=ko">위버스</a>
+<script>
+    const aEl = document.querySelector("a");  
+    const href = aEl.getAttribute("href");    
+    aEl.setAttribute("href", "https://weverse.io/?hl=ko");  // href 속성값 새로 설정
+    aEl.innerText = "팬페이지";     // a 태그의 텍스트를 바꾸기 위해 innerText 사용 -05content_set 참고
+    aEl.setAttribute("target", "_blank");   // 기존 창에서 열림 -> 새 창에서 열림 변경
+</script>

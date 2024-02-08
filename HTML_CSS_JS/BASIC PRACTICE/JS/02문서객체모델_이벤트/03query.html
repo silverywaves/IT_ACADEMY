@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box-1">
+        <p class="text">text-1</p>
+        <p class="text">text-2</p>
+    </div>
+    <div class="box-2">
+        <p class="text">text-3</p>
+        <p class="text">text-4</p>
+    </div>
+
+    <script>
+        document.querySelector(".box-1");
+        document.getElementsByClassName("box-1")[0].children;   // HTMLCollection(2) [p.text, p.text]
+        document.querySelectorAll(".box-1 .text");              // NodeList(2) [p.text, p.text]
+    </script>
+</body>
+</html>

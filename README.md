@@ -23,5 +23,5 @@
 
 ### 📄 CERTIFICATION
 * [ADsP](https://github.com/silverywaves/IT_ACADEMY/tree/eb37b9659a6777dded9b9f20138e44dcf36fdc64/ADsP)
-* [cosPro2](https://github.com/silverywaves/IT_ACADEMY/tree/eb37b9659a6777dded9b9f20138e44dcf36fdc64/JAVA/cosPro2)
+* [cosPro2](https://github.com/silverywaves/IT_ACADEMY/tree/e3b1f3a82f8ea578c9599f8e849741891af80f34/JAVA/cosPro2)
 * [SQLD](https://github.com/silverywaves/IT_ACADEMY/tree/59c623c23bb3a43e265316cfd53c979a73ec48a5/SQLD)

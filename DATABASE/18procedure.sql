@@ -4,6 +4,13 @@
 -- 데이터베이스에서 실행가능한 저장프로그램
 	-- 주로 DML을 사용해 주기적으로 진행해야되는 작업 저장
 -- SQL문들의 논리적인 묶음
+
+-- Trigger 와 차이점
+	-- create procedudre 문법 사용	<-> create trigger 문법 사용
+	-- call 호출 <-> 생성 후 자동 실행
+	-- commit, rollback (O) <-> commit, rollback (X)
+	-- 매개변수 O <-> 매개변수 X
+
 -- Function(함수)와 유사하나 특정부분에서의 차이점 존재
 -- Function(함수) : 수를 받아서 처리하는 논리적 공간		// 수 : Data / 선저장 후처리
 

@@ -2,9 +2,10 @@
 -- Stored Procedure
 -- ----------------------------
 -- 데이터베이스에서 실행가능한 저장프로그램
+	-- 주로 DML을 사용해 주기적으로 진행해야되는 작업 저장
 -- SQL문들의 논리적인 묶음
 -- Function(함수)와 유사하나 특정부분에서의 차이점 존재
--- Function(함수) : 수를 받앗어 처리하는 논리적 공간		// 수 : Data / 선저장 후처리
+-- Function(함수) : 수를 받아서 처리하는 논리적 공간		// 수 : Data / 선저장 후처리
 
 -- ----------------------------
 -- function 과의 공통점
@@ -42,7 +43,7 @@
 -- ----------------------------
 delimiter $$
 create procedure pro1()
-begin 
+begin 				-- 작업영역 생성
 	-- 변수 선언
     declare var1 int;
     -- 초기값 삽입
@@ -59,7 +60,7 @@ delimiter ;
 
 show procedure status where db='shopdb';
 
-call pro1();
+call pro1();		-- call 프로시저명(파라미터); : 실행	<->	drop procedure 프로시저명 : 삭제 
 
 -- ---------------------------
 -- 예제 02. 파라미터

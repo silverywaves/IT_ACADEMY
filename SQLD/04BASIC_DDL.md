@@ -55,7 +55,7 @@
 ---
 
 #### FK 제약 조건 옵션
-- ex. constraint fk1 Foreign key(team_id) references team(team_id)
+- ex. constraint fk1 Foreign key(team_id) references team(team_id)  <br>
       **on delete cascade on update restrict;**
 
 - referential triggered action

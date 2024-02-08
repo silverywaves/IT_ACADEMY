@@ -52,12 +52,22 @@
 ![제약조건](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/043cb497-173f-4b6a-b09e-b4ee1b8f5393)
 
 
+---
+
+#### FK 제약 조건 옵션
+- ex. constraint fk1 Foreign key(team_id) references team(team_id)
+      <span style="color:red">on delete cascade on update restrict;</span>
 
 ---
 
 #### 제약 조건 지정
-<div>
-create table player1(
-  player_id char(7) <span style="color:red">primary key</span>
-);
-</div>
+
+![제약조건 지정](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/05724acf-6467-407b-b098-d8526d689b70)
+
+![제약조건 지정2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/5e2b8912-5239-4bd7-bb80-bac6a33f0bcb)
+
+![제약조건 지정3](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/e1085a2b-a8dc-4e77-ae90-a8798abbc4d6)
+
+![제약조건 확인](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/73c89d4a-6f07-413b-b7aa-e7b05fe1602c)
+
+

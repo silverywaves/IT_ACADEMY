@@ -56,7 +56,19 @@
 
 #### FK 제약 조건 옵션
 - ex. constraint fk1 Foreign key(team_id) references team(team_id)
-      <span style="color:red">on delete cascade on update restrict;</span>
+      **on delete cascade on update restrict;**
+
+- referential triggered action
+  - on update, on delete
+ 
+- referential action
+  - restrict(default) : 기본값의 삭제 또는 갱신 불허
+  - no action : restrict 와 동일하게 동작
+  - cascade
+    - 기본키가 삭제되면 해당 값을 외래키로 갖는 레코드도 삭제
+    - 기본키가 갱신되면 이를 참조하는 외래키를 새로운 값으로 업데이트
+  - set null
+    - 기본키가 삭제 또는 갱신되면 이를 참조하는 외래키를 null 로 업데이트
 
 ---
 

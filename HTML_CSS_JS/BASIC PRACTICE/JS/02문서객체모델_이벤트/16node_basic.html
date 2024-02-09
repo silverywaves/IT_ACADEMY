@@ -19,6 +19,15 @@
     <script>
         // 요소 노드 생성하기   <= DOM 트리에 새로운 노드를 연결할 때 우선으로 진행
         const aEl = document.createElement("a");
+        document.body.appendChild(aEl); // a 요소 노드를 body 요소 노드의 자식노드로 연결
+        //                              -> <a></a> 추가됨(연결만 해서 웹브라우저엔 아무것도 X) => 텍스트노드 함께 연결
+        // 텍스트 노드 추가
+        const txtEl = document.createTextNode("팬페이지");
+        document.querySelector("a").appendChild(txtEl); // <a>팬페이지</a>
+        // 속성 노드 추가 (href, target 등)
+        const hrefAttr = document.createAttribute("href");
+        hrefAttr.value = "https://weverse.io/?hl=ko";
+        document.querySelector("a").setAttributeNode(hrefAttr);
     </script>
 </body>
 </html>

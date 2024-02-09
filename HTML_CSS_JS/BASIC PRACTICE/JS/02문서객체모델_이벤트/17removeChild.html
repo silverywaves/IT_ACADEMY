@@ -1,0 +1,29 @@
+<!-- 노드 삭제 메서드
+    <부모 노드>.removeChild(자식노드)
+        => 부모 노드를 반환하는 parenNode 속성으로 부모 노드에 접근해서 삭제
+-->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>text 1</p>
+    <a href="https://weverse.io/?hl=ko">위버스</a>
+    <a href="https://weverse.io/seventeen/artistpedia">팬페이지</a>
+
+    <script>
+        // const pEl = document.querySelector("p");
+        // pEl.parentNode.removeChild(pEl);
+
+        const childNodes = document.body.childNodes;
+        childNodes.forEach((node)=>{
+            if(node.nodeName === "a")
+            node.parentNode.removeChild(node);
+        })
+    </script>
+</body>
+</html>

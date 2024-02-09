@@ -1,0 +1,31 @@
+<!--  input, select, button 태그 등 폼요소 선택
+    : element 속성 or name 속성
+-->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="frm1">
+        <label for="uname">이름</label>
+        <input type="text" id="uname" name="uname">
+        <label for="age">나이</label>
+        <input type="text" id="age" name="age">
+        <label for="gender">성별</label>
+        <select id="gender" name="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+        <button type="submit">전송</button>
+    </form>
+
+<!--    똑같이 name 속성값이 uname 인 input 요소 노드 선택
+    document.frm1.elements[0];  //  <input type=​"text" id=​"uname" name=​"uname">​
+    document.frm1.elements['uname'];    //<input type=​"text" id=​"uname" name=​"uname">​
+-->    
+</body>
+</html>

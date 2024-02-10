@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overflow:hidden</title>
+  <style>
+.parent{
+  position:relative;
+  border: 2px solid blueviolet;
+  width: 600px;
+  height: 300px;
+}
+.child{
+  position:absolute;
+  background-color: gold;
+  width: 200px;
+  height: 100px;
+  text-align:center;
+  line-height:100px;
+}
+.in1{top:0; left:0;}
+.in2{top:0; right:0;}
+.in3{bottom:0; right:0;}
+.in4{bottom:0; left:0;}
+</style>
+</head>
+
+<body>
+  <div class="parent">
+<div class="child in1">Top & Left</div>
+<div class="child in2">Top & Right</div>
+<div class="child in3">Bottom & Right</div>
+<div class="child in4">Bottom & Left</div>
+  </div>
+</body>
+
+</html>

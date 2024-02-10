@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>float</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: gold;
+      font-size: 20px;
+      color: #000;
+      text-align: center;
+      line-height: 200px;
+      margin: 5px;
+    }
+.parent1, .parent2, .parent3{
+  border: 2px solid red;
+  width: 750px;
+  height: 210px;
+}
+.parent1 {float:left;}
+.parent2 {float:right;}
+.parent3 {float:left;}
+.box1, .box2, .box3{float:left;}
+.box4, .box5, .box6{float:right;}
+.box7, .box8, .box9{float:inherit;}
+.box1, .box4, .box7 {background-color: greenyellow;}
+.box2, .box5, .box8 {background-color: beige;}
+.box3, .box6, .box9 {background-color: dodgerblue;}
+</style>
+</head>
+
+<body>
+  <div class="parent1">
+    <div class="box1">Box1</div>
+    <div class="box2">Box2</div>
+    <div class="box3">Box3</div>
+  </div>
+  <hr>
+  <div class="parent2">
+    <div class="box4">Box4</div>
+    <div class="box5">Box5</div>
+    <div class="box6">Box6</div>
+  </div>
+  <hr>
+  <div class="parent3">
+    <div class="box7">Box7</div>
+    <div class="box8">Box8</div>
+    <div class="box9">Box9</div>
+  </div>
+</body>
+
+</html>

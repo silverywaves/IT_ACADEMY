@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박스 그림자(box-shadow)</title>
+  <style>
+    div {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #fff;
+        background-color: gold;
+font-size: 20px;
+color:green;
+text-align: center;
+line-height: 200px;
+float: left;
+margin:20px;
+    }
+    .box1 {box-shadow: 5px 5px 10px rgba(176, 58, 46, 0.9);}
+    .box2 {box-shadow: 0 0 20px rgba(91, 44, 111, 0.8);}
+    .box3 {box-shadow: 5px 5px 0 rgba(26, 82, 118, 0.7);}
+    .box4 {box-shadow: inset 0 0 10px rgba(14, 98, 81, 0.6);}
+    .box5 {box-shadow: inset 0 0 20px rgba(241, 196, 15, 0.9);}
+    .box6 {box-shadow: inset 0 0 100px rgba(202, 111, 30, 0.8);}
+    .box7 {box-shadow: 5px 5px 0 red, 10px 10px 0 pink, 15px 15px 0 blue;}
+    .box8 {box-shadow: -5px -5px 1px dodgerblue,-10px -10px 1px pink, -15px -15px 1px blue; ;}
+    .box9 {box-shadow: -5px 5px 2px dodgerblue,-10px 10px 2px pink, -15px 15px 2px blue; ;}
+</style>
+</head>
+
+<body>
+  <div class="box1">Box1</div>
+  <div class="box2">Box2</div>
+  <div class="box3">Box3</div>
+  <div class="box4">Box4</div>
+  <div class="box5">Box5</div>
+  <div class="box6">Box6</div>
+  <div class="box7">Box7</div>
+  <div class="box8">Box8</div>
+  <div class="box9">Box9</div>
+</body>
+
+</html>

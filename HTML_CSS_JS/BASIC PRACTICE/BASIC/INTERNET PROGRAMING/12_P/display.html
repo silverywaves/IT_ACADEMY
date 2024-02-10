@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>display:none, visibility:hidden</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3schools29.css">
+  <style>
+    div {
+      display: inline-block;
+      float: left;
+    }
+
+    img {
+      width: 200px;
+    }
+
+    button {
+      width: 100px;
+      display: inline-block;
+    }
+
+    p {
+      text-align: center;
+    }
+  </style>
+  <script>
+    function removeElement() {
+      document.getElementById("remove").style.display = "none";
+    }
+
+    function changeVisibility() {
+      document.getElementById("hide").style.visibility = "hidden";
+    }
+
+    function resetElement() {
+      document.getElementById("remove").style.display = "block";
+      document.getElementById("hide").style.visibility = "visible";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="remove">
+    <img src="camping-1.png">
+    <p><button class="ws-btn" onclick="removeElement()">Remove</button></p>
+  </div>
+  <div id="hide">
+    <img src="camping-2.png">
+    <p><button class="ws-btn" onclick="changeVisibility()">Hide</button></p>
+  </div>
+  <div>
+    <img src="camping-3.png">
+    <p><button class="ws-btn" onclick="resetElement()">Reset All</button></p>
+  </div>
+</body>
+
+</html>

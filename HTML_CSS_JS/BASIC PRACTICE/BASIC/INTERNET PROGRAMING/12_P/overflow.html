@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overflow:hidden</title>
+  <style>
+.box{width:100px; height:100px;background-color:dodgerblue; float:left;}
+p{line-height:20px;overflow:hidden;}
+.parent1, .parent2{border: 3px solid black; width:500px;overflow:hidden;}
+/* .parent{border: 3px solid black; width:500px;height:100px;} */
+.child1{width:100px;height: 100px;background-color: crimson;float:left;}
+.child2{width:100px;height: 100px;background-color: gold;float:right;}
+.child3{width:100px;height: 100px;background-color: green;margin:auto;}
+</style>
+</head>
+
+<body>
+  <div class="box">Box
+  </div>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto laudantium placeat, quia minima possimus in aut ut explicabo quo, tempora dignissimos veniam quis cum accusantium voluptatum doloremque illum alias. Consequuntur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse quaerat culpa qui ab iusto praesentium fuga, nemo, nesciunt ea neque ipsam nam molestias, laboriosam eius debitis consequuntur atque recusandae sapiente.</p>
+  <hr>
+  <div class="parent1">
+    <div class="child1">Child1</div>
+    <div class="child2">Child2</div>
+  </div>
+  <hr>
+  <div class="parent2">
+    <div class="child3">Child3</div>
+  </div>
+</body>
+
+</html>

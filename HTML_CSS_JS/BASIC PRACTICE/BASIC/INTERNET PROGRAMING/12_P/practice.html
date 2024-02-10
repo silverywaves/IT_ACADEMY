@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overflow:hidden</title>
+  <style>
+body{margin-top: 200px;}
+.parent{
+  position:relative;
+  border: 2px solid blueviolet;
+  width: 400px;
+  height: 250px;
+  margin:auto;
+}
+.child{
+  position:absolute;
+  background-color: gold;
+  width: 150px;
+  height: 100px;
+  text-align:center;
+  line-height:100px;
+}
+.out1{top:-100px; left:-150px;}
+.out2{top:-100px; right:-150px;}
+.out3{bottom:-100px; right:-150px;}
+.out4{bottom: -100px; left: -150px;}
+</style>
+</head>
+
+<body>
+  <div class="parent">
+<div class="child out1">Outside1</div>
+<div class="child out2">Outside2</div>
+<div class="child out3">Outside3</div>
+<div class="child out4">Outside4</div>
+  </div>
+</body>
+
+</html>

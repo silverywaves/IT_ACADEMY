@@ -55,6 +55,9 @@
 ![문자형함수](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/9c501bd2-ef00-4df5-9b51-ba40569e2c44)
 
 
+---
+
+
 ![lower](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/278103f9-7721-4c94-88e9-c9986e73fe46)
 
 - lower : 대문자 -> 소문자

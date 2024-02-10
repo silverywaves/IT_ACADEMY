@@ -57,42 +57,43 @@
 
 ---
 
+- lower : 대문자 -> 소문자
 
 ![lower](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/278103f9-7721-4c94-88e9-c9986e73fe46)
 
-- lower : 대문자 -> 소문자
 
+- upper : 소문자 -> 대문자
 
 ![UPPER](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/956ebe93-06c4-42ae-a1ed-dd6510ab51d5)
 
-- upper : 소문자 -> 대문자
+
+- ASCII : 문자 -> ASCII 코드
 
 ![ASCII](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c52101c2-f671-4a6b-aa9f-de640bd4ce81)
 
 
-- ASCII : 문자 -> ASCII 코드
-  
+- chr : ASCII 코드 -> 문자  
 
 ![CHR](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a8b9c506-afc2-4c12-8b96-ba50a17c8ad5)
-
-- chr : ASCII 코드 -> 문자
-
-
-![concat](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/bf28a42c-421d-4203-8b88-2d5ea196430a)
 
 
 - concat  : 문자열 연결
 
-
-![substr](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/0211097f-d33b-46fb-b5d2-06d342b787a6)
+![concat](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/bf28a42c-421d-4203-8b88-2d5ea196430a)
 
 
 - substr : 문자열 m 번째부터 n 번째까지 출력(공백도 카운팅)
 
 
-![length](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/4ec536a0-8844-4e4a-afa9-7922c8bc61d6)
+![substr](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/0211097f-d33b-46fb-b5d2-06d342b787a6)
+
 
 - length : 문자열 길이(공백도 카운팅)
+
+
+![length](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/4ec536a0-8844-4e4a-afa9-7922c8bc61d6)
+
+
 
 
 ---

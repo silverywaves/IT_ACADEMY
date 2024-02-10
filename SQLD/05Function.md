@@ -55,6 +55,9 @@
 ![문자형함수](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/9c501bd2-ef00-4df5-9b51-ba40569e2c44)
 
 
+![문자형함수2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d6555a44-f773-44be-8239-3586c6d1730f)
+
+
 ---
 
 - lower : 대문자 -> 소문자
@@ -94,6 +97,21 @@
 ![length](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/4ec536a0-8844-4e4a-afa9-7922c8bc61d6)
 
 
+- ltrim : 문자열의 왼쪽부터 시작해서 다른 문자를 만나기 전까지 지정 문자를 제거
+  - 지정 문자가 생략되면 공백값이 디폴트
+ 
+![LTRIM](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/34df065c-9877-495e-b7b0-92d16f38e152)
+
+- rtrim : 문자열의 오른쪽부터 시작해서 다른 문자를 만나기 전까지 지정 문자를 제거
+  - 지정 문자가 생략되면 공백값이 디폴트
+
+![RTRIM](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/6f09501b-7938-4b00-9673-6eb4ef6306b7)
+
+
+- trim : 문자열의 양쪽에서 시작해서 다른 문자를 만나기 전까지 지정 문자를 제거
+  - 지정 문자와 FROM이 생략되면 공백 값이 디폴트
+ 
+![TRIM](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/1783161b-1f89-4836-a060-410a22aa33e3)
 
 
 ---

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>First-Line, First-Letter, ::marker, ::selection</title>
+<style>
+p:first-letter {
+  color: #ff0000;
+  font-size: xx-large;
+}
+p:first-line {
+  color: #0000ff;
+  font-variant: small-caps;
+}
+::marker { 
+  color: red;
+  font-size: 23px;
+}
+::selection {
+  color: green;
+  background: yellow;
+}
+</style>
+</head>
+<body>
+  <p>You can combine the ::first-letter and ::first-line pseudo-elements to add a special effect to the first letter and the first line of a text!</p>
+  <ul>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ul>
+  
+  <ol>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+  </ol>
+</body>
+</html>

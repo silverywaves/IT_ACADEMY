@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .first>a[target] {
+      background-color: cyan;
+    }
+
+    .second>a[target=_blank] {
+      background-color: magenta;
+      color:white
+    }
+    .third>a[title~="gold"] {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>CSS [attribute] Selector 1</h3>
+  <div class="first">
+    <p></p>[attribute]</p>
+    <a href="https://www.w3schools.com">w3schools.com</a>
+    <a href="http://www.disney.com" target="_blank">disney.com</a>
+    <a href="http://www.wikipedia.org" target="_top">wikipedia.org</a>
+  </div>
+  <div class="second">
+    <p>[attribute="value"]</p>
+    <a href="https://www.w3schools.com">w3schools.com</a>
+    <a href="http://www.disney.com" target="_blank">disney.com</a>
+    <a href="http://www.wikipedia.org" target="_top">wikipedia.org</a>
+  </div>
+  <div class="third">
+    <p>[attribute~="value"</p>
+    <a href="https://www.w3schools.com" title="gold">w3schools.com</a>
+    <a href="http://www.disney.com" title="silver">disney.com</a>
+    <a href="http://www.wikipedia.org" title="silver gold">wikipedia.org</a>
+  </div>
+
+</body>
+
+</html>

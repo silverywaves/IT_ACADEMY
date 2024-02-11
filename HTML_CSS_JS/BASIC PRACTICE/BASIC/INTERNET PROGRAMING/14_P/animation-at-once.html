@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body{text-align: center;}
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  color:white;
+  line-height: 90px;
+  text-align: center;
+  position: relative;
+  animation: myfirst 5s linear 2s infinite alternate;
+  display:inline-block;
+}
+
+@keyframes myfirst {
+  0%   {background-color:red; left:0px; top:0px;}
+  20%  {background-color:cyan; left:100px; top:0px;}
+  40%  {background-color:magenta; left:100px; top:100px;}
+  60%  {background-color:yellow; left:-100px; top:100px;}
+  80% {background-color:black; left:-100px; top:0px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+
+<h4>애니메이션 속성 한꺼번에 표시</h4>
+
+<div>Wow!</div>
+
+</body>
+</html>

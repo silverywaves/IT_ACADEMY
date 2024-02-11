@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+body{line-height:100%;}
+.fourth>[class|="top"] {background-color: cyan;}
+.fifth>[class^="top"] {background-color: magenta;}
+.sixth>[class$="test"] {background: yellow;}
+.seventh>[class*="_t"] {background: pink;}
+  </style>
+</head>
+
+<body>
+  <h3>CSS [attribute] Selector 2</h3><hr>
+  <div class="fourth">
+    <h4>CSS [attribute|="value"] Selector</h4>
+    <h4 class="top-header">Welcome</h4>
+    <p class="topcontent">Are you learning CSS?</p>
+  </div><hr>
+  <div class="fifth">
+    <h4>CSS [attribute^="value"] Selector</h4>
+    <h4 class="top-header">Welcome</h4>
+    <p class="topcontent">Are you learning CSS?</p>
+  </div><hr>
+  <div class="sixth">
+    <h4>CSS [attribute$="value"] Selector</h4>
+    <div class="first_test">The first div element.</div>
+    <div class="my-test">The second div element.</div>
+    <p class="mytest">This is some text in a paragraph.</p>
+  </div><hr>
+  <div class="seventh">
+    <h4>CSS [attribute*="value"] Selector</h4>
+    <div class="first_test">The first div element.</div>
+    <div class="my-test">The second div element.</div>
+    <p class="my_test">This is some text in a paragraph.</p>
+  </div>
+
+</body>
+
+</html>

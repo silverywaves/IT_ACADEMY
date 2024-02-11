@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body{text-align: center;}
+.box div {
+	float:left;
+	width:90px;
+	height:50px;
+	margin:5px 10px;
+	padding:5px;
+	color:white;
+	background-color:green;
+	border-radius:5px;
+	text-align:center;
+  line-height: 50px;
+	font-weight:bold;	
+}
+
+#div1 {transition: 0.5s ease;}
+#div2 {transition: 1s linear;}
+#div3 {transition: 1.5s ease-in;}
+#div4 {transition: 1.25s ease-out;}
+#div5 {transition: 0.75s ease-in-out;}
+
+div:hover{
+  height: 200px;
+}
+</style>
+</head>
+<body>
+
+<h4>transition-timing-function 속성</h4>
+<p>아래 도형에 마우스를 올려보시오.</p><hr>
+<div class="box">
+<div id="div1">ease</div>
+<div id="div2">linear</div>
+<div id="div3">ease-in</div>
+<div id="div4">ease-out</div>
+<div id="div5">ease-in-out</div>
+</div>
+</body>
+</html>

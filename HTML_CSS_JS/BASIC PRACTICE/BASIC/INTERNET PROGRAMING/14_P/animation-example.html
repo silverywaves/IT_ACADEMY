@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{text-align: center;} 
+div {
+  display:inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  color:white;
+  line-height: 90px;
+  animation-duration: 4s;
+  animation-iteration-count:infinite;
+}
+.ex1 {animation-name:example1;}
+@keyframes example1 {
+  from {background-color: red;}
+  to {background-color: gold;}
+}
+.ex2 {animation-name:example2;}
+@keyframes example2 {
+  0%   {background-color: red;}
+  25%  {background-color: cyan;}
+  50%  {background-color: magenta;}
+  100% {background-color: yellow;}
+}
+.ex3 {animation-name:example3;position:relative;}
+@keyframes example3 {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:100px; top:0px;}
+  50%  {background-color:blue; left:100px; top:100px;}
+  75%  {background-color:green; left:0px; top:100px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+
+<h4>CSS Animation</h4>
+<p><b>애니메이션 종료 후, 원 상태로 복귀!</p><hr>
+<div class="ex1">example1</div><br><br>
+<div class="ex2">example2</div><br><br>
+<div class="ex3">example3</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>first-child, last-child, nth-child()</title>
+<style>
+body{text-align: center;}
+hr{margin-top: 15px;}
+p{margin: 1px;padding: 5px;}
+div{
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+  color:white;
+  font-size: 18px;
+}
+.first-last{background-color: blue;}
+.first-last p:first-child{color:red;}
+.first-last p:last-child{color:black;}
+.nth-child{background-color: green;}
+.nth-child p:nth-child(1){color:blue;}
+.nth-child p:nth-child(3){color:red;}
+.nth-child p:nth-child(4){color:yellow;}
+.nth-child p:nth-child(even){background-color: rgb(44, 5, 5);}
+.nth-child p:nth-child(odd){background-color:white;}
+</style>
+</head>
+<body>
+<div class="first-last">
+  <p>First Child</p>
+  <p>Second Child</p>
+  <p>Third Child</p>
+  <p>Last Child</p>
+</div><hr>
+<div class="nth-child">
+  <p>First Child</p>
+  <p>Second Child</p>
+  <p>Third Child</p>
+  <p>Last Child</p>
+</div>
+
+</body>
+</html>

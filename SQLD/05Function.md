@@ -58,6 +58,9 @@
 ![문자형함수2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d6555a44-f773-44be-8239-3586c6d1730f)
 
 
+![substr연습문제](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c75c4335-0315-44bd-9ead-7f4f2fad2747)
+
+
 ---
 
 - lower : 대문자 -> 소문자
@@ -116,9 +119,128 @@
 
 ---
 
+#### 숫자형 함수
+
+![숫자형함수](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/8285f73e-6087-457f-83cc-729ea73205b5)
+
+
+---
+
+- ABS : 숫자의 절대값 리턴
+
+![ABS](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3c235ee7-d1b9-4a17-ab6b-8d3436aa4dd9)
+
+
+- SIGN : 숫자가 양수(1)인지, 음수(-1)인지, 0(0)인지 구분
+
+![SIGN](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/9074d4b5-14c0-4f59-8bf1-36204d2e11a2)
+
+
+- MOD : 숫자1을 숫자2로 나누었을 때 나머지 값
+  - % 연산자로도 대체 가능
+
+![MOD](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/0952f242-b46e-4eb6-b386-d5dd251c6f30)
+
+
+- CEIL : 숫자보다 크거나 같은 최소 정수 리턴
+
+![CEIL](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/85b8994f-52ce-445e-a69f-a6642e04d0d0)
+
+
+- FLOOR : 숫자보다 작거나 같은 최대 정수 리턴
+
+![FLOOR](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3536f38c-2d8a-444e-a7f3-4a6eeaad2453)
+
+
+- ROUND : 숫자를 소수점 m 자리에서 반올림하여 리턴 (m 생략시 디폴트값 0)
+
+![ROUND](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/2d55662e-c949-4e24-9c8c-4ad7224a2b01)
+
+
+ - TRUNC : 숫자를 소수점 m 자리에서 잘라서 버림 (m 생략시 디폴트값 0)
+   - SQL server 에서는 TRUNC 함수 미제공
+
+![TRUNC](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/9cc3bec2-bca0-4556-9f1e-7d410220a6ac)
+
+- SIN, COS, TAN... : 숫자의 삼각함수 값 리턴
+
+- EXP, POWER, SQRT, LOG, LN : 숫자의 지수, 거듭제곱, 제곱근, 자연로그 값 리턴
+
+
+---
+
+#### 반환형 함수
+- 데이터 타입 변환
+  - 명시적(Explicit) 데이터 타입 변환
+    - 함수를 사용하여 명시적으로 데이터 타입을 변환
+ 
+  - 암시적(Implicit) 데이터 타입 변환
+    - 시스템이 자동으로 데이터 타입 변환
+      - ex. MOD(PLAYER_ID, 4) -> 문자열을 숫자로 변환
+    - 성능 저하 및 에러 발생의 가능성 존재
+
+
+![명시적암시적!](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/df8f727d-c007-47ff-ad16-939b69fb63c9)
+
+
+![반환형 함수](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/332c6e82-24aa-4165-8ced-3cbc2aed9110)
+
+
+---
+
+- TO_CHAR : 숫자나 날짜를 **문자열로** 변환
+
+![TO_CHAR](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/ffb088e6-b36f-4ca5-a612-ab2fe5737106)
+
+
+- TO_NUMBER : 문자열을 **숫자로** 변환
+
+![TO_NUMBER](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a5727cdb-be93-466b-b054-29f6fd48bafb)
 
 
 
+- TO_DATE : 문자열을 **날짜로** 변환
+
+![TO_DATE-ERROR](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/91d922bf-1a5d-4567-ad67-440cf2d63143)
+
+![TO_DATE](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d3377ac9-78be-42ef-b5cb-f0d8f3de4795)
 
 
+---
+
+#### 날짜형 함수
+
+![날짜형함수](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a4d5d4e2-fb96-4267-8af4-ec1455ca5ce2)
+
+
+![날짜형함수예제](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/311e0b25-24f5-40a4-8f3e-7e1c0a67960f)
+
+
+---
+
+- SYSDATE : 현재 날짜와 시각
+
+![SYSDATE1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/69bc5240-c2d4-4c87-8c38-d560f5000373)
+
+![SYSDATE2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/17ffb62a-f725-490d-bba8-066c5e8d4c0f)
+
+
+- EXTRACT : 날짜 데이터에서 년/월/일 정보 추출
+
+![EXTRACT1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/19497ad7-0d77-43fd-8d61-aa12268f9771)
+
+
+![EXTRACT2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/4fbc2a41-adbc-4914-80a1-38b69af1ecfb)
+
+
+- TRUNC : 날짜 데이터에서 시/분/초를 잘라냄
+
+![TRUNC1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/179af70c-38ee-4983-a69d-1856abbfa787)
+
+
+---
+
+#### CASE EXPRESSION
+- 표현식이지만 함수의 성격을 갖고 있음
+- IF ~ THEN ~ ELSE 논리 흐름
 

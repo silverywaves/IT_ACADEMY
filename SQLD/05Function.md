@@ -244,3 +244,75 @@
 - 표현식이지만 함수의 성격을 갖고 있음
 - IF ~ THEN ~ ELSE 논리 흐름
 
+![case](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/f8b768c0-006e-4c11-ac2a-743377530bc8)
+
+
+![CASEEXPRESSION](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/94aa9059-b636-4d62-ad7c-14f09064687e)
+
+
+** 동등(=) 이외의 조건은 SIMPLE CASE EXPRESSION 또는 DECODE 함수로 표현 불가
+
+
+- CASE 표현식의 중첩
+
+
+![CASE 중첩](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c2ac2e58-d57d-4598-8a42-b0a852f825da)
+
+
+- DECODE
+  - Oracle 에서만 사용되는 함수
+  - DECODE(표현식, 기준값1, 출력값1, 기준값2, 출력값2, ..., 디폴트값)
+  - 표현식의 값이 기준값1이면 값1 출력, 기준값2이면 값2 출력
+  - 기준값이 없으면 디폴트 값 출력
+    
+![DECODE](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/b02b007e-cd67-4860-abeb-d244b6f875a3)
+
+
+---
+
+#### NULL
+- 비어있는 값
+- 공백(space), 0 과는 다른 의미
+- NULL 을 포함하는 모든 산술 연산의 결과는 NULL
+  - NULL+0, NULL-1, NULL*0, NULL/0 -> NULL
+- NULL 과 공집합도 역시 다른 의미
+
+![NULL1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/2a7b00d3-65c0-487d-9716-92cccc3de4d1)
+
+** 결과가 NULL
+
+![NULL2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/73077160-5300-4b0e-bff9-bf69e90b6530)
+
+
+** 결과가 NULL 이 아니라 공집합
+
+
+---
+
+#### NULL 관련 함수
+
+
+![NULL함수](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/2a64fc10-b397-43c0-b390-b82d33d7faf9)
+
+![NVL](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a41d7989-7a63-40d3-8345-c300ffb57d37)
+
+- NVL
+  - 표현식의 값이 NULL 이면 대체값, NULL이 아니면 표현식의 값 반환
+  - 표현식의 값과 대체값의 데이터 타입이 같아야 함
+
+
+![NULLJF](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/2d1f4cdd-671a-4297-9307-2500a82a771a)
+
+
+- NULLIF
+  - 두 식이 같으면 NULL, 같지 않으면 표현식1 값 반환
+
+![COALESCE](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/2eb65e3b-629d-48b4-8687-0545f6e8a168)
+
+
+- COALESCE
+  - 임의의 개수의 표현식에서 NULL 이 아닌 최초의 표현식 반환
+  - 모든 표현식이 NULL이라면 NULL 반환
+
+
+

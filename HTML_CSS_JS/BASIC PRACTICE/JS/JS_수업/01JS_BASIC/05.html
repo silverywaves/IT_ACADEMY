@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/05.js" defer></script> 
+    <!-- defer : html 모두 로드된 후에 해당 외부스크립트 실행
+                script 요소가 외부스크립트를 참조하는 경우만 사용 가능(src 속성 명시) -->
+</head>
+<body>
+    <!-- JS 는 절차지향 => 항상 순서 신경써야함 -->
+    <!-- <script>
+        const boxEl = document.querySelector('.box');   // div 보다 위에 위치할 경우 => 없는 위치를 찾고있음 error
+        boxEl.addEventListener('click',function(){      // => body 직전에 쓰거나 외부로 빼줌
+            console.log("clicked"); 
+            boxEl.style.backgroundColor='orange'; 
+        });
+    </scrip> -->
+
+    <div class="box" style="width: 50px; height: 50px; background-color: royalblue; cursor: pointer;"></div>
+
+    <!-- <script>
+        // 선택자로 Element(요소 or 오브젝트) 찾기 : querySelector()
+        const boxEl = document.querySelector('.box');   // 선택자로 찾기
+        boxEl.addEventListener('click',function(){      // boxEl.addEventListener('click','로직');
+            console.log("clicked");                     // 클릭할때마다 카운팅됨
+            boxEl.style.backgroundColor='orange';       // '-'(대쉬) => 카멜
+        });
+    </script> -->
+    <!-- <script src="./js/05.js"></script>   // 이 위치에서 연결하거나, 헤드에서 defer 함수 사용 --> 
+</body>
+</html>

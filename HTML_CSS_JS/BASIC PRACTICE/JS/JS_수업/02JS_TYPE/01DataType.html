@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="btn_01">버튼</button>
+    <hr>
+    <script>
+        // 자료형 = Data Type = 생성된 공간 안 값의 형태 제한 = 데이터 저장형태
+        // typeof  : 인수의 자료형 반환
+        // 연산자 : typeof x
+        // 함수   : typeof(x)
+
+        // number : 수(정수/실수)  
+        document.write(10 + "<br>");
+        document.write(typeof 10 + "<br>");             // number
+        document.write(typeof typeof 10 + "<br>");      // string
+        // document.write(typeof (typeof 10))
+        // document.write(typeof (<the return value of typeof 10>))
+        // document.write(typeof "number")
+        // => typeof 연산자는 결과자료형을 클래스가 아닌 문자열로 반환
+        document.write(typeof 10.7 + "<br>")
+
+        // string : 문자열
+        document.write(typeof "HELLOWORLD" + "<br>")
+
+        // object : {key:value}
+        document.write(typeof {name:'홍길동',age:'50'} + "<br>")
+        const btn_01_el = document.querySelector('#btn_01');
+        document.write(typeof btn_01_el + "<br>");  
+        // console.log(btn_01_el);
+        // alert(btn_01_el);
+
+        // boolean : true/false
+        document.write(typeof true + "<br>");
+        document.write(typeof false + "<br>");
+        document.write(typeof (10<20) + "<br>");
+
+
+        // null
+        // 변수설정 예약어 let / const / var
+        let val = null;     // 정의/Defined => null 로 초기화
+        // val.addEvenListener('click',()=>{});    // Uncaught TypeError: Cannot read properties of null (reading 'addEvenListener')
+        document.write(val + "<br>");
+        console.log(typeof null);            // 자료형 : object
+
+        // undefined
+        let val2;           // 선언/Undefined => 값이 지정 X -> 공간 형성 X
+        document.write(val2 + "<br>");
+        // val2.addEvenListener('click',()=>{});   // Uncaught TypeError: Cannot read properties of undefined (reading 'addEvenListener')
+        console.log(typeof undefined);       // 자료형 : undefined
+
+    </script>
+</body>
+</html>

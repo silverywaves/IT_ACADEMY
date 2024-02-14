@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        오브젝트 : 객체(존재하는 사물)
+        ex. 자동차(연관있는 데이터를 한군데 묶어놓은 집합-클래스){
+            속성(추상화를 통해 데이터값 추려냄-변수) : 연비; 모델명; 색상; 
+            기능(동사형-함수) : 가속하다; 감속하다; 시동걸다;}
+    -->
+
+    <button onclick="cheddar.sound()">체다야!</button>
+    <button onclick="cheddar.toString()">정보확인</button>
+    <hr>
+    <button onclick="myCar.accel()">가속</button>
+    <button onclick="myCar.break()">감속</button>
+    <button onclick="myCar.toString()">확인</button>
+
+    <script>
+
+        // 01 
+        const cheddar = {
+            // 속성
+            name : "체다",
+            kind : "스트릿고양이",
+            weight : "6.9kg",
+            // 기능
+            sound:function(){
+                console.log(this.name + "가 애옹하고 웁니다");
+                alert(this.name + "가 애옹하고 웁니다");
+            },
+            toString:function(){   // toString : 속성 정보 한번에 표현하기위한 용도로 사용
+                console.log(cheddar.name + "," + cheddar.kind + "," + cheddar.weight);
+                alert(cheddar.name + "," + cheddar.kind + "," + cheddar.weight);
+            }
+        };
+
+        // cheddar.name="cheddar";
+        // console.log(typeof cheddar);
+        // console.log(cheddar.name + "," + cheddar.kind + "," + cheddar.weight);
+        // cheddar.sound();
+
+        // 02
+        const myCar = {
+            // 속성
+            owner : "조재",
+            model : "벨로스터",
+            fuelkind : "가솔린",
+            speed : 0,
+
+            // 기능
+            accel : function(){
+                this.speed += 10;
+                if(this.speed>200){
+                    this.speed = 200;
+                    alert("최대속도를 초과!")
+                }
+                console.log(`현재속도 : ${this.speed}`);
+            },
+            break : function(){
+                this.speed -= 10;
+                if(this.speed<0){
+                    this.speed = 0;
+                    alert("완전히 멈춤!")
+                }
+                console.log(`현재속도 : ${this.speed}`);
+            },
+            toString : function(){
+                console.log(this.owner + "," + this.model + "," + this.fuelkind + "," + this.speed);
+            }
+        };
+
+        console.log("myCarInfo : ", myCar.toString());
+
+    </script>
+
+</body>
+</html>

@@ -22,5 +22,5 @@
 
 ### 📄 CERTIFICATION
 * [ADsP](ADsP)
-* [cosPro2](JAVA/cosPro2)
+* [cosPro2](https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/cosPro)
 * [SQLD](SQLD)

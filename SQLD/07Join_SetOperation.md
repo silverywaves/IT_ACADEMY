@@ -228,7 +228,8 @@
 ![SELF JOIN](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/028c1089-c272-4988-9f29-cde8ab06f2bc)
 
 
-✔ Q. EMP 테이블 -> 사원의 사번&이름, 매니저의 사번&이름 출력    
+✔ Q. EMP 테이블 -> 사원의 사번&이름, 매니저의 사번&이름 출력
+
   ❗ 매니저 없는 사원 정보도 출력  <- LEFT OUTER JOIN 사용해야 함
 
 ![QUIZ SELF JOIN](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/83cade0e-bc34-4815-a2c1-1f2e66f2a57b)

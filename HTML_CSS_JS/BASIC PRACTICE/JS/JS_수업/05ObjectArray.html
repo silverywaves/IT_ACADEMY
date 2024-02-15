@@ -154,16 +154,16 @@
 
         // 배열 객체 반복하기 [{}, {}, {}, {}];
         let arr6 = [
-            {name:"정선아", age:"39", roll:"미나"},
-            {name:"윤공주", age:"40", roll:"아이다"},
-            {name:"김소현", age:"43", roll:"엘리자벳"},
-            {name:"차지연", age:"45", roll:"마타하리"}
+            {name:"정선아", age:"39", role:"미나"},
+            {name:"윤공주", age:"40", role:"아이다"},
+            {name:"김소현", age:"43", role:"엘리자벳"},
+            {name:"차지연", age:"45", role:"마타하리"}
         ];
         arr6.forEach((item)=>{      // 오브젝트에서는 필터 사용 불가 (배열에서만 사용가능)
             // console.log(item);
             for(key in item){
                 // console.log(key);
-                if(key == 'name' || key == 'roll')
+                if(key == 'name' || key == 'role')
                     console.log(item[key]);
             }
             console.log("-----------------------");
@@ -188,13 +188,13 @@
         console.log("\n");
 
         let arr8 = [
-            {name:"정선아", age:"39", roll:"미나"},
-            {name:"윤공주", age:"40", roll:"아이다"},
-            {name:"김소현", age:"43", roll:"엘리자벳"},
-            {name:"차지연", age:"45", roll:"마타하리"}
+            {name:"정선아", age:"39", role:"미나"},
+            {name:"윤공주", age:"40", role:"아이다"},
+            {name:"김소현", age:"43", role:"엘리자벳"},
+            {name:"차지연", age:"45", role:"마타하리"}
         ];
         let RA_02 = arr8.map((item)=>{
-            return {name:item.name, roll:item.roll};
+            return {name:item.name, role:item.role};
         });
         RA_02.forEach(item=>console.log(item));
 

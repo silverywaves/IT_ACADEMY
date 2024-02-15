@@ -1,4 +1,4 @@
-# 💻 STUDY
+# 💻 [STUDY](https://dailylifethatsnormal.tistory.com/category/JAVA%20STUDY)
 
 
 ### 📄 HTML&CSS&JS

@@ -121,7 +121,7 @@
 ```
   📌 EX
   - 관리자 계정으로 접속한 상태일 때  : GRANT SELECT ON masmis.PLAYER TO mis1;
-  - masmis 계쩡으로 접속한 상태일 때  : GRANT SELECT ON PLAYER TO mis1;
+  - masmis 계정으로 접속한 상태일 때  : GRANT SELECT ON PLAYER TO mis1;
 
   - mis1 계정에서 masmis 계정의 PLAYER 테이블 조회    : SELECT * FROM masmis.PLAYER;
   - masmis 계정에서 자신의 계정의 PLAYER 테이블 조회   : SELECT * FROM PLAYER;

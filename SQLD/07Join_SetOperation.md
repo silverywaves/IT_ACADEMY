@@ -246,10 +246,15 @@
   - 계층형 질의(HIERARCHICAL QUERY)를 통해 접근 가능
 
 
+---
+
 ### 계층형 질의의 방향
 
 ![계층형질의](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/5bfabb35-503d-4161-81b7-47bcd61bc975)
 
+
+
+---
 
 ### 계층형 질의의 구조
 #### START WITH : 시작 조건 지정
@@ -266,4 +271,93 @@
 
 ![계층형 질의 구조](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/09085dfc-d4f6-431a-8ac0-7e51c5d540b5)
 
+
+
+#### 순방향 계층형 질의 예
+
+
+![순방향계층형질의 예1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/c3c66282-361c-4556-908e-6c38f62e76a0)
+
+
+
+![순방향계층형질의 예2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/0d803f2c-8520-4c4f-bbee-c4cc2786598f)
+
+
+
+
+#### 역방향 계층형 질의 예
+
+
+![역방향계층형질의 예1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3d7e97f5-dea6-42f4-8fa9-2cc5ec754512)
+
+
+---
+
+## 집합 연산자
+### 집합 연산자 개요
+  - 여러 질의(SELECT 문) 결과를 하나로 결합하기 위해 사용
+  - 집합 연산의 대상이 되는 두 질의
+    - SELECT 절의 칼럼수 동일
+    - SELECT 절 동일 위치에 존재하는 칼럼의 데이터 타입이 상호 호환 가능
+      - 반드시 동일한 데이터 타입일 필요는 X
+     
+![집합연산자개요](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/b91ee699-4762-42e3-9dbe-0111e2860c29)
+
+
+---
+
+### 집합 연산 예
+
+![집합연산예](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/9b794005-887a-4c06-b7f3-5301cd2da841)
+
+
+
+---
+
+### 집합 연산 질의 예
+  - 집합 연산은 둘 이상의 SELECT 문을 결합하는 것
+  - ORDER BY 는 집합 연산을 적용한 최종 결과에 대한 정렬
+    - 맨 마지막 줄에 한번만 기술
+   
+
+---
+
+### UNION ALL
+
+![UNIONALL](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/312d1e97-ca5b-42fc-b33e-7eb3ee92e260)
+
+- 이질적 성격의 데이터를 한꺼번에 출력하는 연산도 가능
+  - 'P' 와 'T'는 상수값
+
+![UNIONALL2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/526a0551-b421-4cf0-8b8c-cb117693962c)
+
+
+- 출력 칼럼의 칼럼명은 첫 SELECT 문의 칼럼명 적용
+  - ORDER BY 구분코드, POSITION -> ERROR!
+ 
+
+---
+
+### INTERSECT
+
+![INTERSECT](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/6fa7eeba-80ee-49cf-9488-ed13ba9f8acc)
+
+- INTERSECT 연산자는 IN 서브쿼리, EXISTS 서브쿼리로도 표현 가능
+  -> 서브쿼리 챕터에서 추가 정리 예정
+
+
+---
+
+### MINUS
+
+![MINUS](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/0716879e-cd58-4960-b411-0f6a783adfd6)
+
+
+---
+
+### 집합 연산과 ALIAS
+
+![ALIAS1](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/b7555226-be7d-475f-aa11-448279b3cb87)
+
+![ALIAS2](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/21ea9a02-21a1-441d-b9d0-1b1fcdca7f47)
 

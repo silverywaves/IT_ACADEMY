@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        함수 : 수를 받아 처리하는 논리적 공간
+                재사용성 / 유지보수
+            == 메서드
+            == function
+            == 기능
+
+        <형태> - 함수의 형태에 따라 의존도 달라짐=>용도에 따라 사용
+        - 인자o 반환o
+        - 인자o 반환x
+        - 인자x 반환o
+        - 인자x 반환x
+     -->
+
+     <script>
+
+        // f1 - 기본적형태, 종속성 강함
+        // console.log('Before Call');
+        // const val1 = f1(10, 20);    // 기본적으로 함수는 호출했던 위치로 돌아온다
+        // console.log("val1", val1);
+        // console.log('After Call');
+
+        // // f2
+        // console.log("----------------------------------");
+        // console.log('Before Call');
+        // const val2 = f2(10, 20);    // 리턴이 있던 없던 일단 리턴은 되는데 값을 안가지고 돌아온다
+        // console.log("val2", val2);  // undefined
+        // console.log('After Call');
+
+        // // f3
+        // console.log("----------------------------------");
+        // console.log('Before Call');
+        // const val3 = f3(10, 20);    // 인자 전달은하지않아도 값은 받을 수 있음
+        // console.log("val3", val3); 
+        // console.log('After Call');
+
+        // // f4 - 독립성 강함
+        // console.log("----------------------------------");
+        // console.log('Before Call');
+        // const val4 = f4(10, 20);    // 내부적 처리
+        // console.log("val4", val4); 
+        // console.log('After Call');
+
+        // // 함수의 4가지 형태(ECMA6 이전)(기본 Hoisting 적용)
+        // function f1(n1,n2){console.log('f1(n1,n2)'); return n1+n2;}
+        // // function f2(n1,n2){console.log('f2(n1,n2)');}
+        // function f2(n1,n2){console.log('f2(n1,n2)');console.log(n1+n2)}
+        // function f3(){console.log('f3()'); return 11+21;}
+        // function f4(){console.log('f4()', 10+20);}
+
+        // 함수의 4가지 형태(ECMA6 이후)(화살표함수 - 기본 Hoisting 적용x)
+        // 위치 중요 => 함수생성이 먼저 되어야 함. 아니면 오류 발생 01.html:28 Uncaught ReferenceError: Cannot access 'f1' before initialization at 01.html:28:22
+        // function(){} == [const name ()=>{}]
+        // const f1=(n1,n2)=>{console.log('f1(n1,n2)'); return n1+n2;}
+        // const f2=(n1,n2)=>{console.log('f2(n1,n2)');console.log(n1+n2)}
+        // const f3=()=>{console.log('f3()'); return 11+21;}
+        // const f4=()=>{console.log('f4()', 10+20);}
+
+        // 함수의 리턴형태(Object)
+        // Object{}의 멤버로 지정되는 함수는 function(){}로 한다(화살표x)
+        // function f5(){
+        //     return {
+        //         name : "홍길동",
+        //         age : "22",
+        //         getName:function(){return `${this.name}`;},   // 화살표함수쓰면 호이스팅때문에 문제생김
+        //         getAge:function(){return `${this.age}`;}
+        //     };
+        // }
+        // console.log(f5());
+        // const obj=f5();
+        // console.log(obj);
+        // console.log(obj.getName());
+        // console.log(obj.getAge());
+
+        // 가변인자(...args) 사용
+        function f6(...args){
+            // console.log(args);
+            args.forEach(item=>{
+                console.log(item);
+            })
+        }
+        f6(10,20,30,40,50,true,null,undefined,{name:'홍길동', age:'22'},()=>{console.log("a");}, function(){console.log("b");});  // 배열형태로 받아옴 => 배열함수 사용가능
+
+
+
+     </script>
+
+
+</body>
+</html>

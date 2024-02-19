@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://developer.mozilla.org/ko/docs/Glossary/Hoisting
+        // 호이스팅(끌어올리기)
+        // 코드가 실행되기 전 변수선언/함수선언이 해당 스코프의 최상단으로 끌어올려진 것 같은 현상
+        
+        // 호이스팅 처리(function-)
+        // f1();
+        // function f1(){
+        //     console.log("HELLO WORLD");
+        // }
+
+        // // 호이스팅 처리x
+        // // f2();   -Error : Uncaught ReferenceError: Cannot access 'f2' before initialization at 02HOISTING.html:21:9
+        // const f2=()=>{
+        //     console.log("HELLO WORLD");
+        // };
+        // f2();       // 정상작동
+
+        // 함수표현식(()=>{}) 권장
+        // 이유. 코드 구조를 무너뜨린다
+        // 이유. 절차대로 처리가 되지 않는다
+
+
+        // const 
+
+//         const MY_FAV = 7;
+
+// //        MY_FAV = 10;    // Uncaught TypeError: Assignment to constant variable.
+
+//         console.log("my favorite number is : " + MY_FAV);
+
+//         // const MY_FAV = 20;
+//         // var MY_FAV = 20;
+//         // let MY_FAV = 20;
+
+//         if(MY_FAV === 7){
+//             // 블록 범위로 지정된 변수 만듦 => 에러x
+//             let MY_FAV = 20;
+//             // var MY_FAV = 20;    // 전역 호이스트 -> 에러o
+//             console.log("my favorite number is : " + MY_FAV); // 20
+        
+//         }
+
+//         console.log("my favorite number is : " + MY_FAV);   // 7
+
+
+        // var
+
+        var x = 0;
+        // console.log(typeof z);  // ReferenceError: z is not defined
+        function a(){
+            var y = 2;
+            console.log(x,y);
+
+            function b(){
+                x =3;
+                y =4;
+                z =5;
+
+                b();
+                console.log(x,y,z);
+            }
+        }
+        a();
+        console.log(x,z)
+        console.log(typeof y);
+
+    </script>
+</body>
+</html>

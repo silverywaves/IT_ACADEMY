@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let a = 10;
+        let b = 20;
+
+        // 산술연산자
+        //  +, - , *, /, %
+
+        // + : 숫자 + 숫자 = 덧셈(연산)처리
+        console.log(1+2);       // 3
+        // + : 숫자 + 문자 or 문자 + 숫자 or 문자 + 문자 = 단순연결
+        console.log(1+'a');     // 1a
+        console.log('-----------');
+
+
+        // - : 숫자 - 숫자 or 숫자 - Boolean = 뺄셈(연산)처리
+        // - : 숫자 - 문자 or 문자 - 숫자 = NaN
+        console.log(5-'a');     // NaN
+        console.log('a'-5);     // NaN
+        console.log(5-true);    // 4
+        console.log(5-{});      // NaN
+        console.log(5-null);    // 5
+        console.log(5-undefined);   // NaN
+        console.log('-----------');
+
+
+        // * 
+        console.log(a*b);       // 200
+        console.log(a*'b');     // NaN
+        console.log('a'*'b');   // NaN
+        console.log(a*true);    // 10
+        console.log(a*{});      // NaN
+        console.log(a*null);    // 0
+        console.log(a*undefined); // NaN
+
+        console.log('-----------');
+
+        // / 
+        console.log(10/4);      // 2.5 자동형변환 -> 소수점 표시
+        console.log(10/0);      // Infinity 
+        if(10/0){               // true 으로 해석->0빼고 모두 참이기때문. (자바에서는 허용X)
+            console.log('true');
+        }else{
+            console.log('false');
+        }
+        // 앞자리수 확인 : N / 10(or 100 or 1000 등)
+
+        console.log('-----------');
+
+        // % : 나머지연산
+        // 짝홀수 구분 : N % 2 == 0 이면 짝수, N % 2 == 1 이면 홀수
+        // M 배수 구분 : N % M == 0 이면 M의 배수, 나머지(M-1)값은 배수 X
+        // 수의 범위 제한 : 0~M-1 
+        console.log(Math.ceil(Math.random()*100)%16);   // %16 -> 15까지의 숫자만 출력
+        // 끝자리수 확인 : N % 10(or 100 or 1000 등)
+        console.log(1234%10);
+
+        console.log('-----------');
+
+        // 대입연산자
+        // LV = RV
+        // 공간 = 값()
+        // 대입연산자(=)의 순서는 RV 우선 처리
+        const tmp = 3;  // 대입전 어딘가에 먼저 저장되어야함
+
+        let condition=5;
+        if(condition==6){
+            console.log("참인경우 실행")
+        }else{
+            console.log("거짓인경우 실행")
+        }
+        console.log('-----------');
+
+        // 복합대입연산자(산술연산자 + 대입연산자)
+        // a += b    a = a + b
+        console.log(a+=b);
+        // a -= b    a = a - b
+        console.log(a-=b);
+        // a *= b    a = a * b
+        console.log(a*=b);
+        // a /= b    a = a / b
+        a = 10, b = 20;
+        console.log(a/=b);
+        // a %= b    a = a % b
+        console.log(b%=a);
+
+        console.log('-----------');
+
+        // 비교연산자(true, false 값 반환), 조건식 조건 ->() 분기, 반복문)
+        // >  
+        // >=
+        // <
+        // <=
+        // ==  : 데이터 값이 같음
+        // === : 데이터와 자료형이 같음
+        // !== 
+        // !== 
+
+        console.log('a'==2);
+        console.log('a'==0);
+        console.log('1'==1);    // true
+        console.log('1'===1);   // false
+        console.log('1'!=1);    // false
+        console.log('1'!==1);   // true
+        console.log('-----------');
+
+        // 논리연산자
+        // && : and 연산 (조건식) && 연산(조건식) : 두 조건식이 참이여야 참
+        //      LV 거짓인 경우 RV의 연산자체를 하지 않음(할 필요X 어차피 거짓)
+        // || : or 연산 (조건식) }} 연산(조건식 : 두 조건 중 하나라도 참이면 참
+        //      LV이 참인 경우 RV의 연산자체를 하지 않음(할 필요X 어차피 참)
+
+        console.log((true)&&(true));     // true
+        console.log((true)&&(false));    // false
+        console.log((false)&&(true));    // false
+        console.log((false)&&(false));   // false
+
+        console.log((true)||(true));     // true
+        console.log((true)||(false));    // true
+        console.log((false)||(true));    // true
+        console.log((false)||(false));   // false
+        console.log('-----------');
+
+        console.log((a==20)&&(b==20)); 
+        console.log((a==10)&&(b==25));
+
+        console.log('-----------');
+
+        // 증감연산자(++, --)
+        // ++ : 1 증가
+        // -- : 1 감소
+        // ++ a : 전치연산자 : 1 증가 후에 대입
+        // a ++ : 후치연산자 : 기존값을 먼저 할당한 후에 1 증가
+        a = 1, b = 2;
+        a=a++;
+        b=++b;
+        console.log(a); // 1
+        console.log(b); // 3
+
+        console.log('-----------');
+
+        // 비트연산자
+        // 비트단위로 논리 연산 수행, 전체 비트를 왼쪽이나 오른쪽으로 이동시킬때도 사용
+
+        console.log('-----------');
+
+
+        // 삼항연산자
+        // (조건식)?참인경우 실행문장 : 거짓인 경우 실행 문장;
+        console.log(10 =='10'? '맞습니다' : '틀립니다');    // 맞습니다
+        console.log(10 ==='10'? '맞습니다' : '틀립니다');   // 틀립니다
+        console.log('-----------');
+
+        // typeof : 타입확인
+
+        // instanceof : 객체가 특정 클래스에 속하는지 아닌지 & 상속관계 확인
+        // obj instanceof Class
+
+
+    </script>
+
+</body>
+</html>

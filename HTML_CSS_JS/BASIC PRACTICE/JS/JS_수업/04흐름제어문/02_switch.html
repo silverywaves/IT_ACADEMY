@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="d1" style="width: 50px; height: 50px; position: relative; background-color: aqua;"></div>
+    
+    <script>
+
+    // switch : 다중분기문이지만 조금 경량화되어있음
+    // let num = prompt('점수를 입력해주세요.');
+    //     console.log(typeof num);
+
+        // switch(num){    
+        //     case 100:  // 조건 불가, 특정 상수값이 기본
+        //         alert("A");
+        //         break;
+        //     case 90:
+        //         alert("B");
+        //         break;
+        //     case 80:
+        //         alert("C");
+        //         break;
+        //     case 70:
+        //         alert("D");
+        //         break;            
+        //     case 60:
+        //         alert("F");
+        //         break;
+        //     }
+
+            let topval = 0;
+            let leftval = 0;
+            let rightval = 0;
+            let bottomval = 0;
+
+        document.addEventListener('keypress', function(e){
+            // console.log(e.keyCode);        
+            const el = document.querySelector('.d1');
+
+            switch(e.keyCode){
+                case '119': 
+                    console.log('W');
+                    el.style.top = (topval--) + "px";
+                    break;
+                case '97' : 
+                    console.log('A');   
+                    el.sytle.left = (leftval--) + "px";
+                    break;
+                case '115' :
+                    console.log('S');
+                    el.sytle.left = (topval++) + "px";
+                    break;
+                case '100': 
+                    console.log('D');
+                    el.style.top = (leftval++) + "px";
+                    break;
+            }    
+        }); // 키보드 이벤트 감지
+
+    </script>
+
+</body>
+</html>

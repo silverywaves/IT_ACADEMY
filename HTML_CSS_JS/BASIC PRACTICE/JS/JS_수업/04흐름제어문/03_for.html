@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // while 기본
+        // 탈출용 변수(무한루프 방지) 필수
+        // let i = 0;
+        // while(i<10){    // (반복을 위한)조건식
+        //     // document.write("HELLO WORLD<br>");
+        //     console.log("HELLO WORLD<br>");
+        //     i++;        // 연산작업(탈출용)
+        // }
+        // document.write("i : " + i);
+
+        // 위 while 코드를 간략하게 한 것이 for 문
+
+        // for 기본 : for(변수;조건식;연산){}
+        // for(let i=0;i<10;i++){
+        //     document.write("HELLO WORLD<br>");
+        // }
+
+        // for in 문(Object용-순서x)
+        let arr=[10,20,30,40,50];
+        // console.log(arr.length);
+        // for(let i=0; i<arr.length; i++){
+        //     console.log(arr[i]);
+        // }
+        // for(let i in arr){
+        //     console.log(arr[i]);
+        // }
+
+        // 기술문서 참고
+        //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...in
+
+        // 배열함수 forEach
+            // arr.forEach((item)=>{console.log(item);});
+
+
+        // 순서를 가지냐 안가지냐에 따라 선택해서 사용 <더 상세히 정리해놓기>
+        // for of 문(배열용-순서o)
+        // const obj = {"name":"윤정한", "age":30, "addr":"서울"};
+        // // for(let a in obj){
+        // //     console.log(a,obj[a]);
+        // // }
+        // for (let a of obj){  // Uncaught TypeError: obj is not iterable : 반복자에대한 처리 할 수 없다
+        //     console.log(a); 
+        // }
+
+        // for of 문으로 [{},{},{}] 사용해보기
+        const ArrObj = [
+            {"name":"윤정한", "age":30, "addr":"서울"},
+            {"name":"박은태", "age":45, "addr":"인천"},
+            {"name":"이지훈", "age":29, "addr":"부산"},
+        ];
+        for(let obj of ArrObj){
+            console.log(obj);
+        }
+       
+        // for in : 순서가 있는 자료구조에 적용가능(배열, 리스트, 스택, 큐, 덱 등)
+        //        : 순서가 없는 자료구조에 적용가능(Map(Object형 데이터Set), Set)
+        // for of : 순서가 있는 자료구조에만 적용 
+    
+    </script>
+
+</body>
+</html>

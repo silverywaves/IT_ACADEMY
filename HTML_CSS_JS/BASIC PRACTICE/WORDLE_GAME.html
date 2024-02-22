@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input{
+            width: 50px;
+            height: 50px;
+            font-size: 40px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- 5개의 문자가 들어갈 입력칸 만들기 -->
+    <input type="text" class="input">
+    <input type="text" class="input">
+    <input type="text" class="input">
+    <input type="text" class="input">
+    <input type="text" class="input">
+    <button class="btn">확인</button>   <!-- 제출버튼을 누르면 입력한 값과 답이 맞는지 비교 -->
+
+    <script>
+        const answer = 'asdfg';  // 일단 대충 설정.. 여러개 넣어두고 Math.random 돌려야할거같다.
+        const btnEl = document.querySelector('.btn');
+        btnEl.addEventListener('click', function(){     // 버튼 클릭시 이벤트 설정
+            // console.log('clicked');
+        const inputEl = document.querySelectorAll('.input');    // 여러개 선택해야하니 All
+            
+            for(let i=0; i<5; i++){     // 똑같이 반복해야해서 for 문 넣어봄. 정상작동
+                if(inputEl[i].value == answer[i]){              // 첫번째 입력글자와 정답글자가 일치하면
+                    inputEl[i].style.background = 'skyblue';    // 하늘색
+                } else if(answer.includes(inputEl[i].value)){   // 첫번째 입력글자가 위치는 다르지만 정답글자와 일치하면
+                    inputEl[i].style.background = 'tomato';     // 붉은색
+                    // Array.prototype.includes() : 배열의 항목에 특정 값이 포함되어 있는지를 판단
+                } else{                                         // 글자도 위치도 안맞으면
+                    inputEl[i].style.background = 'lightgray';  // 회색
+                }
+                inputEl[i].classList.remove('inputEl');  // 새로운 input 확인을 위해 기존 input class 지우기위함. 
+                // 근데 생각한것처럼 안나오고있음 큰일났다
+            }
+            // 한번 제출한 이후 재도전 기회 => 입력칸 재출력(입력칸 5개가 들어가는 div 공간하나 생성)
+            const grid = `<div> 
+                <input type="text" class="input">
+                <input type="text" class="input">
+                <input type="text" class="input">
+                <input type="text" class="input">
+                <input type="text" class="input">
+                </div>`;
+                document.querySelector('body').insertAdjacentHTML('beforeend', grid);
+                // 수업에서 배웠던 innerHTML을 써봤더니 error. 사용할 수 없다고 떠서 구글링! 
+                // => innerHTML = "html" / 인자 1개 (html 코드) / 기존 노드 삭제 후 재구성
+                // => el.insertAdjacentHTML( position, html ) / 인자 2개(위치값, html코드) 
+                //   기존 노드 건들지 않고 노드 추가 / position 종류 ( beforebegin, afterbegin, beforeend, afterend )
+                // 비슷한듯 다른 메서드가 있었고, 이게 쓰는데 더 적합해보여서 바로 적용.
+        })
+    </script>
+
+</body>
+</html>
+
+<!-- 
+    [24.02.22] 
+    학원에서 자바스크립트가 끝났다. 그래서 JS로 많이 만든다던 워들러 게임을 혼자 실습겸 만들어보려고 했다.
+    그리고 input remove 에서 막혔다.. 내가 생각한대로라면 새로 생성된 input 입력값으로 정답체크가 되어야하는데..
+    아니 근데 일단 오늘 배운거 바로 써보려고 생각나는대로 적긴했는데
+    지금와서 보니까 다르게 할 수 있을것도 같고... 워들러 홈페이지가보니까 거긴 키보드 누르면 입력되는 효과도있던데
+    그냥 이거 엎고 아예 클론으로 가볼까 싶기도 하다..
+    일단 당장 낼모레 시험이라 오늘은 여기까지만 적당히 해야겠다.
+ -->

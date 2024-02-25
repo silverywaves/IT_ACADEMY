@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    KEYUP : <input id="input1"><br>
+    <p id="p1"></p>
+    <hr>
+
+    KEYDOWN : <input id="input2"><br>
+    <p id="p2"></p>
+    <hr>
+
+    KEYPREE : <input id="input3"><br>
+    <p id="p3"></p>
+    <hr>
+
+    <script>
+
+        // KEYUP 키를 떼는 시점        
+        const input01El = document.getElementById('input1');
+        input01El.addEventListener('keyup',function(event){
+            console.log('keyup!',event.key);// 이벤트 형태
+            console.log('keyup!',event.keyCode);    // 키 번호확인
+            
+            const p1tg = document.getElementById('p1');
+            p1tg.innerHTML = event.key+' - '+event.keyCode;
+        });
+
+        // KEYDOWN 키를 누른 시점  : 물리적으로 어떤 키가 눌렸는지가 중요
+        const input02El = document.getElementById('input2');
+        input02El.addEventListener('keydown',function(event){
+            console.log('keydown!',event.key);
+            console.log('keydown!',event.keyCode); // -대소문자 구분x
+            const p2tg = document.getElementById('p2');
+            p2tg.innerHTML = event.key+' - '+event.keyCode;
+        
+        });
+
+
+        // KEYPRESS 누른 상태 : 어떤 값이 입력되었는지가 중요(ex. shift 키는 눌러도 입력값이 없으므로 keypress 작동x)
+        const input03El = document.getElementById('input3');
+        input03El.addEventListener('keypress',function(event){
+            console.log('keypress!',event.key);
+            console.log('keypress!',event.keyCode); // -대소문자 구분o/엔터는 인식함
+            const p3tg = document.getElementById('p3');
+            p3tg.innerHTML = event.key+' - '+event.keyCode;
+        
+        });
+
+
+    </script>
+</body>
+</html>
+
+
+<!-- ASCII 코드 : 문자형데이터 진법변환 -->

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- google icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+          font-size: 1rem;
+        }        
+      .draggable--style {
+        background-color: gray;
+        opacity: 0.5;
+      }
+      .drop--style {
+        background-color: white;
+        opacity: 1;
+      }
+    </style>
+
+</head>
+<body>
+    <input type="text" class="inputEl"><span> | </span><button class="btn">입력</button>
+    <hr>
+    <div class="container"></div>
+
+    <script>
+        const inputEl = document.querySelector(".inputEl");
+        const btnEl = document.querySelector(".btn");
+        const containerEl = document.querySelector(".container");
+
+        btnEl.addEventListener('click', function(){
+            if(isValid()){
+                createNode();
+            }
+        });
+
+        inputEl.addEventListener('keydown',function(event){
+            console.log(event.keyCode);     // enter : 13
+            if(event.keyCode==13){
+                if (isValid()){
+                    createNode();
+                }
+            }
+        });
+
+        // 유효성검사함수   -- 모든 기능을 구현 -> 유효성검사 -> 커미션 부여
+        function isValid(value){
+            // console.log(typeof value);      // String
+            const contents = inputEl.value; // input value 가져오기
+            if(contents === ""){
+                alert("값을 입력해주세요.");
+                return false;   
+            }
+            return true;
+        }
+
+        // 드래그이벤트 추가-1-----------------------
+        let beforeEl = null; // 드랍 이전 El 저장
+        let beforeYpos = null; // 드랍 이전 El의 Y 좌표 저장
+        // -----------------------------------------
+
+        // 이벤트 중복코드 함수로 묶음
+        function createNode(){
+            const contents = inputEl.value; // input value 가져오기
+            console.log("clicked..value : ", contents);
+            // 노드생성
+            // createElenet('생성할 태그')
+            const divEl = document.createElement('div') // div 태그 생성
+            // style 적용
+            divEl.setAttribute('style','widtdh:300px; height: 40px;border:1px solid; padding:2px; margin:2px;');
+
+
+            // 드래그이벤트 추가-2------------------
+            divEl.setAttribute('draggable', true);  // drag 가능 상태로 요소 설정
+            divEl.addEventListener('dragstart', function(event){
+                console.log('dragstart event', event);
+                console.log('dragstart target', event.target);
+                beforeYpos = event.pageY;
+                beforeEl = event.target;
+            });
+            divEl.addEventListener('dragover',function(event){
+                // console.log(event);
+                event.preventDefault();
+            });
+            divEl.addEventListener('drop',function(event){
+                event.preventDefault();
+                console.log('drop event', event);
+                console.log('drop target', event.target);
+
+                if(beforeYpos<event.pageY){  // 위에서 아래로 이동
+                    beforeEl.before(event.target);
+                }    
+                else{    // 아래에서 위로 이동
+                    beforeEl.after(event.target);
+                }
+            })  
+            // -------------------------------------
+            
+
+            divEl.innerHTML=contents;   // input value를 div의 content에 넣기
+            const delEl = document.createElement('span');
+
+            delEl.classList.add('material-symbols-outlined');    // google icon class 등록
+            delEl.innerHTML='delete';   // google icon name 지정
+            
+            // style 적용
+            // style 은 이미 생성되어있는 노드에 사용가능(미리 요소가 있을때만)
+            // 새로 만들때는 setAttribute
+            delEl.setAttribute('style', 'cursor: pointer');
+            
+            delEl.addEventListener('click',function(){      // 클릭이벤트
+                console.log('clicked..');
+                // 삭제하려는 위치의 부모노드 찾기
+                const parentEl = delEl.parentNode;
+                console.log(parentEl);
+                parentEl.remove();
+            })
+            
+            divEl.appendChild(delEl);   // divEl의 자식으로 연결
+
+            // containerEl.appendChild(divEl); // container 의 자식으로 연결(마지막)
+            containerEl.prepend(divEl); // container 의 자식으로 연결(처음)
+            inputEl.value="";   // input value 초기화
+        }            
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul>
+        <li>ITEM1</li>
+        <li id="li2">ITEM2</li>
+        <li class="item">ITEM3</li>
+        <li>ITEM4</li>
+        <li class="item">ITEM5</li>
+        <li>ITEM6</li>
+        <li class="item">ITEM7</li>
+    </ul>
+
+    <script>
+
+        //
+        const li2 = document.getElementById('li2');     // 선택자X ID임 헷깔리지 말것. 단일선택
+        li2.style.backgroundColor='orange';
+        // querySelector('selector')
+        const sel = document.querySelector('.item');       // 선택자O ID X : 단일선택 => 제일먼저 찾아지는 1개만 선택
+        sel.style.backgroundColor='green';
+        // querySelectorAll('selector')
+        const sels = document.querySelectorAll('.item');       // 동일한 선택자 모두 선택
+        console.log(sels);                                      // 배열 = forEach 사용 가능
+        sels.forEach(item=>{
+            item.style.color="tomato";
+        })
+
+        const liels = document.getElementsByTagName('li');
+        console.log(liels);
+        console.log(typeof liels);          // object
+        // for(i in liels){
+        //     console.log(i);
+        //     liels[i].sytle.width="200px";
+        // }
+        // for(item of liels){
+        //     item.sytle.width="200px"
+        // }
+
+        // Array.from(liels).forEach(item=>{
+        //     console.log(liels);
+        //     item.style.fontWeight="800";
+        //     item.addEventListener('click',function(){
+        //         alert('clicked..contents : ' + item.innerHTML)
+        //     })
+        // })
+
+        // 배열함수 forEach X
+        // liels.forEach(item=>{               // TypeError: liels.forEach is not a function
+        //     item.style.width="100px"
+        // })
+
+
+    </script>
+
+</body>
+</html>

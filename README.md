@@ -20,6 +20,10 @@
 * THEORY
 
 
+### 📄 GIT
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/341bca30-675f-461f-a4ad-9f2286fc7c63)
+
+
 ### 📄 CERTIFICATION
 * [ADsP](ADsP)
 * [cosPro2](https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/cosPro)

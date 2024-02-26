@@ -1,0 +1,105 @@
+[올리기]
+Local Repository -> Remote Repository(git push)
+[readME 파일 추가시 main 브랜치 추가됨 -> 새 repository 만들 때 체크X]
+C:\Users\Administrator\Documents\SV\git\새 폴더>git branch
+* master
+
+-- branch 이름 main 으로 바꿈 --
+C:\Users\Administrator\Documents\SV\git\새 폴더>git branch -M main
+
+C:\Users\Administrator\Documents\SV\git\새 폴더>git branch
+* main
+
+C:\Users\Administrator\Documents\SV\git\새 폴더>git remote add origin https://github.com/silverywaves/TESTREPO.git
+
+-- 현재 디렉토리와 연결된 원격 저장소가 어디인지 확인 --
+C:\Users\Administrator\Documents\SV\git\새 폴더>git remote -v
+origin  https://github.com/silverywaves/TESTREPO.git (fetch) : 브랜치 가져올 때 사용, 본인이 직접 확인을 한 후에 병합(Merge)
+origin  https://github.com/silverywaves/TESTREPO.git (push)
+
+-- origin : 리모트 저장소의 단축 이름 -- 
+C:\Users\Administrator\Documents\SV\git\새 폴더>git push origin
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main  : 처음 쓸 때 원격저장소 이름 언급하지 않았기때문에 해당 문구 복사해서 다시 명령
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+C:\Users\Administrator\Documents\SV\git\새 폴더> git push --set-upstream origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 214 bytes | 214.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/silverywaves/TESTREPO.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+-- 내용 수정 후 --
+C:\Users\Administrator\Documents\SV\git\새 폴더>git add *
+
+C:\Users\Administrator\Documents\SV\git\새 폴더>git commit -m "V0.1"
+[main dcf56a7] V0.1
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+C:\Users\Administrator\Documents\SV\git\새 폴더>git push origin
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 303 bytes | 303.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/silverywaves/TESTREPO.git
+   5045020..dcf56a7  main -> main
+
+--------------------------------
+[받아오기]
+Local Repository <- Remote Repository(git pull) 
+-- pull : 여러repo 가져올때 더 적합
+-- 원격 저장소의 정보를 가져오면서 자동으로 로컬 브랜치에 병합(Merge)까지 수행
+
+-- 원격 저장소 x 상태 --
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote -v
+-- 생성 --
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote add origin01 https://github.com/silverywaves/TESTREPO.git
+
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote -v
+origin01        https://github.com/silverywaves/TESTREPO.git (fetch)
+origin01        https://github.com/silverywaves/TESTREPO.git (push)
+
+-- 끝에 main(브랜치명) 넣어줘야함 --
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git pull origin01 main
+From https://github.com/silverywaves/TESTREPO
+ * branch            main       -> FETCH_HEAD
+
+-- 삭제 -- 
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote remove origin01
+
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote -v
+
+-- --
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote add origin02
+
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote add origin02 https://github.com/silverywaves/TESTREPO-02.git
+
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git remote -v
+origin02        https://github.com/silverywaves/TESTREPO-02.git (fetch)
+origin02        https://github.com/silverywaves/TESTREPO-02.git (push)
+
+C:\Users\Administrator\Documents\SV\git\새 폴더 (2)>git pull origin02 main
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), 1.75 KiB | 119.00 KiB/s, done.
+From https://github.com/silverywaves/TESTREPO-02
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin02/main
+fatal: refusing to merge unrelated histories	// 히스토리가 달라서 문제생김 => 폴더 따로 빼서 진행
+
+
+--------------------------------
+Local Repository -> Remote Repository(git clone)
+새폴더>git clone + 주소

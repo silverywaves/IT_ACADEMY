@@ -1,0 +1,153 @@
+Q. 진행해보기
+0 새폴더에서 git init 명령어 사용
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git init
+Initialized empty Git repository in C:/Users/babys/Desktop/IT_ACADEMY/GIT_GITHUB/0226Quiz/.git/
+
+
+1 aaa.txt 파일을 추가하고 내용 입력(아무거나)
+2 SA 에 추가후 Commit(message V0.0)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.0"
+[master (root-commit) b9aaf6c] V0.0
+ 1 file changed, 1 insertion(+)
+ create mode 100644 aaa.txt
+
+
+3 bbb.txt 파일을 추가하고 내용 입력(아무거나)
+4 SA 에 추가후 Commit(message V0.1)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.1"
+[master e055738] V0.1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bbb.txt
+
+
+5 ccc.txt 파일을 추가하고 내용 입력(아무거나)
+6 SA 에 추가후 Commit(message V0.2)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.2"
+[master d7cc344] V0.2
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ccc.txt
+
+--- 중간 로그 확인 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+d7cc344 (HEAD -> master) V0.2
+e055738 V0.1
+b9aaf6c V0.0
+-----------------------
+
+7 branch 생성(dev, feature)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch dev
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch feature
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch
+  dev
+  feature
+* master
+
+
+8 feature branch 에서 작업진행
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch feature
+Switched to branch 'feature'
+
+
+9 feature 에서 ddd.txt 파일생성 후 내용 입력 -> commit(V0.3)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.3"
+[feature 7fbc227] V0.3
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ddd.txt
+
+
+10 feature 에서 dev 으로 merging 작업 수행
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch dev
+Switched to branch 'dev'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge feature
+Updating d7cc344..7fbc227
+Fast-forward
+ ddd.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ddd.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+7fbc227 (HEAD -> dev, feature) V0.3
+d7cc344 (master) V0.2
+e055738 V0.1
+b9aaf6c V0.0
+
+
+11 dev branch 에서 aaa.txt 내용 추가 -> commit(V0.4 dev)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch dev
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   aaa.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.4"
+[dev ed3752e] V0.4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+12 feature branch 에서 aaa.txt 내용 추가 -> commint(V0.4 feature)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch feature
+Switched to branch 'feature'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch feature
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   aaa.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.4"
+[feature 7f51717] V0.4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+13 Conflict 해결 이후 dev에 병합
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge dev
+Auto-merging aaa.txt
+CONFLICT (content): Merge conflict in aaa.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge --continue
+[feature 7f51717] Merge branch 'dev' into feature
+
+
+14 dev 내용 master 에 병합
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch master
+Switched to branch 'master'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge dev
+Updating d7cc344..7f51717
+Fast-forward
+ aaa.txt | 4 +++-
+ ddd.txt | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 ddd.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+7f51717 (HEAD -> master, feature, dev) Merge branch 'dev' into feature
+04923e3 V0.4 feature
+5cc5691 V0.4 dev
+7fbc227 V0.3
+d7cc344 (master) V0.2
+e055738 V0.1
+b9aaf6c V0.0
+

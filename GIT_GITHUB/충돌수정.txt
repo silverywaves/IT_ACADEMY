@@ -1,0 +1,6 @@
+aaaaaaaaaaa
+(여기에 문제가 생겼다는 뜻)<<<<<<< HEAD   // 얘랑
+Master's Contents...
+=======	// 얘랑
+Dev's contents...
+>>>>>>> dev	// 얘랑 지우고 저장해서 수정!

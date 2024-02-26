@@ -1,0 +1,305 @@
+Microsoft Windows [Version 10.0.22631.2861]
+(c) Microsoft Corporation. All rights reserved.
+
+-- 사용자 정보 구성 --
+-- 이메일 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB>git config --global user.email "babyshu1210@gmail.com"
+-- 이름 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB>git config --global user.name "silverywaves"
+-- 정보 확인1 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB>git config --global --list
+user.email=babyshu1210@gmail.com
+user.name=silverywaves
+
+-- 정보 확인2 --
+내컴퓨터 > C > 사용자 > user(Administrator) > .gitconfig
+(숨김파일 보기 설정) 
+
+
+-- 저장소 복제하기 -- 
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git init
+Initialized empty Git repository in C:/Users/babys/Desktop/IT_ACADEMY/GIT_GITHUB/0226Quiz/.git/
+
+
+-- 깃 상태 확인 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        aaa.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+
+-- 파일 추가 --
+-- git add <파일>  :  commit 전단계 => untracked->tracked 파일로 변경 (for 버전관리 편의성)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add aaa.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   aaa.txt
+
+-- git commit -m "<메시지>" : git에 저장하는 단계
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "aaa.txt a dded
+[master (root-commit) 5483745] aaa.txt a dded
+ 1 file changed, 1 insertion(+)
+ create mode 100644 aaa.txt
+
+
+-- git log : 커밋 히스토리 조회 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log
+commit 5483745572e4b266e92d2cd38e472c5dc1e4b497 (HEAD -> master)
+Author: silverywaves <babyshu1210@gmail.com>
+Date:   Mon Feb 26 20:42:33 2024 +0900
+
+    aaa.txt a dded
+
+
+-- git log --online : 로그를 한줄 약식으로 조회 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+5483745 (HEAD -> master) aaa.txt a dded
+
+
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bbb.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "bbb.txt added"
+[master 68f024c] bbb.txt added
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bbb.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+68f024c (HEAD -> master) bbb.txt added
+5483745 aaa.txt a dded
+
+
+-- git add * : 모든 파일(*) 추가 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit  -m "ccc.txt added"
+[master 5fe7732] ccc.txt added
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ccc.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+5fe7732 (HEAD -> master) ccc.txt added
+68f024c bbb.txt added
+5483745 aaa.txt a dded
+
+
+-- git reset <옵션><커밋id> : 커밋 되돌리기 --
+-- 옵션
+-- hard(돌아가려는 이력 이후 모든 내용 삭제)
+-- mixed(이력 돌아가고 변경내용 남아있으나 인덱스 초기화 -> 커밋하려면 변경된 내용 다시 추가)
+-- soft(이력 돌아가고 변경내용, 인덱스 남아있음 다시 커밋할 수 있는 상태)
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git reset --hard 5fe7732
+HEAD is now at 5fe7732 ccc.txt added
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git reset --hard 68f024c
+HEAD is now at 68f024c bbb.txt added
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git reset --hard 5483745
+HEAD is now at 5483745 aaa.txt a dded
+
+
+-- git reflog : git 이력 확인(복구시 삭제된 커밋id 확인용) --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git reflog
+5483745 (HEAD -> master) HEAD@{0}: reset: moving to 5483745
+68f024c HEAD@{1}: reset: moving to 68f024c
+5fe7732 HEAD@{2}: reset: moving to 5fe7732
+5fe7732 HEAD@{3}: commit: ccc.txt added
+68f024c HEAD@{4}: commit: bbb.txt added
+5483745 (HEAD -> master) HEAD@{5}: commit (initial): aaa.txt a dded
+
+-- git reset 으로 복구 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git reset --hard 5fe7732
+HEAD is now at 5fe7732 ccc.txt added
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+5fe7732 (HEAD -> master) ccc.txt added
+68f024c bbb.txt added
+5483745 aaa.txt a dded
+
+
+
+-- branch  생성 --
+-- git branch : branch 확인 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch
+* main
+
+-- git branch 생성이름 : 생성이름의 브랜치 생성 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch dev
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch
+  dev
+* main
+
+-- switch : branch 이동 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch dev
+D       "GIT_GITHUB/git \352\270\260\353\263\270.txt"
+Switched to branch 'dev'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git branch
+* dev
+  main
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+8147e35 (HEAD -> dev, master) V0.3 ddd.txt added		// 버전 겹치면 안됨(커밋 메시지 중요)
+b1b15d2 V0.0 ccc.txt added
+a48d87a V0.0 aaa.txt added
+
+
+-- merge(충돌주의) --
+-- --ff 기본값, head, branch 이동 (commit 추가x)
+-- --no--ff 새로운 commit 생성
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch master
+Switched to branch 'master'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge dev
+Merge made by the 'ort' strategy.
+ eee.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 eee.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+971a6c0 (HEAD -> master) Merge branch 'dev'
+e353bf0 V0.4 fff.txt added
+7a1e522 (dev) V0.4 eee.txt added	// head 로 옮겨주기위해 dev에서 merge 실행
+8147e35 V0.3 ddd.txt added
+b1b15d2 V0.0 ccc.txt added
+a48d87a V0.0 aaa.txt added
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch dev
+Switched to branch 'dev'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge master
+Updating 7a1e522..971a6c0
+Fast-forward
+ fff.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fff.txt
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+971a6c0 (HEAD -> dev, master) Merge branch 'dev'
+e353bf0 V0.4 fff.txt added
+7a1e522 V0.4 eee.txt added
+8147e35 V0.3 ddd.txt added
+b1b15d2 V0.0 ccc.txt added
+a48d87a V0.0 aaa.txt added
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch master
+Switched to branch 'master'
+
+
+
+-- merge 주의사항 -- 충돌일으켜보기
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   aaa.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.5 aaa.txt modified"
+[master 89cc044] V0.5 aaa.txt modified
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch dev
+Switched to branch 'dev'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.5 aaa.txt modified by dev"
+[dev da765dc] V0.5 aaa.txt modified by dev
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch master
+Switched to branch 'master'
+
+-- 충동시키는 작업 진행 후 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge dev
+Auto-merging aaa.txt
+CONFLICT (content): Merge conflict in aaa.txt    - 충돌메시지
+Automatic merge failed; fix conflicts and then commit the result.
+
+-- 충돌 수정 후 --
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   aaa.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git add *
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git commit -m "V0.5 aaa.txt Conflict Solved.."
+[master 9d25781] V0.5 aaa.txt Conflict Solved..
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge --continue
+fatal: There is no merge in progress (MERGE_HEAD missing).
+=> 이유 : commit 전에 명령해야함. 지금은 commit 먼저 해서 그 시점에 바로 진행되어버림.
+=> 충돌 수정 후 commit 하거나 continue 하거나 둘 중 하나 선택해서 사용하기
+=> continue 사용시, 변경내용 보여주는 창이 하나 뜸 -> :wq 로 빠져나갈 수 있음
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+9d25781 (HEAD -> master) V0.5 aaa.txt Conflict Solved..
+da765dc (dev) V0.5 aaa.txt modified by dev
+89cc044 V0.5 aaa.txt modified
+971a6c0 Merge branch 'dev'
+e353bf0 V0.4 fff.txt added
+7a1e522 V0.4 eee.txt added
+8147e35 V0.3 ddd.txt added
+b1b15d2 V0.0 ccc.txt added
+a48d87a V0.0 aaa.txt added
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch dev
+Switched to branch 'dev'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git merge master
+Updating da765dc..9d25781
+Fast-forward
+ aaa.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git switch master
+Switched to branch 'master'
+
+C:\Users\babys\Desktop\IT_ACADEMY\GIT_GITHUB\0226Quiz>git log --oneline
+9d25781 (HEAD -> master, dev) V0.5 aaa.txt Conflict Solved..
+da765dc V0.5 aaa.txt modified by dev
+89cc044 V0.5 aaa.txt modified
+971a6c0 Merge branch 'dev'
+e353bf0 V0.4 fff.txt added
+7a1e522 V0.4 eee.txt added
+8147e35 V0.3 ddd.txt added
+b1b15d2 V0.0 ccc.txt added
+a48d87a V0.0 aaa.txt added
+
+

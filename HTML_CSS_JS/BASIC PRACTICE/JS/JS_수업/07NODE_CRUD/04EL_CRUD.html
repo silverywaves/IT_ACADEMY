@@ -67,9 +67,13 @@
                 const delEl = document.createElement('span');
                 delEl.classList.add('material-symbols-outlined');    // google icon class 등록
                 delEl.innerHTML='delete';   // google icon name 지정
+                // classList 와 className
+                // classList : JavaScript에서 노드의 클래스를 다룰 수 있도록 제공되는 기능
+                //             클래스 하나만 조작 / add, remove, contains, toggle 등의 함수 사용 가능
+                // className : 해당 요소에 지정된 class 값 / 무언가를 대입하면 class 전체가 바뀜(클래스 하나만 조작하고 싶을때 사용 불가)
                 
                 // style 적용
-                // style 은 이미 생성되어있는 노드에 사용가능(미리 요소가 있을때만)
+                // style 은 이미 생성되어있는 노    드에 사용가능(미리 요소가 있을때만)
                 // 새로 만들때는 setAttribute
                 delEl.setAttribute('style', 'cursor: pointer');
                 

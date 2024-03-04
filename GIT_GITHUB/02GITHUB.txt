@@ -1,8 +1,12 @@
 [올리기]
+-1-
 Local Repository -> Remote Repository(git push)
 [readME 파일 추가시 main 브랜치 추가됨 -> 새 repository 만들 때 체크X]
 C:\Users\Administrator\Documents\SV\git\새 폴더>git branch
 * master
+-2-
+git remote add origin 깃주소
+git branch
 
 -- branch 이름 main 으로 바꿈 --
 C:\Users\Administrator\Documents\SV\git\새 폴더>git branch -M main

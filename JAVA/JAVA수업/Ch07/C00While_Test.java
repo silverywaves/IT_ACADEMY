@@ -141,7 +141,7 @@ public class C00While_Test {
 //		while(num!=0) {
 //			//System.out.println("num : " + num);
 //			//System.out.print((num%10));
-//			result += (int) ((num%10)*(Math.pow(10, digit-1)));	// 제곱 계산
+//			result += (int) ((num%10)*(Math.pow(10, digit-1)));	// Math.pow 제곱 계산
 //			digit--;
 //			num=num/10;
 //		}
@@ -295,29 +295,29 @@ public class C00While_Test {
 		
 ////	----------------------------- 그냥 찍기
 //					
-//		높이 : 4		i		j(공백)		k(별)
+//		높이 : 4		i(행)	j(공백)		k(별)
 //		   *		0		0-2			0-0
 //		  ***		1		0-1			0-2
 //		 *****		2		0-0			0-4
 //		*******		3		-			0-6
-//			i=0;i<4;i++ / j=0;j<=3-i;j++ / k=0;k<=i*2;k++
-//		int i = 0;
+//			i=0;i<4;i++ / j=0;j<=2-i;j++ / k=0;k<=i*2;k++
+//		int i = 0;	
 //		int j = 0;
 //		int k = 0;
-//		while(i<4) {
-//			// 공백
+//		while(i<4) {	// 행증가(1-1)
+//			// 공백(2)
 //			j=0;
-//			while(j<=3-i) {
+//			while(j<=2-i) {
 //				System.out.print(" ");
 //				j++;
 //			}
-//			// 별
+//			// 별(3)
 //			k = 0;
 //			while(k<=i*2) {
 //				System.out.print("*");
 //				k++;
 //			}
-//			System.out.println();
+//			System.out.println();	// 행증가(1-2)
 //			i++;
 //		}
 //		--------------------------------------------------
@@ -363,15 +363,34 @@ public class C00While_Test {
 		
 ////	----------------------------- 높이입력받아서 찍기			
 		
-		
-		
-		
 //		
 //		높이 : 4		
 //		*******		1	-	7
 //		 *****		2	1	5
 //		  ***		3	2	3
 //		   *		4	3	1
+//				  i<4  i-1  ((n-1)*2)-2*i
+//		int n = sc.nextInt();
+//		int i = 0;
+//		int j = 0;
+//		int k = 0;
+//		while(i<n){
+//			// 공백
+//			j=0;
+//			while(j<=i) {
+//				System.out.print(" ");
+//				j++;
+//			}
+//			// 별
+//			k=0;
+//			while(((n-1)*2)-2*i) {
+//				System.out.print("*");
+//				k++;
+//			}
+//			System.out.println();
+//			i++;
+//		}
+//		-2-
 //		int n = sc.nextInt();
 //		for(int i=n;i>0;i--) {
 //			for(int j=n-i;j>0;j--) {
@@ -382,43 +401,76 @@ public class C00While_Test {
 //			}
 //			System.out.println();
 //		}
-//		
-//		높이 : 7		
-//		   *
-//		  ***
-//		 *****
-//		*******	
-//		 *****
-//		  ***
-//		   *
-		int n = sc.nextInt();
-		for(int i=1;i<=n;i++) {
-			for(int j=1;j<=n-i;j++) {
-				System.out.print(" ");
-			}
-			for(int j=1;j<=(i*2)-1;j++) {
-				System.out.print("*");
-			}
-			System.out.println();
-		}
-		for(int i=n-1;i>0;i--) {
-			for(int j=n-i;j>0;j--) {
-				System.out.print(" ");
-			}
-			for(int j=i*2-1;j>0;j--) {
-				System.out.print("*");
-			}
-			System.out.println();
-		}
+//		------------------------------------------------------
 		
-//	   높이 : 7
-//		*******	   
-//		 *****
-//		  ***
-//		   *
-//	      ***
-//		 *****
-//		*******	
+//		높이 : 7			i		j		 k
+//		   *			0		0-2		 0-0
+//		  ***			1		0-1		 0-2
+//		 *****			2		0-0		 0-4
+//		*******			3		-		 0-6	<- 분기처리
+//		 *****			4		0-0		 0-4
+//		  ***			5		0-1		 0-2
+//		   *			6		0-2		 0-0
+//				분기전		j=0;j<=(n/2-1)-i;j++ 	k=0;k<=2*i;k++
+//				분기후		j=0;j<=i-(n/2)-1;j++ 	k=0;k<=(((n/2)*2)*2)-2*i;k++
+//		int i=0;
+//		int j=0;
+//		int k=0;
+//		int n = sc.nextInt();
+//		while(i<n) {
+//			if(i<n/2+1) {
+//				// 공백
+//				j=0;
+//				while(j<=2-i) {
+//					System.out.print(" ");
+//					j++;
+//				}
+//				// 별
+//				k=0;
+//				while(k<=2*i) {
+//					System.out.print("*");
+//					k++;
+//				}
+//			}else {
+//				// 공백
+//				j=0;
+//				while(j<=i-(n/2)-1) {
+//					System.out.print(" ");
+//					j++;
+//				}
+//				// 별
+//				k=0;
+//				while(k<=(((n/2)*2)*2)-2*i) {
+//					System.out.print("*");
+//					k++;
+//				}
+//			}
+//			
+//			System.out.println();
+//			i++;
+//		}
+		
+//		-2-
+//		int n = sc.nextInt();
+//		for(int i=1;i<=n;i++) {
+//			for(int j=1;j<=n-i;j++) {
+//				System.out.print(" ");
+//			}
+//			for(int j=1;j<=(i*2)-1;j++) {
+//				System.out.print("*");
+//			}
+//			System.out.println();
+//		}
+//		for(int i=n-1;i>0;i--) {
+//			for(int j=n-i;j>0;j--) {
+//				System.out.print(" ");
+//			}
+//			for(int j=i*2-1;j>0;j--) {
+//				System.out.print("*");
+//			}
+//			System.out.println();
+//		}
+		
 
 		
 		

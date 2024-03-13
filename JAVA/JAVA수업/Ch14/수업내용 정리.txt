@@ -1,0 +1,44 @@
+* inter + face
+	상호간의(사이)=연결개념 + 얼굴 => 마주보는(맞닿아있는) 환경
+
+* API
+	Application Programming Interface
+		
+* 자주 사용하는 API
+	- Collection : java.util
+		- 다양한 자료구조를 동일한 방법으로 처리할 수 있도록 하는 라이브러리
+	- JDBS : java.sql
+		- 데이터베이스 프로그래밍 관련 라이브러리
+  
+  
+* Object.class
+	- 최상위 클래스
+	- 암시적으로 java.lang.Object 클래스 상속
+	
+
+* toString()
+	- Object 클래스에 선언되어있는 메서드
+	- 객체가 가지고 있는 정보나 값들을 문자열로 만들어 리턴
+	- 그 객체를 설명해주는 문자열 리턴
+	
+
+* equals()
+	- Object 클래스에 선언되어있는 메서드
+	- 두 객체가 동일객체인지(true) 아닌지(false) 동등비교시 사용
+	
+
+* hashCode
+	- 객체의 주소값을 변환하여 생성한 객체의 고유한 정수값
+	- hashCode() : JVM 이 객체를 식별하기 위해 부여한 정수형태의 위치값을 반환하는 함수(객체마다 다른값)
+
+* Wrapper class
+	- 기본 자료형을 객체타입으로 처리할 수 있도록 만든 클래스(자바에서는 Auto Boxing, UnBoxing 지원)
+	- Boxing(기본 자료형 -> Wrapper Class)
+	- UnBoxing(Wrapper Class -> 기본 자료형)
+	
+	
+* 날짜관련 클래스
+	- Date 클래스 or Calendar 클래스 (Date 클래스는 잘 사용 X)
+	
+* SimpleDateFormat
+	- 포매터 객체 생성

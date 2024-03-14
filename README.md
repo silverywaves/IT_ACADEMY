@@ -14,6 +14,7 @@
 * THEORY
 * BASIC PRACTICE
 * [API](https://docs.oracle.com/en/java/javase/17/docs/api/index.html)  - 개발환경 JDK17
+* [MINI PROJECT](https://github.com/silverywaves/MINIPROJECT.git)
   
 
 ### 📄 SERVLET

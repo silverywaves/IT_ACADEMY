@@ -4,6 +4,8 @@
 	- extends : 데이터 타입을 특정 클래스의 자식으로 제한 가능
 	
 	
-	
+* Generic v Object Upcasting
+=> 다운캐스팅 유무 차이
+=> Generic 이 규격화에 효과적
 	
 	

@@ -1,0 +1,51 @@
+* Input/Output 입출력
+* Stream : 입출력 장치와 프로그램 간 데이터 전송 통로(단방향)
+	 - 문자스트림 : Reader / Writer
+	 - 바이트스트림 : InputStream / OutputStream
+	 
+* 파일 : 컴퓨터에서 가장 기본이 되는 중요한 입출력 대상
+* 디렉터리(폴더) : 파일을 체계적으로 관리. 구분자 \
+
+
+<명령어 통하여 원본파일 대상파일로 복사(경로 c:\\tmp_io) 복사>
+
+------------- 컴파일
+C:\EMB\JAVA\src\Ch19>javac C03FileCopyMain.java
+
+------------- 디렉터리 조회
+C:\EMB\JAVA\src\Ch19>dir
+ C 드라이브의 볼륨: Windows
+ 볼륨 일련 번호: B088-B8B1
+
+ C:\EMB\JAVA\src\Ch19 디렉터리
+
+2024-03-19  오후 01:17    <DIR>          .
+2024-03-19  오후 01:17    <DIR>          ..
+2024-03-19  오후 01:12               582 C01WriterMain.java
+2024-03-19  오후 01:17               711 C02ReaderMain.java
+2024-03-19  오후 01:17               636 C03FileCopyMain.class
+2024-03-19  오후 01:17               225 C03FileCopyMain.java
+               4개 파일               2,154 바이트
+               2개 디렉터리  235,298,340,864 바이트 남음
+
+------------ 경로 이동
+C:\EMB\JAVA\src\Ch19>cd..
+
+------------ java 경로 복사할파일명 복사한파일명
+C:\EMB\JAVA\src>java Ch19.C03FileCopyMain test1.txt test2.txt
+test1.txt
+test2.txt
+
+
+
+
+-------------
+C:\EMB\JAVA\src\Ch19>javac C07FileCopyMain.java
+
+C:\EMB\JAVA\src\Ch19>cd..
+
+C:\EMB\JAVA\src>java Ch19.C07FileCopyMain cat.jpg copyCat.jpg
+
+C:\EMB\JAVA\src>
+
+

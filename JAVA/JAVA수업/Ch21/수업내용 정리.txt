@@ -1,0 +1,10 @@
+DBMS Driver jar 연결
+
+1. DB와 연결
+2. SQL객체 생성 + SQL 저장
+3. SQL 쿼리 실행(select / update or insert or delete)
+	- select =>  pstmt = conn.prepareStatement("select * from tbl_data");
+	- update or insert or delete => pstmt = conn.prepareStatement("update/insert/delete tbl_std set name=? where userid=?");
+4. 결과 반환 + 가공처리
+
+** 마지막에 자원 제거

@@ -1,0 +1,20 @@
+Socket
+- sw로 구현시킨 추상적인 포트
+- 원격지에 있는 프로그램간 연결에 사용
+
+
+** client
+- 접속 요청(Socket)
+- 메시지 송수신
+- 소켓 종료(socket.close())
+
+
+** Server
+- 요청대기(ServerSocket)
+- 요청 허용(accept())
+- 메시지 송수신(input/output)
+- 소켓 종료(socket.close())
+
+
+
+

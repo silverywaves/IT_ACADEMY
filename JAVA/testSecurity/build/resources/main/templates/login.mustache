@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!-- 2. 항상 요청하는 것이 아닌 ajax 요청과 같은 비동기 상태 요청 진행시 content 값을 가져온 후 함께 요청
+                XMLHttpRequest 요청시 setRequestHeader를 통해 _csrf, _csrf_header Key에 대한 토큰 값 넣어 요청 -->
+        <meta name="_csrf" content="{{_csrf.token}}">
+        <meta name="_csrf_header" content="{{_csrf.headerName}}">
+    </head>
+
+    <body>
+    login page<hr>
+    <!--커스텀 로그인 페이지-->
+    <form action="/loginProc" method="post" name="loginForm">
+        <input id="username" type="text" name="username" placeholder="id">
+        <input id="password" type="password" name="password" placeholder="password">
+        <!-- 1. POST 요청에서 설정
+            csrf enable 시키려면 csrf 토큰을 받아 서버측으로 전달할 요소 필요 -->
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        <input type="submit" value="login">
+    </form>
+
+    </body>
+</html>

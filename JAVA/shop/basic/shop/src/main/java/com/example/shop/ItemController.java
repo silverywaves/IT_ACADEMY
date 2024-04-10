@@ -23,7 +23,7 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     @GetMapping("/list")
     String list(Model model){   // <HTML에 서버데이터 넣기> 1. 파라미터에 Model model 넣기
         // 3. repository.입출력문법() 쓰기
-        itemRepository.findAll();
+        itemRepository.findAll();    // 테이블의 모든 데이터 가져옴
         model.addAttribute("name","이용복");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
         return "list.html";
     }

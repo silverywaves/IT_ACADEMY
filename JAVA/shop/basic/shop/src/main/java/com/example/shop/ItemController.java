@@ -33,10 +33,14 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         // a.add(30);
         // a.add(40);
         // System.out.println(a.get(0));    // ArrayList에서 하나만 출력
-
         List<Item> result = itemRepository.findAll();
         System.out.println(result.get(0).price);
         System.out.println(result.get(0).title);
+
+        // object만 출력하면 아무것도 안나와서 불편함 -> object 변수들 한번에 출력하는 법
+        // Item.java 이동 => toString 함수 재정의 or (Lombok 사용시) @ToString 사용
+        var a = new Item();
+        System.out.println(a.toString());
         
         model.addAttribute("name","이용복");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
         return "list.html";

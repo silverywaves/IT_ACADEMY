@@ -41,8 +41,11 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         // Item.java 이동 => toString 함수 재정의 or (Lombok 사용시) @ToString 사용
         var a = new Item();
         System.out.println(a.toString());
+//        System.out.println(a.toString());
+//        System.out.println(a.getClass());
+        a.setTitle("abc");  // a.title 에 들어감
         
-        model.addAttribute("name","이용복");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
+        model.addAttribute("name","비싼바지");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
         return "list.html";
     }
 

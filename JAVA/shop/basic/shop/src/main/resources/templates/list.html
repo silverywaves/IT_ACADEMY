@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+        <!--  css  -->
+    <link rel="stylesheet" href="/main.css">    <!-- 경로를 /부터 시작하면 static 폴더 파일들 사용가능 -->
 </head>
 <body>
     <!--  서버/Database의 데이터를 HTML에 집어넣을 수 있음 <- 템플릿엔진 사용(Thymeleaf)
             HTML에 서버데이터 넣으려면 templates 폴더에 .html 파일 넣어야함  -->
-    <div>
+<!--     <div>
         <img>
         <h4 th:text="${name}">바지</h4>     <!-- 3. th:text="${변수명}" -->
         <p>7억</p>
-    </div>
-    <div>
-        <img>
-        <h4>셔츠</h4>
-        <p>8억</p>
+    </div> -->
+    <!--  th:each="작명:${변수명}" 쓰면 html 쉽게 복붙가능(변수 안 자료갯수만큼 반복)
+            작명부분에 새로운 변수를 넣어 변수명 안에 있던 자료 하나씩 꺼내줄 수 있음  -->
+    <div class="card" th:each="i :${items}">
+        <img src="https://placehold.co/300">
+        <div>
+            <h4 th:text="${i.title}">바지</h4>
+            <p th:text="${i.price}">7억</p>
+        </div>
     </div>
 </body>
 </html>

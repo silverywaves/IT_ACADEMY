@@ -87,4 +87,23 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     //     return "redirect:/list";
     // }
 
+
+
+    // /detail/1 접속시 1번상품 보여주기, /detail/2 접속시 2번상품 보여주기, ...
+    // => URL 파라미터 문법 사용! 비슷한 URL의 API 여러개 만들 필요 X => @GetMapping("/detail/{작명}" - 여러개 가능)
+    @GetMapping("/detail/{id}")
+    String detail(@PathVariable long id, Model model){
+//        System.out.println(id);
+        // id가 1인 행을 불러오기 => repository변수.findById(행번호)
+        Optional<Item> result = itemRepository.findById(id);  // 기재한 행번호에 자료가 비어있을수도 있기때문에 Optional 사용
+        // Spring Data JPA 사용 시 Repository에서 리턴 타입을 Optional로 바로 받을 수 있도록 지원
+        // Optional : 'nu.isPresenll일 수도 있는 객체'를 감싸는 일종의 Wrapper 클래스
+        if(result.isPresent()) {    // result에 데이터가 있으면 아래 내용 수행
+//            System.out.println(result.get());   // result가 비어있는 상태일수도 있으니 그냥 get() 사용시 위험 -> if문으로 조건 설정
+            model.addAttribute("data",result.get());
+            return "detail.html";
+        } else {
+            return "redirect:/list";
+        }
+    }
 }

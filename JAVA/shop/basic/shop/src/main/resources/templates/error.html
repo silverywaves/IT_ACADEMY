@@ -1,5 +1,15 @@
 <!-- 타임리프 설치한 경우, error.html 만들어두면 에러발생시 error.html 자동으로 보여줌 -->
-<!-- 단, 데이터만 보내는 REST API 서버는 error.html 의미X <= ajax로 통신함 -->
+<!-- 단, 데이터만 보내는 REST API 서버는 error.html 의미X <= ajax로 통신함
+      REST API 서버 에러처리 방법
+      1. try catch 문법
+          try {
+              여기서 에러나면
+          } catch (Exception e) {
+              System.out.println(e.getMessage());  // 이 내용 실행. *참고 : 에러내역 기록해두려면 logging 라이브러리 추천
+          }
+      2. throws Exception
+      3. @ExceptionHandler or @ControllerAdvice
+-->
 <h4>에러페이지임</h4>
 
 <p th:text="${status}"></p>
@@ -7,3 +17,22 @@
 <p th:text="${path}"></p>
 <p th:text="${message}"></p>
 <p th:text="${exception}"></p>
+
+
+<!-- 
+  <try catch ex>
+    @GetMapping("/detail/{id}")
+    ResponseEntity<String> detail(@PathVariable long id, Model model){ 
+        // 예외처리 1. try catch
+        try {
+            throw new Exception("에러발생");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+//            return "redirect:/list";  // ajax로 서버랑 통신하면 redirect 사용불가 -> 에러코드 기입해주면 에러원인 쉽게 전달가능
+//            return ResponseEntity.status(200).body("내잘못아님");    // status : 정상이면 200, 유저잘못이면 4xx, 서버잘못이면 5xx 
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("내잘못아님");    // HttpStatus.에러상태 => 자동으로 바꿔줌 
+        }
+    }
+//        throw new Exception("에러발생");    // try catch 없이 throw new Exception() 사용시 경고문 => 함수정의시 throws Exception 붙이기
+
+-->

@@ -66,9 +66,9 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         // 기능 분리하기(함수에는 하나의 기능만 넣는 것을 권장함 & 하나의 클래스엔 비슷한 기능의 함수들만 보관하는게 좋음)
         // Controller 는 보통 데이터나 html 보내는 역할 -> DB 입출력기능 다른 함수로 분리
         // DB 입출력 기능
-        Item item = new Item();
-        item.setTitle(title);
-        item.setPrice(price);
+        // Item item = new Item();
+        // item.setTitle(title);
+        // item.setPrice(price);
 //        itemRepository.save(item의 object);
         itemRepository.save(item);    // html 보내는 기능
 

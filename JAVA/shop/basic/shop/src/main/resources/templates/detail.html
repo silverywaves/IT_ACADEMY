@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+    <div th:replace="~{nav.html::navbar}"></div>
+
+    <div class="detail">
+        <h4>상세페이지</h4>
+        <img src="https://placehold.co/300" alt="">
+        <h4 th:text="${data.title}">원피스</h4>
+        <p th:text="${data.price + '원'}">10000</p>
+    </div>
+
+</body>
+</html>

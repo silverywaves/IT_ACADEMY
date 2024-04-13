@@ -19,6 +19,8 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         //     this.itemRepository = itemRepository;
         //     // => new ItemRepository() 하나 뽑아서 itemRepository 변수에 넣으라고 지시
         // }
+    private final ItemService itemService;    // 변수 등록
+
     
     @GetMapping("/list")
     String list(Model model){   // <HTML에 서버데이터 넣기> 1. 파라미터에 Model model 넣기
@@ -65,20 +67,29 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
 
         // 기능 분리하기(함수에는 하나의 기능만 넣는 것을 권장함 & 하나의 클래스엔 비슷한 기능의 함수들만 보관하는게 좋음)
         // Controller 는 보통 데이터나 html 보내는 역할 -> DB 입출력기능 다른 함수로 분리
-        // DB 입출력 기능
+        // DB 입출력 기능    => ItemService 로 이동
         // Item item = new Item();
         // item.setTitle(title);
         // item.setPrice(price);
+
+//        new ItemService().saveItem(String title, Integer price);
+        // 다른 Class 함수 사용시 new Class().함수() 비추천 -why?-> Post 요청이 들어올때마다 object 새로 뽑으면 비효율적
+        // => 다른데서 미리 new Class() 해놓고 재사용하는게 좋음  <- 스프링한테 시키면 해줌
+        // 1. new Class() 할 클래스에 @Service or @Repository or @Component
+        // 2. 사용할 곳에서 변수로 등록
+        // 3. 변수사용
+        itemService.saveItem(title, price);
+        
 //        itemRepository.save(item의 object);
         itemRepository.save(item);    // html 보내는 기능
 
-        // var test = new HashMap<>();
-        // HashMap<key의 타입, value의 타입>
-        HashMap<String, Object> test = new HashMap<>();
-        // test.put("자료형이름","값")
-        test.put("name", "kim");
-        test.put("age", 20);
-        System.out.println(test.get("name");    // Map에서 자료 하나만 뽑아내기
+        // // var test = new HashMap<>();
+        // // HashMap<key의 타입, value의 타입>
+        // HashMap<String, Object> test = new HashMap<>();
+        // // test.put("자료형이름","값")
+        // test.put("name", "kim");
+        // test.put("age", 20);
+        // System.out.println(test.get("name");    // Map에서 자료 하나만 뽑아내기
 
         return "redirect:/list";    // redirect : 특정페이지로 돌아가게 만들 수 있음
         

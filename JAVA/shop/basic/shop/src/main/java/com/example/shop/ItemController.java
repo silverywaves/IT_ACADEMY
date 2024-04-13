@@ -91,19 +91,46 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
 
     // /detail/1 접속시 1번상품 보여주기, /detail/2 접속시 2번상품 보여주기, ...
     // => URL 파라미터 문법 사용! 비슷한 URL의 API 여러개 만들 필요 X => @GetMapping("/detail/{작명}" - 여러개 가능)
+//     @GetMapping("/detail/{id}")
+//     String detail(@PathVariable long id, Model model){
+// //        System.out.println(id);
+//         // id가 1인 행을 불러오기 => repository변수.findById(행번호)
+//         Optional<Item> result = itemRepository.findById(id);  // 기재한 행번호에 자료가 비어있을수도 있기때문에 Optional 사용
+//         // Spring Data JPA 사용 시 Repository에서 리턴 타입을 Optional로 바로 받을 수 있도록 지원
+//         // Optional : 'nu.isPresenll일 수도 있는 객체'를 감싸는 일종의 Wrapper 클래스
+//         if(result.isPresent()) {    // result에 데이터가 있으면 아래 내용 수행
+// //            System.out.println(result.get());   // result가 비어있는 상태일수도 있으니 그냥 get() 사용시 위험 -> if문으로 조건 설정
+//             model.addAttribute("data",result.get());
+//             return "detail.html";
+//         } else {
+//             return "redirect:/list";
+//         }
+//     }
+
+    // 예외처리
     @GetMapping("/detail/{id}")
-    String detail(@PathVariable long id, Model model){
-//        System.out.println(id);
-        // id가 1인 행을 불러오기 => repository변수.findById(행번호)
-        Optional<Item> result = itemRepository.findById(id);  // 기재한 행번호에 자료가 비어있을수도 있기때문에 Optional 사용
-        // Spring Data JPA 사용 시 Repository에서 리턴 타입을 Optional로 바로 받을 수 있도록 지원
-        // Optional : 'nu.isPresenll일 수도 있는 객체'를 감싸는 일종의 Wrapper 클래스
-        if(result.isPresent()) {    // result에 데이터가 있으면 아래 내용 수행
-//            System.out.println(result.get());   // result가 비어있는 상태일수도 있으니 그냥 get() 사용시 위험 -> if문으로 조건 설정
-            model.addAttribute("data",result.get());
-            return "detail.html";
-        } else {
-            return "redirect:/list";
-        }
+    String detail(@PathVariable long id, Model model) throws Exception {  // throws Exception : 이 함수는 에러를 뱉는다(정지시킨다는 경고)
+//        try {
+//            Optional<Item> result = itemRepository.findById(id);
+//            if (result.isPresent()) {
+//                model.addAttribute("data", result.get());
+//                return "detail.html";
+//            } else {
+//                return "redirect:/list";
+//            }
+//    }
+//        catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }   // => 유저가 타입을 이상하게 보내는 에러는 처리하지 못함
+
+        // => 모든 에러를 캐치 : @ExceptionHandler
+//    @ExceptionHandler(Exception.class)
+//    public void handler(){  // 옆에 있는 모든 API에서 Exception 발생시 안의 코드 실행
+//        return ResponseEntity.status(400).body("에러");
+//    }
+        // => 모든 Controller 파일의 에러 캐치 : @ControllerAdvice 사용 -> MyExceptionHandler 이동
+        throw new Exception();
     }
+
+        
 }

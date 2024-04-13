@@ -64,7 +64,9 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
 //        new Item();
 //        itemRepository.save();
 
-        var test = new HashMap<>();
+        // var test = new HashMap<>();
+        // HashMap<key의 타입, value의 타입>
+        HashMap<String, Object> test = new HashMap<>();
         // test.put("자료형이름","값")
         test.put("name", "kim");
         test.put("age", 20);

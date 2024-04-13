@@ -56,13 +56,17 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     //  2. 전송버튼 누르면 서버로 보내기 => POST method 요청시 서버로 데이터 전송 가능
     @PostMapping("/add")  
     // 유저가 <form>으로 보낸 데이터 출력
-//    String addPost(@RequestParam(name = "title") String title, String price) { // 여기에 기재된 타입으로 변환하라는 뜻, @RequestParam(name="title")는 생략가능
-    String addPost(@RequestParam Map formData) {  // <input>이 많다면? Map 자료형으로 유저가 보낸 모든 데이터 변환해서 한 변수에 다 담을 수 있음
+   String addPost(@RequestParam(name = "title") String title, Integer price) { // 여기에 기재된 타입으로 변환하라는 뜻, @RequestParam(name="title")는 생략가능
+    // String addPost(@RequestParam Map formData) {  // <input>이 많다면? Map 자료형으로 유저가 보낸 모든 데이터 변환해서 한 변수에 다 담을 수 있음
 //        System.out.println(formData);
 //        System.out.println(title);
 //        System.out.println(price);
-//        new Item();
-//        itemRepository.save();
+        // 3. 서버는 검사 후 이상없으면 DB에 저장
+        Item item = new Item();
+        item.setTitle(title);
+        item.setPrice(price);
+//        itemRepository.save(item의 object);
+        itemRepository.save(item);
 
         // var test = new HashMap<>();
         // HashMap<key의 타입, value의 타입>

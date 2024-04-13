@@ -17,7 +17,7 @@ public class Item { // => Item 이름으로 테이블 생성
     // unique=true : 해당 컬럼값이 유니크하지 않으면 테이블 입력 막아줌
     // columnDefinition="TEXT" : 컬럼타입 강제로 지정가능
     // [참고] 컬럼설정 변경사항은 DB에 반영이 자동으로 안될수도 있음
-    public Integer price;  // 컬럼용 변수에는 int 말고 Integer 강요함 => 20억까지 저장가능 // long/Long => 900경까지 저장가능
+    private Integer price;  // 컬럼용 변수에는 int 말고 Integer 강요함 => 20억까지 저장가능 // long/Long => 900경까지 저장가능
 
     @Override
     public String toString() {

@@ -46,6 +46,31 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         
         model.addAttribute("name","비싼바지");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
         return "list.html";
+
+    @GetMapping("/write")
+    String write() {
+        return "write.html";
+    }
+
+    // ajax로 데이터전송하면 @RequestBody 써야 출력 가능
+    //  2. 전송버튼 누르면 서버로 보내기 => POST method 요청시 서버로 데이터 전송 가능
+    @PostMapping("/add")  
+    // 유저가 <form>으로 보낸 데이터 출력
+//    String addPost(@RequestParam(name = "title") String title, String price) { // 여기에 기재된 타입으로 변환하라는 뜻, @RequestParam(name="title")는 생략가능
+    String addPost(@RequestParam Map formData) {  // <input>이 많다면? Map 자료형으로 유저가 보낸 모든 데이터 변환해서 한 변수에 다 담을 수 있음
+//        System.out.println(formData);
+//        System.out.println(title);
+//        System.out.println(price);
+//        new Item();
+//        itemRepository.save();
+
+        var test = new HashMap<>();
+        // test.put("자료형이름","값")
+        test.put("name", "kim");
+        test.put("age", 20);
+
+        return "redirect:/list";    // redirect : 특정페이지로 돌아가게 만들 수 있음
+        
     }
 
 }

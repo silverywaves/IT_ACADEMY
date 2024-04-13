@@ -53,7 +53,7 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     }
 
     // ajax로 데이터전송하면 @RequestBody 써야 출력 가능
-    //  2. 전송버튼 누르면 서버로 보내기 => POST method 요청시 서버로 데이터 전송 가능
+    //  2-1. 전송버튼 누르면 서버로 보내기 => POST method 요청시 서버로 데이터 전송 가능
     @PostMapping("/add")  
     // 유저가 <form>으로 보낸 데이터 출력
    String addPost(@RequestParam(name = "title") String title, Integer price) { // 여기에 기재된 타입으로 변환하라는 뜻, @RequestParam(name="title")는 생략가능
@@ -79,5 +79,12 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         return "redirect:/list";    // redirect : 특정페이지로 돌아가게 만들 수 있음
         
     }
+    // 2-2
+    // @PostMapping("/add")
+    // String addPost(@ModelAttribute Item item){  // @ModelAttribute : <input> 데이터들을 바로 object로 변환
+    //     System.out.println(item);
+    //     itemRepository.save(item);
+    //     return "redirect:/list";
+    // }
 
 }

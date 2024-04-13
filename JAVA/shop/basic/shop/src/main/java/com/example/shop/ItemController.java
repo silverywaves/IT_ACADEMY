@@ -68,6 +68,7 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         // test.put("자료형이름","값")
         test.put("name", "kim");
         test.put("age", 20);
+        System.out.println(test);
 
         return "redirect:/list";    // redirect : 특정페이지로 돌아가게 만들 수 있음
         

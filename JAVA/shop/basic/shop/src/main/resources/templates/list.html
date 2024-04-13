@@ -7,11 +7,19 @@
     <link rel="stylesheet" href="/main.css">    <!-- 경로를 /부터 시작하면 static 폴더 파일들 사용가능 -->
 </head>
 <body>
+    <!-- 별도의 파일에 저장해두고 한줄로 import해서 사용가능(thymeleaf)  -->
+    <!--    <div class="nav">-->
+    <!--        <a class="logo" href="">SpringMall</a>-->
+    <!--        <a href="/list">List</a>-->
+    <!--        <a href="/write">Write</a>-->
+    <!--    </div>-->
+    <div th:replace="~{nav.html::navbar}"></div>
+    
     <!--  서버/Database의 데이터를 HTML에 집어넣을 수 있음 <- 템플릿엔진 사용(Thymeleaf)
             HTML에 서버데이터 넣으려면 templates 폴더에 .html 파일 넣어야함  -->
 <!--     <div>
         <img>
-        <h4 th:text="${name}">바지</h4>     <!-- 3. th:text="${변수명}" -->
+        <h4 th:text="${name}">바지</h4>     <!-- 3. th:text="${변수명}" 
         <p>7억</p>
     </div> -->
     <!--  th:each="작명:${변수명}" 쓰면 html 쉽게 복붙가능(변수 안 자료갯수만큼 반복)

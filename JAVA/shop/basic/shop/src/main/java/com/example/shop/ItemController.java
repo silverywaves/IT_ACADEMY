@@ -12,15 +12,21 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     // JPA 데이터 입출력 3-STEP
     // 1. repository 만들기 => ItemRepository Interface 생성
     // 2. 원하는 클래스에 repository 등록
-    private final ItemRepository itemRepository;  // repository 등록(itemRepository에 DB 입출력 함수가 잔뜩 들어있음)
+    private final ItemRepository itemRepository;  // repository 등록(itemRepository에 DB 입출력 함수가 잔뜩 들어있음)   <- new ItemRepository()
         // 참고 : Lombok 없이 등록하려면 Alt+Insert 단축키로 Constructor 생성 후 @Autowired
         // @Autowired
         // public ItemController(ItemRepository itemRepository) {
         //     this.itemRepository = itemRepository;
         //     // => new ItemRepository() 하나 뽑아서 itemRepository 변수에 넣으라고 지시
         // }
-    private final ItemService itemService;    // 변수 등록
+    private final ItemService itemService;    // 변수 등록    <- new ItemService()
 
+    // 만약 Lombok @RequiredArgsConstructor 안쓰면 이렇게 적어야 함
+    @Autowired    // 각 클래스에서 object 알아서 뽑아서 각 변수에 넣어달라는 뜻
+    public ItemController(ItemRepository itemRepository, ItemService itemService){
+        this.itemRepository = itemRepository;
+        this.itemService = itemService;
+    }
     
     @GetMapping("/list")
     String list(Model model){   // <HTML에 서버데이터 넣기> 1. 파라미터에 Model model 넣기

@@ -28,8 +28,19 @@
         <img src="https://placehold.co/300">
         <div>
             <h4 th:text="${i.title}">바지</h4>
+            <a th:href="@{'/detail/' + ${i.id}}">상세보기</a>
             <p th:text="${i.price}">7억</p>
+            <a th:href="@{'/change/' + ${i.id}}">✏️</a>
+            <a th:href="@{'/del/' + ${i.id}}">✖️</a>
         </div>
     </div>
+
+    <!--
+        수정기능 만들기
+        1. 수정버튼 누르면 글수정 페이지로
+        2. 수정페이지엔 기존내용이 채워진 폼 존재
+        3. 전송누르면 변경된 내용으로 DB 수정
+     -->
+    
 </body>
 </html>

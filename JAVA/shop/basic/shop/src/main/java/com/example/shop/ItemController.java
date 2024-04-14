@@ -14,7 +14,7 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     // 2. 원하는 클래스에 repository 등록
     private final ItemRepository itemRepository;  // repository 등록(itemRepository에 DB 입출력 함수가 잔뜩 들어있음)   <- new ItemRepository()
         // 참고 : Lombok 없이 등록하려면 Alt+Insert 단축키로 Constructor 생성 후 @Autowired
-        // @Autowired
+        // @Autowired  
         // public ItemController(ItemRepository itemRepository) {
         //     this.itemRepository = itemRepository;
         //     // => new ItemRepository() 하나 뽑아서 itemRepository 변수에 넣으라고 지시
@@ -23,7 +23,7 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
 
     // 만약 Lombok @RequiredArgsConstructor 안쓰면 이렇게 적어야 함
     @Autowired    // 각 클래스에서 object 알아서 뽑아서 각 변수에 넣어달라는 뜻
-    public ItemController(ItemRepository itemRepository, ItemService itemService){
+    public ItemController(ItemRepository itemRepository, ItemService itemService){    // Dependency Injection : 1. object 여러개 생성하지 않아도 되어서 효율적 2. 클래스간 커플링(연관성) 감소효과
         this.itemRepository = itemRepository;
         this.itemService = itemService;
     }
@@ -151,6 +151,24 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
 //    }
         // => 모든 Controller 파일의 에러 캐치 : @ControllerAdvice 사용 -> MyExceptionHandler 이동
         throw new Exception();
+    }
+
+    // 상품 수정
+    @GetMapping("/change/{id}")
+    String change(@PathVariable long id, Model model) {
+    Optional<Item> result = itemRepository.findById(id);
+    if(result.isPresent()){
+        model.addAttribute("data", result.get());
+        return "change.html";
+    } else {
+        return "redirect:/list";
+    }
+    }
+
+    @PostMapping("/update")
+    String updateItem(Long id, String title, Integer price){
+        updateService.updateItem(id, title, price);
+        return "redirect:/list";
     }
 
         

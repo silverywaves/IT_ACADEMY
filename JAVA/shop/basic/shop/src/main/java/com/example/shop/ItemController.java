@@ -87,7 +87,7 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         itemService.saveItem(title, price);
         
 //        itemRepository.save(item의 object);
-        itemRepository.save(item);    // html 보내는 기능
+        // itemRepository.save(item);    // html 보내는 기능
 
         // // var test = new HashMap<>();
         // // HashMap<key의 타입, value의 타입>

@@ -20,6 +20,8 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         //     // => new ItemRepository() 하나 뽑아서 itemRepository 변수에 넣으라고 지시
         // }
     private final ItemService itemService;    // 변수 등록    <- new ItemService()
+    private final ListService listService;
+    private final UpdateService updateService;
 
     // 만약 Lombok @RequiredArgsConstructor 안쓰면 이렇게 적어야 함
     @Autowired    // 각 클래스에서 object 알아서 뽑아서 각 변수에 넣어달라는 뜻
@@ -31,28 +33,31 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
     @GetMapping("/list")
     String list(Model model){   // <HTML에 서버데이터 넣기> 1. 파라미터에 Model model 넣기
         // 3. repository.입출력문법() 쓰기
-        var result = itemRepository.findAll();  // findAll() : 테이블의 모든 데이터를 List 자료형으로 가져옴
-        System.out.println(result);
+//         var result = itemRepository.findAll();  // findAll() : 테이블의 모든 데이터를 List 자료형으로 가져옴
+//         System.out.println(result);
         
-        // => 여러 데이터를 한 변수에 넣으려면 ArrayList
-        // ArrayList 형식 [자료1, 자료2] : 자료를 컴마로 구분하여 출력(=JS의 array)
-        // ArrayList<ArrayList에 보관할 자료타입=출력중인 테이블 클래스> a = new ArrayList<>(); // 다양한 타입을 넣고 싶을때는 Object
-        // List<Object> a = new ArrayList<>();    // List : ArrayList 의 상위타입
-        // a.add(30);
-        // a.add(40);
-        // System.out.println(a.get(0));    // ArrayList에서 하나만 출력
-        List<Item> result = itemRepository.findAll();
-        System.out.println(result.get(0).price);
-        System.out.println(result.get(0).title);
+//         // => 여러 데이터를 한 변수에 넣으려면 ArrayList
+//         // ArrayList 형식 [자료1, 자료2] : 자료를 컴마로 구분하여 출력(=JS의 array)
+//         // ArrayList<ArrayList에 보관할 자료타입=출력중인 테이블 클래스> a = new ArrayList<>(); // 다양한 타입을 넣고 싶을때는 Object
+//         // List<Object> a = new ArrayList<>();    // List : ArrayList 의 상위타입
+//         // a.add(30);
+//         // a.add(40);
+//         // System.out.println(a.get(0));    // ArrayList에서 하나만 출력
+//         List<Item> result = itemRepository.findAll();
+//         System.out.println(result.get(0).price);
+//         System.out.println(result.get(0).title);
 
-        // object만 출력하면 아무것도 안나와서 불편함 -> object 변수들 한번에 출력하는 법
-        // Item.java 이동 => toString 함수 재정의 or (Lombok 사용시) @ToString 사용
-        var a = new Item();
-        System.out.println(a.toString());
-//        System.out.println(a.getClass());
-//        a.setTitle("abc");  // a.title 에 들어감
+//         // object만 출력하면 아무것도 안나와서 불편함 -> object 변수들 한번에 출력하는 법
+//         // Item.java 이동 => toString 함수 재정의 or (Lombok 사용시) @ToString 사용
+//         var a = new Item();
+//         System.out.println(a.toString());
+// //        System.out.println(a.getClass());
+// //        a.setTitle("abc");  // a.title 에 들어감
         
-        model.addAttribute("name","비싼바지");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
+//         model.addAttribute("name","비싼바지");   // 2. model.addAttribute(전달할 데이터 이름, 데이터) : 데이터가 해당이름으로 .html에 전달됨
+
+        listService.listItem(model);
+
         return "list.html";
 
     @GetMapping("/write")

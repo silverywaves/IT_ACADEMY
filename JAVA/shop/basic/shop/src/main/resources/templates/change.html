@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+    <!--  navBar  -->
+    <div th:replace="~{nav.html::navbar}"></div>
+
+    <!--  form  -->
+    <form action="/update" method="POST">
+        <input name="id" th:value="${data.id}" style="display: none">
+        <input name="title" th:value="${data.title}">  <!-- th:value => input에 입력된 값 -->
+        <input name="price" th:value="${data.price}">
+        <button type="submit" >수정</button>
+    </form>
+
+    <!--  서버에서 어떤 정보가 필요한데 없으면?
+            유저에게 보내라고 하거나, DB에서 뽑아보거나!
+    -->
+</body>
+</html>

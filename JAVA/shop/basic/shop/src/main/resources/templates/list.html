@@ -34,7 +34,18 @@
             <a th:href="@{'/del/' + ${i.id}}">✖️</a>
         </div>
     </div>
-
+    <button class="btn">버튼</button>
+    <script>    // html 파일 로드시 1회 실행됨
+        document.querySelectorAll('.btn')[0].addEventListener('click',function(){
+            // html 페이지의 class='btn' 찾아서 클릭시 코드 실행
+            fetch('/del', {         // 해당 URL로 GET 요청, AJAX 사용시 세부설정 가능
+                method : 'POST',
+                headers : {'Content-Type' : 'application/json'},    // json 데이터를 보내겠다는 뜻
+                // body : '전송할데이터' // 서버로 데이터 전송도 가능, array/object 자료도 전송가능(단, 문자로 변환해주는 함수 JSON.stringify({name:'kim'}) 사용)
+                body : JSON.stringify({name:'kim'})
+            })
+        })
+    </script>
     <!--
         수정기능 만들기
         1. 수정버튼 누르면 글수정 페이지로

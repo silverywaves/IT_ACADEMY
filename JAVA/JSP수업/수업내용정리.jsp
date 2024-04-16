@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+HTTP
+	- 헤더 : HTTP 메시지(요청/응답)&본문에 대한 정보
+		- General Header : 요청/응답이 이루어지는 날짜 및 시간등에 대한 일반적인 정보
+		- Request/Response Header
+			- Request : 웹브라우저가 웹서버에 요청하는 것을 텍스트로 변환한 메시지
+				- GET : 요청하는 데이터가 HTTP Request Message의 Header 부분의 url 에 담겨서 전송
+				- POST : HTTP Message의 Body 부분에 데이터가 담겨서 전송
+			- Response : 웹서버가 웹브라우저에 응답하는 콘텐츠가 들어가있는 메시지
+		- Entity Header : 실제 주고받는 컨텐츠와 관련된 http 본문에 대한 정보
+	- 본문 : 실제 통신과정에서 주고받을 컨텐츠 
     
 서버 > 웹서버, 응답자
 	: 응답에 대한 처리 담당 (웹 프로그래머 역할)

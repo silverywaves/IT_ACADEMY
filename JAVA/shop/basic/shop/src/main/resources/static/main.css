@@ -49,3 +49,10 @@ input {
     display: block;
     margin: auto;
 }
+.edit{
+    text-decoration: none;
+    color: black;
+}
+.card>div>span{
+    cursor : pointer;
+}

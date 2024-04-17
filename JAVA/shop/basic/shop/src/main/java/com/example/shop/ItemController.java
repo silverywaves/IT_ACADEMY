@@ -176,5 +176,20 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         return "redirect:/list";
     }
 
-        
+    @GetMapping("/del")
+    String del(){
+        System.out.println("요청중");
+        return "redirect:/list";
+    }
+
+//    @DeleteMapping("/del")
+//    String del(Long id) {
+//        itemRepository.deleteById(id);
+//        return "redirect:/list";
+//    }
+    @DeleteMapping("/del")
+    ResponseEntity<String> del(@RequestParam Long id){
+        itemRepository.deleteById(id);
+        return ResponseEntity.status(200).body("삭제완료");
+    }
 }

@@ -148,7 +148,9 @@ JSTL
 		- <c:forEach var="변수명" items="목록 데이터" begin="시작 인덱스" end="종료 인덱스">콘텐츠</c:forEach>
 		
 	
-	
+web.xml 생성 : 프로젝트 우클릭 -> Java EE Tools -> Generate Deployment Descriptor Stub
+
+
 	
 	
 	

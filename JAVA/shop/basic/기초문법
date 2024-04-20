@@ -3,3 +3,38 @@ basicController : url 접속시 원하는 내용 보여주기
 ItemController : HTML에 서버데이터 넣기
 
 
+Session
+- 장점 : 유저의 GET/POST 요청마다 로그인상태 체크가능
+- 단점 : DB 조회 많아서 부담 심해짐
+	=> session id 보관용 DB인 redis 사용(입출력 빠름)
+<세션방식 회원기능 직접 만들기>
+1. 로그인시 쿠키 만들어주고 세션데이터 DB에 저장
+2, 유저가 쿠키 제출시 거기 써있는걸로 DB 조회해서 로그인여부 판별
+
+token 방식(=JWT, Json Web Token)
+- 짧은 문자로 암호화
+- 장점 : DB 조회 X -> 부담 적어짐 -> 유저가 많거나 마이크로서비스 운영중이면 편함
+
+OAuth
+- 사용자가 자신의 계정 정보를 직접 제공하지 않고도 서드 파티 애플리케이션에 특정 권한을 부여(소셜로그인)
+
+
+<세션방식 회원 기능>
+1. 로그인시 쿠키 만들어주고 세션데이터 DB에 저장
+2. 유저가 쿠키 제출시 거기 써있는걸로 DB조회해서 로그인여부 판별
+
+<Spring Security 사용>
+build.gradle 추가-----------------------------------
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+----------------------------------------------------------
+Spring Security 처음 설치하면 모든 페이지가 로그인 필요
+=> id는 user, pw는 콘솔창에 출력
+-----------------------------------------------------------
+<회원가입 만들기>
+1. 회원가입 페이지
+2. 아이디, 비번, 이름 전송하면 DB에 저장
+단, 비번은 유저가 보낸 그대로 DB 저장X. Hashing해서 저장해야 함
+(해싱알고리즘 : bcrypt, argon2, scrypt, SHA-3시리즈 등)
+
+

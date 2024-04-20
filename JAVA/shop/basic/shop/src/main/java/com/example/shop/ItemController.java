@@ -176,11 +176,11 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         return "redirect:/list";
     }
 
-    @GetMapping("/del")
-    String del(){
-        System.out.println("요청중");
-        return "redirect:/list";
-    }
+    // @GetMapping("/del")
+    // String del(){
+    //     System.out.println("요청중");
+    //     return "redirect:/list";
+    // }
 
 //    @DeleteMapping("/del")
 //    String del(Long id) {

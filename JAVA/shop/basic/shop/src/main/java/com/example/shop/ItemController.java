@@ -192,4 +192,15 @@ public class ItemController {       // public : 다른 폴더에서도 사용 �
         itemRepository.deleteById(id);
         return ResponseEntity.status(200).body("삭제완료");
     }
+
+    // @GetMapping("/test2")
+    // String deleteItem(){
+    //     var result = new BCryptPasswordEncoder().encode("문자");
+    //     // Hasing 특징
+    //     // 1. 같은 문자 해싱하면 항상 같은 결과
+    //     // 2. 원래 문자 추론 불가능
+    //     System.out.println(result);
+    //     return "redirect:/list";
+    // }
+    
 }

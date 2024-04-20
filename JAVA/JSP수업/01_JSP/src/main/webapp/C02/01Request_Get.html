@@ -5,13 +5,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- url을 통해서 파라미터 전달됨 -->
+<!-- url을 통해서 파라미터 전달됨 
+	사용자 인증이나 설정값을 전달할 때 사용 => 입력한 값에 따라 다른 처리를 할 수 있는 다른 페이지로 데이터를 전달할 때 유용함
+-->
+
 	<form action="01Result.jsp" method="get">
+	<!-- 폼 생성
+		action="01Result.jsp": 폼 데이터가 전송될 대상 페이지의 경로(01Result.jsp 페이지로 데이터 전송)
+		method="get": 폼 데이터를 전송할 HTTP 메서드 지정(GET 방식 사용)
+	 -->
 		<input type="text" name="username">	<br />
 		<input type="text" name="password"> <br />
 		<input type="text" name="bg"> <br />
+		<!-- 입력 필드 생성
+			type="text": 입력 필드의 타입을 텍스트로 지정
+			name="이름": 입력 필드의 이름을 "이름"으로 지정(서버로 데이터를 전송할 때 사용)
+		 -->
 		<button>전송</button>
 	</form>
-
+	<!-- 
+		사용자는 "username", "password", "bg" 세 개의 텍스트 입력 필드에 값을 입력
+		-> "전송" 버튼을 클릭하면 입력한 값들은 GET 방식으로 01Result.jsp 페이지로 전송
+		-> 01Result.jsp 페이지에서는 전달된 파라미터 값을 사용하여 원하는 작업을 수행
+	 -->
 </body>
 </html>

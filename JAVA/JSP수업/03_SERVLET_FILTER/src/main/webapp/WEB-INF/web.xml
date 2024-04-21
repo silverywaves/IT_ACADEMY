@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>	<!-- XML 버전과 인코딩 명시 -->
+<!-- Jakarta EE 스키마를 사용하는 웹 애플리케이션 정의 -->
+<!-- xsi:schemaLocation : 스키마 위치를 지정, 버전은 6.0 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>03_SERVLET_FILTER</display-name>	<!-- 웹 애플리케이션의 디스플레이 이름 설정 -->
+  <welcome-file-list>	<!-- 웰컴 파일 리스트 설정 : 웹 애플리케이션 루트에 접속했을 때 보여질 파일을 순서대로 지정 -->
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+    <!-- web.xml 생성 : 프로젝트 우클릭 -> Java EE Tools -> Generate Deployment Descriptor Stub -->
+
+	<filter>	<!-- 정의 -->
+		<filter-name>C01FrontFilter</filter-name>
+		<filter-class>Filter.C01FrontFilter</filter-class>
+	</filter>
+	<filter-mapping>	<!-- 매핑 -->
+		<filter-name>C01FrontFilter</filter-name>
+		<url-pattern>/login</url-pattern>	
+	</filter-mapping>
+
+	<filter>
+		<filter-name>C02SecondFilter</filter-name>
+		<filter-class>Filter.C02SecondFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>C02SecondFilter</filter-name>
+		<url-pattern>/login</url-pattern>	
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>UTF_8_EncodingFilter</filter-name>
+		<filter-class>Filter.UTF_8_EncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UTF_8_EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>	<!-- 모든 요청에 대해 UTF-8 인코딩을 처리 -->
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>PermissionFilter</filter-name>
+		<filter-class>Filter.PermissionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PermissionFilter</filter-name>
+		<!-- 특정 경로에 대한 권한을 검사 -->
+		<url-pattern>/user</url-pattern>	
+		<url-pattern>/admin</url-pattern>	
+		<url-pattern>/member</url-pattern>	
+	</filter-mapping>
+	
+	<!-- 요청이 들어올 때마다 필터가 실행, 필터에서 정의된 로직이 처리된 후에 요청이 실제 서블릿으로 전달 -->
+</web-app>

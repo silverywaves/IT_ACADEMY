@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>04_LISTENER</display-name>
+  <welcome-file-list>	<!-- 웰컴 파일 리스트를 정의 -->
+  	<!-- 웹 애플리케이션의 루트 경로(/)에 접근했을 때 기본으로 제공될 파일들을 설정 -->
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+    
+  <!-- Listener 등록 -->
+  <listener>	<!-- listener 요소로 서블릿 컨텍스트의 속성 변경을 감지하는 리스너를 등록 -->
+  	<!-- listener-class: C01ServletContextAttrListener 클래스를 리스너로 등록 -->
+  	<listener-class>Listener.C01ServletContextAttrListener</listener-class>	
+  </listener>
+  
+</web-app>

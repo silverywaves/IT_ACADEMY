@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    <!-- 	
+    	DATASOURCE CONNECTION POOL
+     -->
+    <Resource driverClassName="com.mysql.cj.jdbc.Driver"	
+              url="jdbc:mysql://localhost/bookdb"
+              username="root"
+              password="1234"
+              name="jdbc/MysqlDB"
+              type="javax.sql.DataSource"
+              auth="Container"
+              maxActive="10"	
+              maxIdle="2"
+              maxWait="5000" />    
+              <!-- 
+              driverClassName : jdbc 드라이버 클래스 이름
+              url : DB서버 url
+              username : 접속유저명
+              password : 접속유저 패스워드
+              name : JNDI 이름(Context의 lookup() 사용해 자원을 찾을 때 사용)
+              type : Resource 타입 -> 패키지 이름을 포함한 클래스이름 지정
+              auth : 자원 관리의 주체 지정
+              maxActive : 최대로 생성될 수 있는 커넥션 개수(기본값 8, -1로 지정시 무제한) <= 개수 초과하여 요청시 maxWait까지 대기하다가 예외 발생
+              maxIdle : 사용되지 않고 풀에 존재할 수 있는 최대 커넥션 개수(기본값 8)
+              maxWait : 커넥션풀에 사용 가능한 커넥션이 없을때 대기하는 최단시간(밀리초단위, 기본값 -1:무한대기)
+              			해당 대기시간 후에도 사용가능한 커넥션이 없으면 예외발생
+               -->
+              
+     <!-- 
+   		HIKARI CONNECTION POOL
+     -->
+	<Resource name="jdbc/HikariDataSource"
+	          auth="Container"
+	          type="javax.sql.DataSource"
+	          factory="com.zaxxer.hikari.HikariJNDIFactory"
+	          jdbcUrl="jdbc:mysql://localhost:3306/bookdb"
+	          driverClassName="com.mysql.cj.jdbc.Driver"
+	          username="root"
+	          password="1234"
+	          maximumPoolSize="10"
+	          connectionTimeout="30000"
+	          idleTimeout="600000"
+	          maxLifetime="1800000"
+	    />  
+	    	  <!-- 
+	    	  maximumPoolSize : 커넥션풀의 최대 크기(기본값 10)
+	    	  connectionTimeout : 커넥션 요청 후 대기하는 시간
+	    	  idleTimeout : 놀고있는 커넥션이 자동 close 되기 전 대기시간
+	    	  maxLifetime : 커넥션 풀에서 대기할 수 있는 커넥션의 최대 생명주기(ms)
+	    	  
+	    	   -->
+	    
+
+</Context>

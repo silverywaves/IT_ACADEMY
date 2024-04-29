@@ -13,13 +13,10 @@ STS3 설치
 
 JDK 11 설정
 ---
-[JDK_11_DOWNLOAD](https://jdk.java.net/archive/)
-
+[JDK_11_DOWNLOAD](https://jdk.java.net/archive/)    
 
 1 환경변수 PATH 경로 설정    
-
 2 STS.ini 경로 설정 : 메모장 관리자권한으로 실행 후 설정    
-
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/992e2e96-c7cc-4b1a-96da-bdc52af90d4a)|
 
 

@@ -53,18 +53,14 @@ pom.xml 설정
 - System Lib Version 변경
   - Project 우클릭 -> properties -> Project Facets -> Java Version 11 선택 -> Runtimes -> Apache Tomcat 체크 -> Apply
 - SpringFramework Version & Jdk Version 변경<br>
-![20240417211232](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/ceba8d9d-3cc9-45f5-8fb0-48e2573eec3b)
  
 - Junit Version 변경<br>
-![20240417211329](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/470f9685-258c-47cb-9c52-a3a8c0aa25d1)
  
 - WORKSPACE 한글포함시 문제 오류 방지 Dependencies 추가<br>
-![20240417211455](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/86f42283-a3ec-45d8-b976-ea2f93d99c33)
  
 - Maven compiler Plugin Version 변경<br>
-  - [maven repository 사이트](https://mvnrepository.com/) 들어가서 xercesImpl 검색 -> Xerces2 J 클릭 -> 버전선택 -> Maven 탭 복사해서 붙여넣기
+  - [maven repository 사이트](https://mvnrepository.com/) 들어가서 xercesImpl 검색 -> Xerces2 J 클릭 -> 버전선택 -> Maven 탭 복사해서 붙여넣기<br>
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/f0a14066-d97d-48f1-91a1-d1c7a0250993)
-![20240417211431](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/5e110663-58ea-4f40-bf42-de97d9a1f6e1)
 
 > 전체코드 <br>
 ```
@@ -250,8 +246,6 @@ web.xml 설정
 ---
 - UTF 문자열 필터 설정 <br>
 
-![20240417215003](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/2853caed-809c-4401-948b-cf68fd852619)
-
 > 전체코드<br>
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -312,7 +306,6 @@ web.xml 설정
 lombok 설정 (Pom.xml)
 ---
 - 기존 log4j 설정 변경(Scope 변경)<br>
-![20240418120051](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/3c43d476-f32c-49a5-a067-a84d17dfb1bd)
 
 - Lombok Dependencies Code 가져오기(Maven Repository)
 - 프로젝트 Maven Clean -> Install , Project Update
@@ -320,12 +313,6 @@ lombok 설정 (Pom.xml)
 - Lombok 설치창 뜨면 STS 폴더 경로 선택후 Install
 - STS3 종료
 - STS3.ini 에서 lombok 경로를 상대경로로 지정
-
-  |-|
-  |-|
-  |<img  width="" height="" src="https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/dc91e511-ca11-45bd-b69f-1815cb078da5" />|
-  |<img  width="" height="" src="https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/a58939de-6024-4103-91d1-586169dfa4d5" />|
-
 - STS3 실행
 - HomeController 에서 log.info() 사용 확인 
 

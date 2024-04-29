@@ -146,7 +146,7 @@ pom.xml 설정
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-			<scope>runtime</scope>
+			<!-- <scope>runtime</scope> -->
 		</dependency>
 
 		<!-- @Inject -->
@@ -191,6 +191,16 @@ pom.xml 설정
 		    <version>2.12.2</version>
 		</dependency>
 		
+		<!-- LOMBOK -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.32</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		
 	</dependencies>
     <build>
         <plugins>
@@ -232,6 +242,8 @@ pom.xml 설정
         </plugins>
     </build>
 </project>
+
+
 
 
 ```

@@ -10,14 +10,15 @@ STS3 설치
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d907a356-35b7-4395-9776-dcc1152c7bae)
 
 
+
 JDK 11 설정
 ---
-|-|
-|-|
 |[JDK_11_DOWNLOAD](https://jdk.java.net/archive/)|
 |1 환경변수 PATH 경로 설정|
-|2 STS.ini 설정|
-|<img src="https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/a089ed39-d4d7-4b64-aa5d-f9ca00d18692" width="100%" height="300px" style="border:1px solid green" alt="TEMPLATE" />|
+|2 STS.ini 경로 설정 : 메모장 관리자권한으로 실행 후 설정|
+|![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/992e2e96-c7cc-4b1a-96da-bdc52af90d4a)|
+
+
 
 STS 문자 기본설정
 ---

@@ -5,11 +5,9 @@
 
 STS3 설치
 ---
-|-|
-|-|
 |[STS_DOWNLOAD](https://spring.io/tools)|
-|<img src="https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/d4bc47ed-03eb-4f6c-adbd-cf7e44c63ca5" width="800px" height="300px" style="border:1px solid green" alt="TEMPLATE" />|
-|<img src="https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/1cacace5-1239-4561-990a-8d3a1ae593eb" width="800px" height="300px" style="border:1px solid green" alt="TEMPLATE" />|
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3cf360a9-1ca5-4dfd-aa6a-cef8552c545d)
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d907a356-35b7-4395-9776-dcc1152c7bae)
 
 
 JDK 11 설정

@@ -74,7 +74,7 @@ pom.xml 설정
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
 	<artifactId>app</artifactId>
-	<name>ex00</name>
+	<name>ex00_init</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -150,7 +150,7 @@ pom.xml 설정
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-			<!-- <scope>runtime</scope> -->
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- @Inject -->
@@ -185,24 +185,16 @@ pom.xml 설정
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
-		</dependency>     
-		
-		<!-- Workspace 한글경로 포함문제 해결 -->
+		</dependency>
+		        
+		<!-- 작업경로에 한글경로문자 깨짐 방지 -->
+		<!-- https://mvnrepository.com/artifact/xerces/xercesImpl -->
 		<dependency>
 		    <groupId>xerces</groupId>
 		    <artifactId>xercesImpl</artifactId>
 		    <version>2.12.2</version>
 		</dependency>
-		   
-		<!-- lombok added -->
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.18.32</version>
-		    <scope>provided</scope>
-		</dependency>
-				
-						   
+		
 	</dependencies>
     <build>
         <plugins>

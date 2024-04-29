@@ -1,4 +1,4 @@
-# STS3 설치 | 기본환경 설정
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a22b745b-7dfb-4d12-b900-13eac6f488d7)# STS3 설치 | 기본환경 설정
 ---
 
 
@@ -315,17 +315,31 @@ web.xml 설정
 
 ```
 
+
 lombok 설정 (Pom.xml)
 ---
 - 기존 log4j 설정 변경(Scope 변경)<br>
 
-- Lombok Dependencies Code 가져오기(Maven Repository)
+- Lombok Dependencies Code 가져오기(Maven Repository)<br>
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/6c85bddd-5042-407c-896d-e6d62e786500)
 - 프로젝트 Maven Clean -> Install , Project Update
 - Maven Dependencies -> lombok.jar 우클릭 Run -> Application
 - Lombok 설치창 뜨면 STS 폴더 경로 선택후 Install
 - STS3 종료
 - STS3.ini 에서 lombok 경로를 상대경로로 지정
 - STS3 실행
-- HomeController 에서 log.info() 사용 확인 
+- HomeController 에서 log.info() 사용 확인<br>
 
+
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/eace2143-1043-4d69-a8cf-aac986ef99a1)
+- 권한 오류로 Install 안되는 경우 
+  - 프로젝트 Maven Dependencies -> lombok 우클릭 -> Properties -> Java Source Attachment -> External location 에서 lombok 경로 복사
+	-> 파일탐색기 실행하여 경로 이동 -> lombok 파일 우클릭 -> 관리자권한으로 실행
+  - cmd를 관리자 권한으로 실행 -> 명령어로 lombok 설치 경로로 이동 : cd [lombok경로] -> 명령어로 lombok 파일 실행 : java -jar [lombok+tab키]
+
+
+
+lombok 설정 (Pom.xml)
+---
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/b4a0ab54-d14e-4286-8ff1-7b7f90c8033a)
 

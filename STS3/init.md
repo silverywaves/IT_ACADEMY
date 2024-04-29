@@ -5,7 +5,7 @@
 
 STS3 설치
 ---
-|[STS_DOWNLOAD](https://spring.io/tools)|
+[STS_DOWNLOAD](https://spring.io/tools)
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3cf360a9-1ca5-4dfd-aa6a-cef8552c545d)
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d907a356-35b7-4395-9776-dcc1152c7bae)
 

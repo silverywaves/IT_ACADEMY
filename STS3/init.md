@@ -5,7 +5,7 @@
 
 STS3 설치
 ---
-[STS_DOWNLOAD](https://spring.io/tools)    
+[STS_DOWNLOAD](https://spring.io/tools)<br>
 
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3cf360a9-1ca5-4dfd-aa6a-cef8552c545d)
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/d907a356-35b7-4395-9776-dcc1152c7bae)
@@ -16,8 +16,8 @@ JDK 11 설정
 ---
 [JDK_11_DOWNLOAD](https://jdk.java.net/archive/)    
 
-1 환경변수 PATH 경로 설정    
-2 STS.ini 경로 설정 : 메모장 관리자권한으로 실행 후 설정    
+- 환경변수 PATH 경로 설정
+- STS.ini 경로 설정 : 메모장 관리자권한으로 실행 후 설정<br>
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/992e2e96-c7cc-4b1a-96da-bdc52af90d4a)
 
 

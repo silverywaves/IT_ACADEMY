@@ -322,24 +322,53 @@ lombok 설정 (Pom.xml)
 
 - Lombok Dependencies Code 가져오기(Maven Repository)<br>
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/6c85bddd-5042-407c-896d-e6d62e786500)
+
+> 코드<br>
+```
+		<!-- LOMBOK -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.32</version>
+		    <scope>provided</scope>
+		</dependency>
+```
+
 - 프로젝트 Maven Clean -> Install , Project Update
 - Maven Dependencies -> lombok.jar 우클릭 Run -> Application
 - Lombok 설치창 뜨면 STS 폴더 경로 선택후 Install
 - STS3 종료
-- STS3.ini 에서 lombok 경로를 상대경로로 지정
+- STS3.ini 에서 lombok 경로를 상대경로로 지정<br>
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/3b112c02-78a9-4095-a657-042f3863d715)
+
 - STS3 실행
 - HomeController 에서 log.info() 사용 확인<br>
+
+
 
 
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/eace2143-1043-4d69-a8cf-aac986ef99a1)
 - 권한 오류로 Install 안되는 경우 
   - 프로젝트 Maven Dependencies -> lombok 우클릭 -> Properties -> Java Source Attachment -> External location 에서 lombok 경로 복사
 	-> 파일탐색기 실행하여 경로 이동 -> lombok 파일 우클릭 -> 관리자권한으로 실행
-  - cmd를 관리자 권한으로 실행 -> 명령어로 lombok 설치 경로로 이동 : cd [lombok경로] -> 명령어로 lombok 파일 실행 : java -jar [lombok+tab키]
+  - cmd를 관리자 권한으로 실행 -> 명령어로 lombok 설치 경로로 이동 : cd [lombok경로] -> 명령어로 lombok 파일 실행 : java -jar [lombok+tab키]<br>
 
 
 
-lombok 설정 (Pom.xml)
+Spring TestContext Framework 설정
 ---
+- Spring TestContext Framework : Spring Application 테스트를 위한 핵심 기능들을 제공<br>
+- Lombok Dependencies Code 가져오기(Maven Repository)<br>
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/b4a0ab54-d14e-4286-8ff1-7b7f90c8033a)
-
+> 코드<br>
+```
+		<!-- SPRING TEST -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${org.springframework-version}</version>
+		    <!-- <scope>test</scope> -->
+		</dependency>
+```

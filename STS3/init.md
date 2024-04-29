@@ -27,9 +27,7 @@ STS 문자 기본설정
   - window > preferences >  General > Workspace > Text file encoding > UTF-8
   - window > preferences > files 검색 > UTF-8 변경
 
-|-|
-|-|
-|![20240428170016](https://github.com/MY-ALL-LECTURE/STS3/assets/84259104/afb5966c-7c30-42b2-ae60-724e2a7039b4)|
+
 
 톰캣 설정(생략)
 ---

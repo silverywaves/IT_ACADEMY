@@ -1,4 +1,4 @@
-![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a22b745b-7dfb-4d12-b900-13eac6f488d7)# STS3 설치 | 기본환경 설정
+# STS3 설치 | 기본환경 설정
 ---
 
 
@@ -353,7 +353,7 @@ lombok 설정 (Pom.xml)
   - 프로젝트 Maven Dependencies -> lombok 우클릭 -> Properties -> Java Source Attachment -> External location 에서 lombok 경로 복사
 	-> 파일탐색기 실행하여 경로 이동 -> lombok 파일 우클릭 -> 관리자권한으로 실행
   - cmd를 관리자 권한으로 실행 -> 명령어로 lombok 설치 경로로 이동 : cd [lombok경로] -> 명령어로 lombok 파일 실행 : java -jar [lombok+tab키]<br>
-
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/a22b745b-7dfb-4d12-b900-13eac6f488d7)
 
 
 Spring TestContext Framework 설정

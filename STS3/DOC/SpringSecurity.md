@@ -16,6 +16,10 @@
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/186e1091-b132-45e9-a410-cf7ea0a4a309)
 
 
+## 인증 처리 과정
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/02ce6354-72d6-43d4-a484-7a8989c7e6ce)
+
+
 ---
 # 실습
 ### 1. pom.xml 추가 후 maven update project
@@ -297,7 +301,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 
 ### 5. UserMapper에 SelectOnt 함수 추가
 ```
-	@Select("select * from user where username-#{username}")
+	@Select("select * from user where username=#{username}")
 	public UserDto SelectOne(String username);
 ```
 
@@ -362,4 +366,155 @@ public class PrincipalDetailsService implements UserDetailsService {
 		return collection;
 	}
 ```
+
+
+---
+## ***** 핸들러 추가 *****
+###  1. SecurityConfig 내용 추가
+```
+		// 로그인
+		http.formLogin()
+			.loginPage("/login")
+			.permitAll()
+			.successHandler(new CustomLoginSuccessHandler());
+```
+
+<br>
+
+### 2. config/auth/loginHandler/CustomLoginSuccessHandler.java 생성 후 확인 -> admin, manager, user 계정 생성 후 권한 잘뜨는지 확인하기
+```
+@Slf4j
+public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
+
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException, ServletException {
+		
+		log.info("CustomLoginSuccessHandler's onAuthenticationSuccess : "+authentication);
+		Collection<? extends GrantedAuthority> collection = authentication.getAuthorities();
+		
+		collection.forEach(role->{
+			
+			log.info("ROLE : " + role.getAuthority());
+			String role_str = role.getAuthority();
+
+			try {
+				// 권한이 둘 이상일 경우 고려하지 않은 상태임
+				if(role_str.equals("ROLE_USER")){
+					response.sendRedirect(request.getContextPath()+"/admin");
+					return ;
+				} else if(role_str.equals("ROLE_MANAGER")) {
+					response.sendRedirect(request.getContextPath()+"/manager");
+					return ;
+				} else {
+					response.sendRedirect(request.getContextPath()+"/user");
+					return ;
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		});
+
+	}
+
+}
+```
+
+---
+## ***** 사용자정보 뷰로 전달 *****
+### 1. controller에 Authentication 연결하는 방법
+- SecurityTestController.java
+```
+@Controller
+@Slf4j
+public class SecurityTestController {
+
+	@GetMapping("/user")
+	public void user(Authentication authentication, Model model) {	// controller에 Authentication 연결
+		log.info("GET /user.. authentication : "+authentication);
+		log.info("name : "+authentication.getName());
+		log.info("principal : "+authentication.getPrincipal());
+		log.info("authorities : "+authentication.getAuthorities());
+		log.info("details : "+authentication.getDetails());
+		log.info("credential : "+authentication.getCredentials());
+		
+		// Model로 전달
+		model.addAttribute("authentication",authentication);
+		
+		model.addAttribute("name",authentication.getName());
+		model.addAttribute("principal",authentication.getPrincipal());
+		model.addAttribute("isAuthenticated",authentication.isAuthenticated());
+	}
+```
+- user.jsp
+```
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body class="m-2 p-2">
+<h1>
+	USER PAGE
+</h1><hr>
+${authentication}
+<hr>
+${name}
+<hr>
+${principal}
+<hr>
+${isAuthenticated}
+</body>
+</html>
+```
+
+### 2. Authentication 가져오는 방법
+- SecurityTestController.java
+```
+	@GetMapping("/manager")
+	public void manager(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		model.addAttribute(authentication);
+		
+		log.info("GET /manager..");
+	}
+```
+- manager.jsp
+
+
+### 3. controller에서는 작업x, 뷰에서 바로 처리
+- jsp에서 spring security tag library를 사용하기 위한 준비
+```
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+```
+- admin.jsp
+```
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
+<html>
+<head>
+	<title>MEMO</title>
+	
+</head>
+<body class="m-2 p-2">
+		
+		<h1>ADMIN PAGE</h1>
+		
+		PRINCIPAL : <sec:authentication property="principal" /> <br>
+		USERDTO : <sec:authentication property="principal.userDto" /><br>
+		USERNAME : <sec:authentication property="principal.userDto.username" /><br>
+		ROLE : <sec:authentication property="principal.userDto.role" /><br>
+		ISAUTHENTICATED : <sec:authorize access="isAuthenticated()">LOGINED...</sec:authorize>
+</body>
+</html>
+```
+
+
+
 

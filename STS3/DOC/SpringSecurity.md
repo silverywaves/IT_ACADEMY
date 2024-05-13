@@ -84,6 +84,8 @@ spring-security-core / spring-security-web / spring-security-config / spring-sec
 	}
 ```
 - 로그인해보면 오류발생(패스워드 불일치) => 암호화 필요
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/e69473dc-57d0-41bc-97e8-374bcb7fae89)
+
 ```
 SecurityConfig 에 추가
 	@Autowired

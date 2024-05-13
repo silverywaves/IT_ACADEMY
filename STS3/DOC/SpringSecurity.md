@@ -20,6 +20,21 @@
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/02ce6354-72d6-43d4-a484-7a8989c7e6ce)
 
 
+1. 사용자가 폼에 id, pw 입력시 HTTPServletRequest에 id, pw 정보가 전달됨<br>
+   → AuthenticationFilter가 넘어온 id, pw 유효성 검사 실시<br>
+   
+2. 유효성 검사 후 실제 구현체인 UsernamePasswordAuthenticationToken 생성 후 넘김<br>
+
+3. 인증용 객체인 UsernamePasswordAuthenticationToken을 AutneticationManager에게 전달<br>
+
+4. UsernamePasswordAuthenticationToken을 AuthenticationProvider에게 전달<br>
+
+5. 사용자 아이디를 UserDetailsServcie로 보냄<br>
+   → UserDetailService는 사용자 아이디로 찾은 사용자의 정보를 UserDetails 객체로 만들어 AuthenticationProvider에게 전달<br>
+   
+6. DB에 있는 사용자 정보 가져옴<br>
+
+<br>
 ---
 # 실습
 ### 1. pom.xml 추가 후 maven update project
@@ -484,7 +499,23 @@ ${isAuthenticated}
 	}
 ```
 - manager.jsp
-
+```
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+<h1>
+	MANAGER PAGE
+</h1><hr>
+${authentication }
+</body>
+</html>
+```
 
 ### 3. controller에서는 작업x, 뷰에서 바로 처리
 - jsp에서 spring security tag library를 사용하기 위한 준비

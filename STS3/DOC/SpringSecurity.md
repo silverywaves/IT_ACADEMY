@@ -160,8 +160,11 @@ protected void configure(HttpSecurity http) throws Exception {
 ```
 <form action="${pageContext.request.contextPath}/login" method="post">
 	<input name="username"><br>
-	<imput name="password"><br>
+	<input name="password"><br>
 	<button>LOGIN</button>
+
+	<!-- CSFR TOKEN 전달 -->
+	<%-- <input type="hidden" name="_csrf" value="${_csrf.token}"/> --%>
 </form>
 ```
 
@@ -220,4 +223,143 @@ public class UserDto {
 ```
 
 <br>
+
+### 3. config/auth/PrincipalDetails.java 생성
+- @Data @NoArgsConstructor @AllArgsConstructor
+- implements UserDetails -> add unimplemented methods
+```
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PrincipalDetails implements UserDetails {
+
+	private UserDto userDto;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		return userDto.getPassword();
+	}
+
+	@Override
+	public String getUsername() {
+		return userDto.getUsername();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
+}
+
+```
+
+<br>
+
+### 4. config/auth/PrincipalDetailsService.java 생성
+- @Service
+- implements UserDetailsService -> add unimplemented methods
+```
+@Service
+public class PrincipalDetailsService implements UserDetailsService {
+
+	@Autowired
+	private UserMapper userMapper;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		return null;
+	}
+```
+
+<br>
+
+### 5. UserMapper에 SelectOnt 함수 추가
+```
+	@Select("select * from user where username-#{username}")
+	public UserDto SelectOne(String username);
+```
+
+<br>
+
+### 6. PrincipalDetailsService's loadUserByUsername 완성
+```
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		log.info("PrincipalDetailsService's loadUserByUsername invoke.. username : " + username);
+		UserDto userDto = userMapper.SelectOne(username);
+		if(userDto==null) {
+			throw new UsernameNotFoundException(username);
+		}
+		return new PrincipalDetails(userDto);
+	}
+```
+
+<br>
+
+### 7. SecurityConfig 수정
+```
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+//		auth.inMemoryAuthentication()
+//			.withUser("user")
+//			.password(passwordEncoder.encode("1234"))
+//			.roles("USER");
+//		
+//		auth.inMemoryAuthentication()
+//			.withUser("manager")
+//			.password(passwordEncoder.encode("1234"))			
+//			.roles("MANAGER");
+//		
+//		auth.inMemoryAuthentication()
+//			.withUser("admin")
+//			.password(passwordEncoder.encode("1234"))
+//			.roles("ADMIN");
+		
+		auth.userDetailsService(principalDetailsService)
+			.passwordEncoder(passwordEncoder);
+		
+	}
+```
+
+<br>
+
+### 8. PrincipalDetails's getAuthorities 완성시키기
+```
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> collection = new ArrayList();
+		collection.add(new GrantedAuthority() {
+
+			@Override
+			public String getAuthority() {
+				return userDto.getRole();
+			}
+			
+		});
+		return collection;
+	}
+```
 

@@ -1,0 +1,221 @@
+# Spring Security
+- 스프링 기반의 애플리케이션 보안(인증, 인가, 권한)을 담당하는 스프링 하위 프레임워크
+```
+  * 인증(Authentication)
+    - 사용자의 신원을 입증하는 과정
+    - ex. 아이디와 비밀번호를 입력하고 로그인하는 과정
+  
+  * 인가(Authorization)
+    - 사용자의 권한을 확인하는 과정
+    - ex. 권한 별로 접근할 수 있는 페이지가 상이함(관리자 페이지, 회원 페이지 등)
+```
+- 여러 보안 위협 방어 및 요청 헤더 보안 처리
+- 세션 기반 인증 제공
+- 필터 기반 동작
+
+![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/186e1091-b132-45e9-a410-cf7ea0a4a309)
+
+
+---
+# 실습
+### 1. pom.xml 추가 후 maven update project
+spring-security-core / spring-security-web / spring-security-config / spring-security-taglibs
+
+<br>
+
+### 2. web.xml 에 security filter 추가
+```
+	<filter>
+	        <filter-name>springSecurityFilterChain</filter-name>
+	        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	    
+	<filter-mapping>
+	        <filter-name>springSecurityFilterChain</filter-name>
+	        <url-pattern>/*</url-pattern>
+	</filter-mapping> 
+```
+
+<br>
+
+### 3. SecurityConfig 클래스 추가
+- @Configuration @EnableWebSecurity
+- extends WebSecurityConfigurerAdapter
+
+<br>
+
+### 4. 우클릭 source -> @Override Method : configure(HttpSecurity) 
+- 권한 부여 및 로그인/아웃 코드 작성
+
+<br>
+
+### 5. SecurityTestController 클래스 추가
+- @Controller @Slf4j
+- @GetMapping 으로 user, manager, admin 메서드 추가 후 로그 출력
+
+<br>
+
+### 6. view 추가
+- user page, manager page, admin page
+
+<br>
+
+### 7. SecurityConfig에서 우클릭 source -> configure(AuthenticationManagerBuilder)
+- USER, MANAGER, ADMIN 계정 추가
+```
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+		auth.inMemoryAuthentication()
+			.withUser("user")
+			.password("1234")
+			.roles("USER");
+		
+		auth.inMemoryAuthentication()
+			.withUser("manager")
+			.password("1234")
+			.roles("MANAGER");
+		
+		auth.inMemoryAuthentication()
+			.withUser("admin")
+			.password("1234")
+			.roles("ADMIN");
+		
+	}
+```
+- 로그인해보면 오류발생(패스워드 불일치) => 암호화 필요
+```
+SecurityConfig 에 추가
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+```
+- pw 암호화 진행
+```
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+		auth.inMemoryAuthentication()
+			.withUser("user")
+			.password(passwordEncoder.encode("1234"))
+			.roles("USER");
+		
+		auth.inMemoryAuthentication()
+			.withUser("manager")
+			.password(passwordEncoder.encode("1234"))			
+			.roles("MANAGER");
+		
+		auth.inMemoryAuthentication()
+			.withUser("admin")
+			.password(passwordEncoder.encode("1234"))
+			.roles("ADMIN");
+		
+	}
+```
+
+<br>
+
+### 8. 커스텀뷰페이지 작성을 위해 csrf 잠깐 끄기(켠 상태라면 모든 폼에 csrf 추가해야함)
+```
+protected void configure(HttpSecurity http) throws Exception {
+	http.csrf().disable();
+	...(생략)
+}
+```
+
+<br>
+
+### 9. 로그인/아웃 url 매핑
+```
+		// 로그인
+		http.formLogin()
+			.loginPage("/login")
+			.permitAll();
+		
+		// 로그아웃
+		http.logout()
+			.logoutUrl("/logout")
+			.permitAll();
+```
+
+<br>
+
+### 10. UserController 에 login 메서드 추가
+```
+@GetMapping("/login")
+	public void login() {
+		log.info("GET /login");
+	}
+```
+
+<br>
+
+### 11. login  viewPage 생성
+```
+<form action="${pageContext.request.contextPath}/login" method="post">
+	<input name="username"><br>
+	<imput name="password"><br>
+	<button>LOGIN</button>
+</form>
+```
+
+<br>
+
+---
+## ***** DB에 저장된 정보 가져와서 검증해보기 *****
+### 1. join.jsp 수정(username, password만 남기기)
+
+<br>
+
+### 2. UserMapper interface 생성 및 UserDto와 UserController 수정 후 DB에 저장 잘되는지 확인하기
+- UserMapper
+```
+@Mapper
+public interface UserMapper {
+
+	@Insert("insert into user values(#{username},#{password}, 'ROLE_USER')")
+	public void Insert(UserDto userDto);
+}
+```
+- UserDto
+```
+@Data
+public class UserDto {
+	@NotBlank(message="username을 입력하세요")
+	private String username;
+	@NotBlank(message="password을 입력하세요")
+	private String password;
+}
+```
+- UserController
+```
+@Autowired
+	UserMapper userMapper;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@PostMapping("/join")
+	public String join_post(@Valid UserDto userDto,BindingResult bindingResult ,Model model) {
+		log.info("POST /join..."+userDto);	
+		
+		if(bindingResult.hasFieldErrors()) {
+			//log.info("ValidationCheck Error : "+bindingResult.getFieldError("id").getDefaultMessage());
+			for(FieldError error  :bindingResult.getFieldErrors()) {
+				log.info("ErrorField : " + error.getField() + " ErrorMsg : " + error.getDefaultMessage());
+				model.addAttribute(error.getField(),error.getDefaultMessage());
+			}
+		}
+		userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
+		userMapper.Insert(userDto);
+		
+		return "redirect:/login";
+	}	
+```
+
+<br>
+

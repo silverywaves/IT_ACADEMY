@@ -22,6 +22,20 @@
 	: 권한 부여 처리를 위임해 접근 제어 결정을 쉽게하는 접근 결정 관리자 역할
 ```
 
+|필터명|설명|
+|-|-|
+|SecurityContextPersistenceFilter|SecurityContextRepository에서 SecurityContext(접근 주체와 인증에 대한 정보를 담고 있는 객체)를 가져오거나 저장|
+|LogoutFilter|설정된 로그아웃 URL로 오는 요청을 확인해 해당 사용자를 로그아웃 처리|
+|UsernamePasswordAuthenticationFilter|인증관리자. 폼 기반 로그인시 사용되는 필터. ID&PW 데이터를 파싱하여 인증 요청 위임.<br>인증 성공시 AuthenticationSuccessHandler, 실패시 AuthenticationFailureHandler 실행|
+|DefaultLoginPageGeneratingFilter|사용자가 로그인 페이지를 따로 지정하지 않았을 때 기본으로 설정하는 로그인 페이지 관련 필터|
+|BasicAuthenticationFilter|요청 헤더에 있는 ID&PW 데이터를 파싱하여 인증 요청 위임.<br>인증 성공시 AuthenticationSuccessHandler, 실패시 AuthenticationFailureHandler 실행|
+|RequestCacheAwareFilter|로그인 성공 후, 관련있는 캐시 요청이 있는지 확인하고 캐시 요청 처리|
+|SecurityContextHolderAwareRequestFilter|HttpServletRequest 정보를 감싸 필테 체인 상의 다음 필터들에게 부가 정보 제공|
+|AnonymousAuthenticationFilter|필터가 호출되는 시점까지 인증되지 않았다면 익명 사용자 전용 객체인 AnonymousAuthentication을 만들어 SecurityContext에 넣음|
+|SessionManagementFilter|인증된 사용자와 관련된 세션 작업 진행. 세션 변조 방지 전략 설정, 유효하지 않은 세션에 대한 처리, 세션 생성 전략을 세우는 등의 작업 처리|
+|ExceptionTranslationFilter|요청을 처리하는 중에 발생할 수 있는 예외를 위임하거나 전달|
+|FilterSecurityInterceptor|접근 결정 관리자. AccessDecisionManager로 권한 부여 처리 위임하여 접근 제어 결정을 쉽게 함.<br>해당 과정에서 이미 사용자 인증이 되어있으므로 유효한 사용자인지 확인 및 인가 관련 설정 가능|
+
 ## 인증 처리 과정
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/02ce6354-72d6-43d4-a484-7a8989c7e6ce)
 
@@ -344,6 +358,18 @@ public class PrincipalDetails implements UserDetails {
 }
 
 ```
+
+> UserDetails 클래스
+
+|메서드|설명|
+|-|-|
+|getAuthorities()|사용자가 가지고 있는 권한 목록 반환|
+|getUsername()|사용자를 식별할 수 있는 사용자 이름 반환<br>사용되는 값은 반드시 고유해야 함|
+|getPassword()|사용자의 비밀번호 반환<br>반드시 암호화해서 저장|
+|isAccountNonExpired()|계정이 만료되었는지 확인<br>만료되지 않았을 시 true 반환|
+|isAccountNonLocked()|계정이 잠금되었는지 확인<br>잠금되지 않았을 시 true 반환|
+|isCredentialsNonExpired()|비밀번호가 만료되었는지 확인<br>만료되지 않았을 시 true 반환|
+|isEnabled()|계정이 사용 가능한지 확인<br>사용 가능할 시 true 반환|
 
 <br>
 
@@ -785,3 +811,68 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 	MSG : ${msg }<br>
 </form>
 ```
+
+---
+## ***** 자동로그인(Local 방식) *****
+###  1. SecurityConfig 내용 추가
+> SecurityConfig
+```
+	//REMEMBER_ME
+	http.rememberMe()
+		.key("rememberMeKey")
+		.rememberMeParameter("remember-me")
+		.alwaysRemember(false)
+		.tokenValiditySeconds(60*60)
+		.tokenRepository(null);
+```
+
+###  2. 뷰페이지 자동로그인 체크박스 생성
+> login.jsp
+```
+<form action="${pageContext.request.contextPath}/login" method="post">
+	<input name="username"><br>
+	<input name="password"><br>
+	<input type="checkbox" name="remember-me"/>REMEMBER_ME<br>
+	<button>LOGIN</button>
+	
+	<!-- CSFR TOKEN 전달 -->
+	<%-- <input type="hidden" name="_csrf" value="${_csrf.token}"/> --%>
+	
+	MSG : ${msg }<br>
+</form>
+```
+
+###  3. @Bean 생성
+> SecurityConfig.java
+```
+	@Autowired
+	private DataSource dataSource3;
+	
+	@Bean
+	public PersistentTokenRepository tokenRepository() {
+		JdbcTokenRepositoryImpl repo = new JdbcTokenRepositoryImpl();
+		repo.setDataSource(dataSource3);
+		return repo;
+	}
+```
+
+###  4. ID/PW 저장을 위한 DB 테이블 생성
+> JdbcTokenRepositoryImpl 컨트롤+클릭해서 함수 살펴보기 → sql문 복사해서 워크벤치에서 추가
+```
+	/** Default SQL for creating the database table to store the tokens */
+	public static final String CREATE_TABLE_SQL = "create table persistent_logins (username varchar(64) not null, series varchar(64) primary key, "
+			+ "token varchar(64) not null, last_used timestamp not null)";
+```
+
+###  5. DB 연결
+> SecurityConfig 에 등록
+```
+		//REMEMBER_ME
+		http.rememberMe()
+			.key("rememberMeKey")
+			.rememberMeParameter("remember-me")
+			.alwaysRemember(false)
+			.tokenValiditySeconds(60*60)
+			.tokenRepository(tokenRepository());
+```
+

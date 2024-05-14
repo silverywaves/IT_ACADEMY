@@ -132,6 +132,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 ```
 
+> method 정리
+- 
+
 <br>
 
 ### 5. SecurityTestController 클래스 추가
@@ -565,6 +568,8 @@ ${isAuthenticated}
 </html>
 ```
 
+<br>
+
 ### 2. Authentication 가져오는 방법
 - SecurityTestController.java
 ```
@@ -594,6 +599,8 @@ ${authentication }
 </body>
 </html>
 ```
+
+<br>
 
 ### 3. controller에서는 작업x, 뷰에서 바로 처리
 - jsp에서 spring security tag library를 사용하기 위한 준비
@@ -637,6 +644,8 @@ ${authentication }
 			.failureHandler(new CustomAuthenticationFailureHandler());
 ```
 
+<br>
+
 ### 2. config/auth/loginHandler/CustomAuthenticationFailureHandler 생성
 - implements AuthenticationFailureHandler 
 - add unimplemented methods
@@ -679,6 +688,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 			.addLogoutHandler(new CustomLogoutHanlder());
 ```
 
+<br>
+
 ### 2. config/auth/loginHandler/CustomLogoutHanlder 생성
 - implements LogoutHandler 
 - add unimplemented methods
@@ -714,6 +725,8 @@ public class CustomLogoutHanlder implements LogoutHandler {
 	}
 ```
 
+<br>
+
 ### 2. config/auth/loginHandler/CustomLogoutSuccessHandler 생성
 - implements LogoutSuccessHandler 
 - add unimplemented methods
@@ -742,6 +755,8 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 		.accessDeniedHandler(new CustomAccessDeniedHandler());		// 접근 권한 실패시 예외처리
 ```
 
+<br>
+
 ### 2. config/auth/exception/CustomAccessDeniedHandler 생성
 - implements AccessDeniedHandler 
 - add unimplemented methods
@@ -759,6 +774,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
 }
 ```
+
+<br>
 
 ### 3. config/auth/exception/CustomAthenticationEntryPoint 생성
 - implements AuthenticationEntryPoint 
@@ -826,6 +843,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 		.tokenRepository(null);
 ```
 
+<br>
+
 ###  2. 뷰페이지 자동로그인 체크박스 생성
 > login.jsp
 ```
@@ -842,6 +861,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 </form>
 ```
 
+<br>
+
 ###  3. @Bean 생성
 > SecurityConfig.java
 ```
@@ -856,6 +877,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 	}
 ```
 
+<br>
+
 ###  4. ID/PW 저장을 위한 DB 테이블 생성
 > JdbcTokenRepositoryImpl 컨트롤+클릭해서 함수 살펴보기 → sql문 복사해서 워크벤치에서 추가
 ```
@@ -863,6 +886,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 	public static final String CREATE_TABLE_SQL = "create table persistent_logins (username varchar(64) not null, series varchar(64) primary key, "
 			+ "token varchar(64) not null, last_used timestamp not null)";
 ```
+
+<br>
 
 ###  5. DB 연결
 > SecurityConfig 에 등록

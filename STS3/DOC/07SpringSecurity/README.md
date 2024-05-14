@@ -15,6 +15,12 @@
 
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/186e1091-b132-45e9-a410-cf7ea0a4a309)
 
+```
+- UsernamePasswordAuthenticationFilterSecurityInterceptor
+	: id, pw 넘어어오면 인증 요청을 위임하는 인증 관리자 역할
+- FilterSecurityInterceptor
+	: 권한 부여 처리를 위임해 접근 제어 결정을 쉽게하는 접근 결정 관리자 역할
+```
 
 ## 인증 처리 과정
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/02ce6354-72d6-43d4-a484-7a8989c7e6ce)
@@ -33,6 +39,12 @@
    → UserDetailService는 사용자 아이디로 찾은 사용자의 정보를 UserDetails 객체로 만들어 AuthenticationProvider에게 전달<br>
    
 6. DB에 있는 사용자 정보 가져옴<br>
+
+7. 입력정보와 UserDetails 정보를 비교해 실제 인증 처리 진행
+ 
+8. 인증 완료시 SecurityContextHolder에 Authentication 저장<br>
+	- 인증 성공시 AuthenticationSuccessHandler 실행<br>
+	- 인증 실패시 AuthenticationFailureHandler 실행<br>
 
 <br>
 

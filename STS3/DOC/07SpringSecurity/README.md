@@ -79,6 +79,44 @@ spring-security-core / spring-security-web / spring-security-config / spring-sec
 
 ### 4. 우클릭 source -> @Override Method : configure(HttpSecurity) 
 - 권한 부여 및 로그인/아웃 코드 작성
+```
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private PrincipalDetailsService principalDetailsService;
+	
+	//웹요청 처리 
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		//CSRF TOKEN 비활성화
+		http.csrf().disable();
+		
+		//CSRF TOKEN을 쿠키로 전달(개발자도구(F12) 확인)
+		//http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+		
+		
+		http.authorizeRequests()
+			.antMatchers("/","/join").permitAll()
+			.antMatchers("/user").hasRole("USER") 		//ROLE_USER
+			.antMatchers("/member").hasRole("MEMBER") 	//ROLE_MEMBER
+			.antMatchers("/admin").hasRole("ADMIN") 	//ROLE_ADMIN
+			.anyRequest().authenticated();
+					
+//		//로그인
+		http.formLogin()
+			.loginPage("/login")
+			.permitAll();
+		
+//		
+//		//로그아웃
+		http.logout()
+			.logoutUrl("/logout")
+			.permitAll();
+	}
+```
 
 <br>
 
@@ -119,8 +157,8 @@ spring-security-core / spring-security-web / spring-security-config / spring-sec
 - 로그인해보면 오류발생(패스워드 불일치) => 암호화 필요
 ![image](https://github.com/silverywaves/IT_ACADEMY/assets/155939946/e69473dc-57d0-41bc-97e8-374bcb7fae89)
 
+> SecurityConfig.java
 ```
-SecurityConfig 에 추가
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -398,7 +436,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 
 
 ---
-## ***** 핸들러 추가 *****
+## ***** 로그인 성공 핸들러 추가 *****
 ###  1. SecurityConfig 내용 추가
 ```
 		// 로그인
@@ -430,13 +468,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			try {
 				// 권한이 둘 이상일 경우 고려하지 않은 상태임
 				if(role_str.equals("ROLE_USER")){
-					response.sendRedirect(request.getContextPath()+"/admin");
+					response.sendRedirect(request.getContextPath()+"/user");
 					return ;
 				} else if(role_str.equals("ROLE_MANAGER")) {
 					response.sendRedirect(request.getContextPath()+"/manager");
 					return ;
 				} else {
-					response.sendRedirect(request.getContextPath()+"/user");
+					response.sendRedirect(request.getContextPath()+"/admin");
 					return ;
 				}
 			} catch(Exception e) {
@@ -560,6 +598,190 @@ ${authentication }
 </html>
 ```
 
+---
+## ***** 로그인 실패 핸들러 추가 *****
+###  1. SecurityConfig 내용 추가
+> SecurityConfig.java
+```
+//		//로그인
+		http.formLogin()
+			.loginPage("/login")
+			.permitAll()
+			.successHandler(new CustomLoginSuccessHandler())
+			.failureHandler(new CustomAuthenticationFailureHandler());
+```
 
+### 2. config/auth/loginHandler/CustomAuthenticationFailureHandler 생성
+- implements AuthenticationFailureHandler 
+- add unimplemented methods
+- 로그인 실패 내용 띄우고 이동할 경로 설정
+> CustomAuthenticationFailureHandler.java
+```
+public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
+	@Override
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+			AuthenticationException exception) throws IOException, ServletException {
 
+		System.out.println("로그인 실패 : " + exception);
+		
+		// 실패시 이동할 경로
+		response.sendRedirect(request.getContextPath()+"/login?error="+exception.getMessage());
+		
+	}
+
+}
+```
+  
+> UserController.java
+```
+	@GetMapping("/login")
+	public void login(Exception exception) {
+		log.info("GET /login.."+exception);
+	}
+```
+
+---
+## ***** 로그아웃 핸들러 추가 *****
+###  1. SecurityConfig 내용 추가
+> SecurityConfig.java
+```
+//		//로그아웃
+		http.logout()
+			.logoutUrl("/logout")
+			.permitAll()
+			.addLogoutHandler(new CustomLogoutHanlder());
+```
+
+### 2. config/auth/loginHandler/CustomLogoutHanlder 생성
+- implements LogoutHandler 
+- add unimplemented methods
+```
+public class CustomLogoutHanlder implements LogoutHandler {
+
+	@Override
+	public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+
+		System.out.println("CusdtomLogoutHandler's logout() invoke..");
+
+		// 세션 초기화
+		HttpSession session = (HttpSession)request.getSession(false);
+		if(session!=null)
+			session.invalidate();
+		
+	}
+
+}
+```
+
+---
+## ***** 로그아웃 성공 핸들러 추가 *****
+###  1. SecurityConfig 내용 추가
+```
+//		//로그아웃
+		http.logout()
+			.logoutUrl("/logout")
+//			.logoutSuccessUrl("/")	// logoutSuccessHandler와 같이 logoutSuccessHandler를 적용시 우선적용
+			.permitAll()
+			.addLogoutHandler(new CustomLogoutHanlder())
+			.logoutSuccessHandler(new CustomLogoutSuccessHandler());
+	}
+```
+
+### 2. config/auth/loginHandler/CustomLogoutSuccessHandler 생성
+- implements LogoutSuccessHandler 
+- add unimplemented methods
+> CustomLogoutSuccessHandler
+```
+public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
+
+	@Override
+	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+			throws IOException, ServletException {
+
+		System.out.println("CustomLogoutSuccessHandler's onLogoutSuccess) invoke..");
+		response.sendRedirect(request.getContextPath());
+	}
+
+}
+```
+
+---
+## ***** 예외 핸들러 추가 *****
+###  1. SecurityConfig 내용 추가
+```
+	//예외처리
+	http.exceptionHandling()
+		.authenticationEntryPoint(new CustomAthenticationEntryPoint())	// 미인증 사용자를 처리
+		.accessDeniedHandler(new CustomAccessDeniedHandler());		// 접근 권한 실패시 예외처리
+```
+
+### 2. config/auth/exception/CustomAccessDeniedHandler 생성
+- implements AccessDeniedHandler 
+- add unimplemented methods
+> CustomAccessDeniedHandler
+```
+public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+
+	@Override
+	public void handle(HttpServletRequest request, HttpServletResponse response,
+			AccessDeniedException accessDeniedException) throws IOException, ServletException {
+		
+		System.out.println("CustomAccessDeniedHandler's handle() invoke.. ex : "+accessDeniedException);
+		request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+	}
+
+}
+```
+
+### 3. config/auth/exception/CustomAthenticationEntryPoint 생성
+- implements AuthenticationEntryPoint 
+- add unimplemented methods
+> CustomAthenticationEntryPoint
+```
+public class CustomAthenticationEntryPoint implements AuthenticationEntryPoint {
+
+	@Override
+	public void commence(HttpServletRequest request, HttpServletResponse response,
+			AuthenticationException authException) throws IOException, ServletException {
+
+		System.out.println("CustomAthenticationEntryPoint's commence() invoke.. err : "+authException);
+
+		request.setAttribute("msg","인증이 필요한 페이지입니다.");
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+	}
+
+}
+```
+
+> CustomAuthenticationFailureHandler
+```
+public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
+
+	@Override
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+			AuthenticationException exception) throws IOException, ServletException {
+
+		System.out.println("로그인 실패 : " + exception);
+		
+		request.setAttribute("msg","로그인 실패.. ID/PW 확인하세요");
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		
+	}
+
+}
+```
+
+> login.jsp
+```
+<form action="${pageContext.request.contextPath}/login" method="post">
+	<input name="username"><br>
+	<input name="password"><br>
+	<button>LOGIN</button>
+	
+	<!-- CSFR TOKEN 전달 -->
+	<%-- <input type="hidden" name="_csrf" value="${_csrf.token}"/> --%>
+	
+	MSG : ${msg }<br>
+</form>
+```

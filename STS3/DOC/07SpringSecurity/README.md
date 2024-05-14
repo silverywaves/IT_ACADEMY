@@ -131,11 +131,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.permitAll();
 	}
 ```
+#
 
 > method 정리
-- 
+- configure() : 스프링 시큐리티의 모든 기능(인증, 인가)을 사용하지 않게 설정
+	- requestMatchers() : 특정 요청과 일치하는 url에 대한 액세스 설정
+	- ignoring() : requestMatchers()에 적힌 url에 대해 인증, 인가 서비스를 적용하지 않음
+ <br>
+ 
+- filterChain() : 특정 HTTP 요청에 대해 웹 기반 보안 구성. 인증/인가 및 로그인, 로그아웃 설정
+	- permitAll() : 누구나 접근 가능. requestMatchers()에 기재된 url은 인증, 인가 없이도 접근 가능
+	- anyRequest() : 해당 코드 윗 줄에서 설정한 url 이외의 요청에 대해 설정
+	- authenticated() : 인가는 필요하지 않지만 인증이 필요
+	- loginPage() : 로그인 페이지 설정
+	- defaultSuccessUrl() : 로그인 성공 시 이동할 경로
+	- logoutSuccessUrl() : 로그아웃 성공 시 이동할 경로	
+	- invalidateHttpSession() : 로그아웃 이후에 세션 전체 삭제 여부
+	- csrf().disable() : CSRF 설정 비활성화. 원래는 CSRF 공격을 방지하기 위해 활성화하는 것이 좋음
+ <br>
 
-<br>
+- daoAuthenticationProvider() : 인증 관리자 설정. 사용자 정보를 가져올 서비스를 제정의하거나, 인증 방법 등을 설정
+	- setUserDetailsService() : 사용자 정보를 가져올 서비스 설정. 반드시 UserDetailsService를 상속받은 클래스여야 함
+	- setPasswordEncoder() : 비밀번화 암호화를 위한 인코더 설정
+ <br>
+ 
+- bCryptPasswordEncoder() : 비밀번호 암호화를 위한 빈 등록
+#
 
 ### 5. SecurityTestController 클래스 추가
 - @Controller @Slf4j

@@ -45,3 +45,4 @@
 * [ADsP](ADsP)
 * [cosPro2](https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/cosPro)
 * [SQLD](SQLD)
+* [정보처리산업기사)(https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/IEIP)

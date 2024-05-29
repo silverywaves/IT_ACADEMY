@@ -291,10 +291,393 @@
 - groupmod <-옵션> [그룹명]
   - 옵션 : -g(GID 변경), -n(새로운 그룹명 설정)
 
+<br>
+
+### ✔️ 그룹 설정 관련 환경 구성 파일
+- /etc/group : 사용자가 소속된 그룹을 설정
+  - 파일 형식) groupname : password : gid : users
+  - users : 콤마(,)로 구분된 사용자 계정
+- /etc/gshadow : 그룹의 패스워드를 MD5로 암호화하여 저장
+  - 파일 형식) groupname : password : owner : users
+  - password : ! 이면 암호가 없는 상태
+  - users : 콤마(,)로 구분된 사용자 계정
+
+<br>
+
+### ✔️ users : 로그인한 사용자 정보 표시
+- users <-옵션>
+  - 옵션 : --version(명령어 버전 정보)
+```
+    [LinuxMaster]#users
+    root
+```
+
+<br>
+
+### ✔️ who : 접속한 사용자 정보 표시
+- 계정명, 터미널 정보, 접속 시간, 접속 서버 등 표시
+- who <옵션>
+  - 옵션 : -b(마지막 부팅 시간), -q(로그인 사용자, 사용자 수 표시), -r(현재 실행 레벨 표시)
+```
+    [LinuxMaster]#who -q
+    root
+    # users=1
+    [LinuxMaster]#who -r
+        run-level 3 2022-09-07 02:20
+```
+
+<br>
+
+### ✔️ w : 접속한 사용자 정보 표시
+- 서버 시간, 부팅 후 작동 시간, 접속자 수, 접속자별 평균 부하율, 접속자별 계정명, TTY 이름, 로그인 시간 등
+- w
+  - JCPU : TTY 장치명에서 사용되는 모든 프로세스의 CPU 사용 시간
+  - PCPU : WHAT에 표시된 프로세스의 CPU 사용 시간
+```
+    [LinuxMaster]#w
+    17:43:20 up 123 days, 15:26. 1 user, load average: 0.06, 0.03, 0.05
+    USER  TTY    FROM      LOGIN@      IDLE   JCPU   PCPU  WHAT
+    root pts/0 10.0.0.7 13:25         0.00s  0.50s  0.01s   w
+```
+
+<br>
+
+### ✔️ id : 접속한 사용자 정보 표시
+- uid, gid, group 정보 표시
+- id <-옵션> [계정명]
+  - 옵션 : -u(UID만 표시), -g(GID만 표시), -G(사용자가 표시된 모든 그룹 표시)
+```
+    [LinuxMaster]#ㅑㅇ
+    uid=0(root) gitd=0(root) groups=0(root)
+```
+
+<br>
+
+### ✔️ who am i, shoami : 접속해있는 자신의 정보를 표시
+- who am i 혹은 whoami
+```
+    [LinuxMaster]#whoami
+    root
+```
+
+<br>
+
+### ✔️ groups : 사용자가 속한 그룹 목록 표시
+- group <계정명>
+```
+    [LinuxMaster]#groups
+    root
+    [LinuxMaster]#groups chris
+    chris : chris
+```
+
+<br>
+
+---
+#
+---
+
+<br>
+
+디렉터리 및 파일 관련 명령어
+---
+### ✔️ pwd : 현재 작업 디렉터리명 표시
+- pwd
+```
+    [LinuxMaster]#pwd
+    /root
+    [LinuxMaster]#cd /var/www/
+    [LinuxMaster]#pwd
+    /var/www
+    [LinuxMaster]#cd ~
+    [LinuxMaster]#pwd
+    /root
+```
+
+<br>
+
+### ✔️ cd : 디렉터리 이동(change directory)
+- cd [경로명]
+  - 경로명 : ~(홈 디렉터리), .(현재 디렉터리), ..(상위 디렉터리), /(루트 디렉터리)
+```
+    [LinuxMaster]#pwd
+    /root
+    [LinuxMaster]#cd /var/www/
+    [LinuxMaster]#pwd
+    /var/www
+    [LinuxMaster]#cd ~
+    [LinuxMaster]#pwd
+    /root
+```
+
+<br>
+
+### ✔️ mkdir : 디렉터리 만들기
+- mkdir <옵션> [디렉터리명]
+  - 옵션 : -m(권한 설정, 기본 755), -p(상위 디렉터리 생성), -v(생성 디렉터리 메시지 표시)
+```
+    [LinuxMaster]#pwd
+    /root/Test
+    [LinuxMaster]#mkdir One
+    [LinuxMaster]#mkdir -m 700 Two
+    [LinuxMaster]#ls-al
+    ...
+    drwxr-xr-x  2 root root 4096  1월 8 18:00 One
+    drwx------  2 root root 4096  1월 8 18:04 Two
+```
+
+<br>
+
+### ✔️ rmkdir : 디렉터리 삭제하기(비어있는 디렉터리만 가능)
+- rmdir [디렉터리명]
+  - rm 명령으로 비어있지 ㅇ낳은 디렉터리도 삭제 가능
+```
+    [LinuxMaster]#ls
+    One Two
+    [LinuxMaster]#rmdir Two
+    [LinuxMaster]#ls
+    One
+```
+
+<br>
+
+### ✔️ ls : 디렉터리의 파일 목록(정보) 표시
+- ls <옵션> [디렉터리명]
+  - 옵션 : -a(숨김 파일 포함), -l(자세히 목록 보기), -d(디렉터리 지정), -r(역순으로 표시), -R(하위 디렉터리 포함)
+```
+    [LinuxMaster]#ls-al
+    합계 16
+    drwxr-xr-x  3 root root 4096 1월 8 18:11 .
+    dr-xr-x---.  11 root root 4096 1월 8 18:00 ..
+    drwxr-xr-x  2 root root 4096 1월 8 18:11 One
+    -rw-r--r--  1 root root  0 1월 8 18:11 hell.txt
+    -rw-r--r--  1 root root  7 1월 8 18:11 hi.txt
+```
+
+<br>
+
+### ✔️ cp : 파일, 디렉터리 복사
+- cp <옵션> [소스] [타깃]
+  - 옵션 : -b(타깃 파일 존재시 백업), -f(타깃 파일 존재시 강제로 삭제 및 복사), -i(타깃 파일 존재시 덮어쓰기 확인), -r(하위 폴더 및 파일 포함)
+```
+    [LinuxMaster]#ls
+    One hell.txt hi.txt
+    [LinuxMaster]#cp hell.txt hello.txt
+    [LinuxMaster]#ls
+    One hell.txt hello.txt hi.txt
+```
+
+<br>
+
+### ✔️ rm : 파일, 디렉터리 삭제
+- rm <옵션> [파일명] [디렉터리명]
+  - 옵션 : -f(확인없이 삭제), -i(사용자에게 확인), -r(하위 디렉터리 포함, 모든 파일 제거)
+```
+    ne hell.txt hello.txt hi.txt
+    [LinuxMaster]#rm hi.txt
+    rm:remove 일반 파일 'hi.txt'? y
+    [LinuxMaster]#ls
+    One hell.txt hello.txt
+```
+
+<br>
+
+### ✔️ mv : 파일, 디렉터리 이동, 파일명 변경에서 사용
+- mv <옵션> [소스] [타깃]
+  - 옵션 : -b(타깃 파일 존재시 백업), -f(타깃 파일이 있어도 강제 적용), -v(진행 과정의 정보 표시)
+```
+    [LinuxMaster]#ls
+    One hell.txt hello.txt
+    [LinuxMaster]#mv hell.txt hi.txt
+    [LinuxMaster]#ls
+    One hello.txt hi.txt
+```
+
+<br>
+
+### ✔️ touch : 비어있는 파일 생성 혹은 파일의 시간(time stamp) 변경
+- touch <옵션> [파일명]
+  - -a(접근시간 변경), -m(수정시간 변경), -c(파일 ㅣ간을 현재 시간으로 변경), -t(특정 파일의 시간 변경), -r 파일A 파일B(파일A의 시간을 파일B와 동일하게 변경)
+```
+    [LinuxMaster]#ls-al
+    ...
+    -rw-r--r--  1 root root  0 1월 8 18:21 empty.txt
+    [LinuxMaster]#touch -c empty.txt
+    [LinuxMaster]#ls-al
+    ...
+    -rw-r--r--  1 root root  0 1월 8 18:23 empty.txt
+```
+
+<br>
+
+### ✔️ file : 파일의 종류와 속성값 표시
+- file <옵션> [파일명]
+  - 옵션 : -b(파일 형식만 표시), -f(지정한 파일만 대상으로 실행), -z(압축 파일 내용 표시), -i(MIME으로 출력)
+```
+    [LinuxMaster]#file hi.txt
+    hi.txt: ASCII text
+    [LinuxMaster]#file -i hi.txt
+    hi.txt: text/plain; charset=us-ascii
+    [LinuxMaster]#file -b hi.txt
+    ASCII text
+```
+
+<br>
+
+### ✔️ find : 지정된 조건에 따라 파일을 검색하는 명령어(지정한 경로 및 하위 경로를 대상으로 검색)
+- find <경로> <-옵션> <정규표현식> <파일명>
+  - 옵션 : -name(이름으로 검색), -user(사용자의 파일/디렉터리 검색), -perm(권한으로 검색), -type(파일 유형으로 검색), -atime 숫자(숫자 일수 이전에 접근한 파일 검색), -size(파일 크기를 지정하여 검색), -exec(검색 파일을 대상으로 실행할 명령어)
+```
+    [LinuxMaster]#pwd
+    /
+    [LinuxMaster]#find -name One
+    ./root/Test/One
+```
+
+<br>
+
+### ✔️ locate : 파일의 위치 검색
+- locate [파일명]
+
+<br>
+
+### ✔️ cat : 파일 내용을 출력
+- cat <-옵샨> [파일명]
+  - 옵션 : -n(행 번호 표시), -b(행 번호 표시, 비어있는 행 제외), -s(2개 이상 빈 행을 하나로 표시), -A(텍스트 파일의 개행 문자, 탭 문자 등 확인)
+```
+    [LinuxMaster]#cat -n -s /etc/httpd/conf/httpd.conf
+        1 #
+        2 # This is the main Apache HTTP server configuration file. It contains the
+        3 # configuration directives that give the server its instructions.
+        4 # See <URL:http://httpd.apache.org/docs/2.4/> for detailed information.
+        5 # In particular, see
+        6 # <URL:http://httpd.apache.org/docs/2.4/mod/directives.html>
+        ...
+```
+
+<br>
+
+### ✔️ head : 파일의 앞 부분만 출력
+- head <-옵션> [파일명]
+  - 옵션 : -c(지정 숫자 바이트만큼 출력), -n(지정 줄 수 만큼 출력, 기본 10줄)
+```
+    [LinuxMaster]#head -n 3 /etc/httpd/conf/httpd.conf
+    #
+    # This is the main Apache HTTP server configuration file. It contains the
+    # configuration directives that give the server its instructions.
+    [LinuxMaster]#head -3 /etc/httpd/conf/httpd.conf
+    #
+    # This is the main Apache HTTP server configuration file. It contains the
+    # configuration directives that give the server its instructions.
+```
+
+<br>
+
+### ✔️ tail : 파일의 마지막 부분만 출력
+- tail <-옵션> [파일명]
+  - 옵션 : -c(지정 숫자의 바이트만큼 출력), -n(지정 줄 수 만큼 출력, 기본 10줄), -f(새롭게 추가되는 내용을 실시간 출력), -v(파일명 표시), -q(파일명 표시 X)
+```
+    [LinuxMaster]#tail -3 /etc/httpd/conf/httpd.conf
+    #
+    # Load config files in th "/etc/httpd/conf.d" directory, if any.
+    IncludeOptional conf.d/*.conf
+```
+
+<br>
+
+### ✔️ more : 화면 단위로 파일의 내용을 출력
+- more <-옵션> [파일명]
+  - 옵션 : -숫자(페이지 당 표시할 줄 수)
+```
+    [LinuxMaster]#more -4 /etc/httpd/conf/httpd.conf
+    # This is the main Apache HTTP server configuration file. It contains the
+    # configuration directives that give the server its instructions.
+    # See <URL:http://httpd.apache.org/docs/2.4/> for deetailed information.
+    # In particular, see
+    --More--(1%)
+```
+> 보기 작업 : 다음 페이지(Space), 다음 줄(Enter), 1/2페이지(Ctrl+D), 이전페이지(Ctrl+B), 종료(Q), 문자열 패턴 검색(/패턴)
+
+<br>
+
+### ✔️ less : 텍스트 파일을 한 화면씩 표시
+- 특징 : more과 다르게 커서 이동 가능
+
+<br>
+
+### ✔️ wc : 파일의 라인 수, 단어 수, 알파벳 수 표시
+- wc <-옵션> [파일명]
+  - 옵션 : -l(라인 수 표시), -w(단어 수 표시), -c(알파벳 수 표시)
+```
+    [LinuxMaster]#cat hi.txt
+    hihi
+    [LinuxMaster]#wc -w hi.txt
+    1 hi.txt
+```
+
+<br>
+
+### ✔️ grep : 특정한 문자열 패턴, 정규식을 이용하여 단어 검색
+- grep <-옵션> [문자열] [파일명]
+  - 옵션 : -r(모든 디렉터리, 파일), -E(정규표현식), -i(대소문자 무시), -v(검색 대상이 포함되지 않은 라인만 표시), -n(라인수 표시), -l(문자열이 포함된 파일명 표시)
+```
+    [LinuxMaster]#grep chris /etc/passwd
+    chris:x:1001:1001::/CHRIS:/bin/bash
+    [LinuxMaster]#cat /etc/passwd l grep chris
+    chris:x:1001:1001::/CHRIS:/bin/bash
+```
+> ex) grep '^[AB]' sample.txt (A 혹은 B로 시작하는 모든 라인), grep 'fine$' sample.txt (fine으로 끝나는 모든 라인)
+
+<br>
+
+### ✔️ sort : 정렬하여 표시하는 명령어
+- sort <-옵션> [파일명]
+  - 옵션 : -b(앞 공백 무시), -o(저장 파일명), -r(역순), -f(대소문자 구분X), -t(필드 구분자 지정), -u(중복행 제거), -m(정렬 파일 병합), -n(숫자만 비교)
+```
+    [LinuxMaster]#sort -b -u /etc/httpd/conf/httpd.conf | grep '^[a-z|A-Z]'
+    AddDefaultCharset UTF-8
+    DocumentRoot "/var/www/html"
+    EnableSendfile on
+    ErrorLog "logs/error_log"
+    Group apache
+    Include conf.modules.d/*.conf
+    ...
+```
+
+<br>
+
+### ✔️ cut : 구분자를 이용하여 특정 필드를 추출하는 명령어
+- cat <-옵션> [파일명]
+  - 옵션 : -b(바이트 수 기준), -c(문자열, 콤마와 하이픈으로 범위 지정), -f(필드 기준), -d(구분 문자, 기본 값은 탭), -z(라인의 구분자로 개행이 아닌 NUL 이용)
+```
+    [LinuxMaster]#cut -c 1-5 /etc/httpd/conf/httpd.conf|grep '^[a-z|A-Z]'
+    Serve
+    Liste
+    Inclu
+    User
+    Group
+    ...
+```
+
+<br>
+
+### ✔️ split : 여러개의 파일로 분리하여 저장
+- split <-옵션> [파일명]
+  - 옵션 : -b(byte 단위로 분할), -l(라인 수 단위로 분할)
+```
+    [LinuxMaster]#split -l 30 /etc/httpd/conf/httpd.conf
+    [LinuxMaster]#ls
+    xaa xab xac xad xae xaf xag xah xai xaj xak xal xam
+```
+
+<br>
+
+### ✔️ 
 
 
+<br>
 [LinuxMaster]
-### ✔️
+### ✔️ 
 →
 
 

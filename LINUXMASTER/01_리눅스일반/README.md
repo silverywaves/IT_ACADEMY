@@ -388,7 +388,7 @@ fdisk
 - 로그아웃 방법
   - logout, exit, CTRL+D
 - 전체 사용자 로그아웃 타임아웃 : /etc/profile 의 TMOUT 값 설정(초)
-- 특정 사용자의 로그아웃 타임아웃 : ~/.bashrc 의 TMOUT 값 설정(초)
+- 특정 사용자의 로그아웃 타임아웃 : ~/.bashrc 의 TMOUT 값 설정(초) <br>
 → source 명령으로 설정 값 적용
 
 <br>

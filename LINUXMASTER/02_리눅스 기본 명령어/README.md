@@ -685,7 +685,34 @@
 <br>
 
 ### ✔️ comm : 파일을 라인 단위로 비교하여 표시
-- 
+- comm <-옵션> [파일A] [파일B]
+  - 옵션 : -1(파일 A에만 있는 내용 제외), -2(파일 B에만 있는 내용 제외), -3(공통으로 존재하는 내용 제외)
+
+<br>
+
+리다이렉션과 정규 표현식
+---
+### ✔️ 리다이렉션(redirection) 개념과 활용
+- 표준 입력(stdin, standard input, 키보드), 표준 출력(stdout, standard output, 모니터), 표준 에러(stderr, standard error, 모니터)의 방향을 재지정하는 방법
+  - 방법 : >(출력 재지정), >>(추가모드로 출력 재지정), <(입력 재지정)
+```
+    [LinuxMaster]#ls-al>out.txt
+    [LinuxMaster]@tail-3 out.txt
+    -rw-r--r-- 1 root root 979 1월 8 19:25 xak
+    -rw-r--r-- 1 root root 906 1월 8 19:25 xal
+    -rw-r--r-- 1 root root 96 1월 8 19:25 xam   
+```
+
+<br>
+
+### ✔️ 파이프(pipe) 개념과 활용
+- 두개 이상의 명령을 상호 연결하여, 한 명령의 출력을 다른 명령의 입력으로 지정하여 실행하는 방법
+  - 방법 : 명령A | 명령B |
+```
+    [LinuxMaster]#ls-al | grep txt
+    -rw--r--r-- 1 root root 0 1월 8 18:23 empty.txt
+    -
+```
 
 
 

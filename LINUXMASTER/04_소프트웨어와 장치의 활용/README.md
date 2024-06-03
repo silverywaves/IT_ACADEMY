@@ -299,7 +299,8 @@ X 윈도우
 
 <br>
 
-### ✔️ 디스플레이 매니저 - X Windows system에서 동작하는 프로그램, XDM, GDM, KDM, dtlogin 등, X server 접속 및 세션 시작 담당
+### ✔️ 디스플레이 매니저 
+- X Windows system에서 동작하는 프로그램, XDM, GDM, KDM, dtlogin 등, X server 접속 및 세션 시작 담당
 - 대표적인 디스플레이 매니저
   - kdm : KDE의 디스플레이 매니저
   - gdm : GNOME의 디스플레이 매니저, GTK, GNU GPL

@@ -732,29 +732,148 @@
 - ping <옵션> [IP주소|도메인명]
     - 옵션 : -c(요청수, 기본 무제한), -i(통신을 위한 신호를 전달하는 시간 간격, 기본 1초), -s(전송할 패킷 크기, 바이트)
 ```
-    [LinuxMaster]
-
+    [LinuxMaster]#ping 8.8.8.8
+    PING 8.8.8.8(8.8.8.8) 56(84) bytes of data.
+    64bytes from 8.8.8.8: icmp_seq=1 ttl=118 time=1.16 ms
+    64bytes from 8.8.8.8: icmp_seq=2 ttl=118 time=1.15 ms
+    64bytes from 8.8.8.8: icmp_seq=3 ttl=118 time=1.14 ms    
 ```
 
+<br>
+
+### ✔️ traceroute - 상대 호스트까지의 경로 표시
+- traceroute [IP주소|도메인명]
+```
+    [LinuxMaster]#traceroute 8.8.8.8
+    traceroute to 8.8.8.8(8.8.8.8), 30 hops max, 60 byte packets
+    1 v118-27-118-2.2078.static.cnode.io (118.27.118.2) 0.650 ms 0.609ms 1.549 ms
+    2 ***
+    3 150.95.5.117(150.95.5.117) 0.913ms 0.899ms 0.880ms
+    4 150.95.5.102(150.95.5.102) 1.050ms 1.041ms 1.044ms
+    5 150.95.5.77(150.95.5.77) 1.172ms 1.148ms 1.109ms
+```
 
 <br>
-[LinuxMaster]
-### ✔️ 
-→
 
+### ✔️ nslookup -도메인 정보를 조회하는 명령어
+- nslookup <옵션> [도메인명]
+  - 옵션 : -type=레코드타입(레코드 타입별 지정)
+  - 레코드 타입 : NS(네임서버), MX(메일서버), A(IPv4 주소), AAA(IPv6 주소), CNAME(별칭), SOA(도메인 정보), PTR(IP주소에 대한 도메인명)
+```
+    [LinuxMaster]#nslookup -type=mx google.com
+    Server : 157.7.180.133
+    Address : 157.7.180.133#53
 
+    Non-authoritative answer:
+    google.com    mail exchanger = 10 smtp.google.com.
+    ...
+```
 
+<br>
 
+### ✔️ dig - 도메인 정보를 조회하는 명령어(domain information groper)
+- dif <서버명> [도메인명] <타입>
+  - 서버명 : 네임서버 지정, 기본값은 /etc/resolv에 등록된 네임서버 이용
+  - 타입 : a(IPv4), any(모든 정보), mx(메일서버), ns(네임서버), soa(SOA 정보)
+```
+    [LinuxMaster]#dig google.com
+    ...
+    ;;ANSWER SECTION:
+    google.com.    300  IN  A  142.250.76.142
+    ...
+```
 
+<br>
 
+### ✔️ host - 도메인/호스트 정보를 조회하는 명령어
+- host <옵션> [도메인명|IP주소] <DNS서버>
+  - 옵션 : -d(디버깅 모드), -l zone(zone 아래의 모든 정보 출력), -r(반복처리 안함), -t(타입 지정)
+```
+    [LinuxMaster]#host google.com
+    google.com has address 142.250.76.142   
+    google.com hs IPv6 address 2404:6800:400a:80e::200e
+    google.com mail is handled by 10 smtp.google.com.
+```
 
+<br>
 
+### ✔️ hostname - 시스템(호스트) 이름 확인 및 변경
+- hostname <옵션> [파일명]
+  - 옵션 : -a(별칭 표시), -d(도메인 표시), -F(파일에서 호스트명 설정), -v(세부 정보 출력)
+> /etc/sysconfig/network 에 HOSTNAME 을 설정하면 리부팅 시에도 호스트이름이 유지됨
+```
+    [LinuxMaster]#hostname DevSmile.com
+    [LinuxMaster]#hostname
+    DevSmile.com
+```
 
+<br>
 
+### ✔️ shutdown - 시스템을 종료 혹은 재부팅하는 명령어
+- shutdown <옵션> 시간 <메시지>
+  - 옵션 : -r(리부팅), -h(종료), -c(명령 취소), -k(경고 메시지만 출력), -f(리부팅시 fsck 명령 생략), -n(init 호출없이 종료), -t(저장 시간에 재시동)
+  - ex) shutdown -h now(즉시 종료), shutdown -r 10:00(10시에 재부팅)
 
+<br>
 
+### ✔️ init - 런레벨을 이용한 shutdown 수행
+- init [런레벨]
+  - 런레벨 : 0~6
+ 
+<br>
 
+### ✔️ cal - 달력 출력
+- cal <옵션> <날짜>
+  - 옵션 : -i(1월 1일 이후 날짜 수), -y(올해 달력 표시)
+```
+    [LinuxMaster]#cal
+        6월 2024
+    일 월 화 수 목 금 토 일
+    2  3  4  5  6  7  8  
+    9 10 11 12 13 14 15 
+    16 17 18 19 20 21 22
+    23 24 25 26 27 28 29
+    30
+```
 
+<br>
 
+### ✔️ date - 시스템 날짜 표시 혹은 변경
+- date <옵션> <날짜>
+  - 옵션 : -s(설정, 시간순서는 hh:mm:ss)
+
+<br>
+
+### ✔️ clear - 화면 지우기
+
+<br>
+
+### ✔️ tty - 접속에 사용한 장치 정보 표시
+```
+    [LinuxMaster]#tty
+    /dev/pts/0
+```
+
+<br>
+
+### ✔️ time - 명령 수행에 소요된 시간 표시
+- 출력 결과 : real(총 수행시간), user(사용자 모드 수행 시간), sys(시스템 호출 수행 시간)
+
+<br>
+
+### ✔️ wall - 로그인한 사용자에게 메시지 전송
+- wall [메시지]
+
+<br>
+
+### ✔️ write - 특정 사용자에게 메시지 전송
+- write [계정명] <터미널 이름> → 메시지 입력 후 CTRL+D
+
+<br>
+
+### ✔️ mesg - write로 전송되는 메시지 수신 여부 확인 및 제어
+- mesg [y|n]
+
+<br>
 
 

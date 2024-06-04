@@ -132,27 +132,81 @@
   - 계정 정책 : 사용자 계정, 익명 계정
 - DNS 서비스 : 호스트(도메인)이름 ↔ IP 주소, 분산된 트리 구조, DNS 레코드
   - DNS 레코드 : A, AAA, MX, TXT, SOA, PTR, CNAME
+- Telnet과 SSH 서비스 : 원경 로그인, 실행 제어
+  - Telnet : Byte 스트림 형식으로 전송
+  - SSH : RSA 등 암호화 기법, 압축 기술
+- NFS(Network File System) : 파일 공유를 위한 클라이언트/서버, pormap 데몬을 이용한 RPC 연결 필요
+  - NFS 관련 데몬 : nfsd, rpc, mouted, rpc, rockd, rpc, rquotad 등
+- RPC(Remote Procedure Call) : 서비스와 포트 연결
+  - 정적 포트 : /etc/services
+  - 동적 포트 : rpcbind 사용 (SUN은 sunrpc)
 
 <br>
 
-### ✔️
-### ✔️
+### ✔️ 네트워크 인터페이스 설정 : 자동, 수동(컴파일 된 모듈 적재, 설정 파일 등
+- 네트워크 설정 파일
+  - /etc/sysconfig/network : 기본 설정 정보
+  - /etc/sysconfig/network-scripts/ifcfg-ethX : 지정된 네트워크 인터페이스의 환경 설정 정보
+  - /etc/resolv.conf : 도메인 명, 네임서버
+  - /etc/hosts : IP 주소와 도메인 정보 설정
+- IP 주소 설정 방법
+  - 설정 파일 : /etc/sysconfig/network, /etc/sysconfig/network-scripts/ifcfg=ethX
+  - 명령어 : ifconfig
+  - 유틸리티 : netconfig, shystem-config-network, redhat-config-network 등
 
-
-### ✔️
-
-
-
-
-
-
-[LinuxMaster]
-### ✔️
 <br>
-→
 
+### ✔️ 네트워크 관련 명령어
+- TCP/IP 주소 설정 정보 확인
+  - ifconfig
+  - nslookup
+- 네트워크 경로 상태 확인
+  - ping
+  - traceroute
+- 네트워크 연결 상태 확인
+  - netstat
+- 라우팅 테이블 확인
+  - route
+- NIC 상태 확인
+  - ethtool, mii-tool, arp
 
+<br>
 
+리눅스 기술동향과 활용
+---
+### ✔️ 리눅스 동향
+- POSIX 표준, 인터넷 표준 프로토콜, 초기에는 주소 서버 → 서버, 데스크탑, 개발, 임베디드 → 클라우드
+
+<br>
+
+### ✔️ 리눅스 관련 기술 및 서버 분야
+- 클러스터링 : 여러 개의 시스템 연결, 하나의 큰 컴퓨팅 환경 → 고계산용, 부하 분산, 고 가용성(HA, High Available)
+- 임베디드 시스템 : H/W와 S/W가 통합된 특정 목적을 수행하는 컴퓨팅 시스템, 실시간 처리, 높은 신뢰성, 소형/경량/저전력
+- 서버 가상화 : 하나의 물리적 호스트에서 여러 운영체제(게스트 OS) 실행, 가상화 기술을 기반으로 한 IT 인프라, 가용성
+- 클라우딩 컴퓨팅 : 가상화 기술을 기반으로 IT 자원 및 서비스 제공, 인터넷(네트워크) 기반, On-Demand
+  - laaS(Infrastructure as a Service), PaaS(Platform as a Service), SaaS(Software as a Service)
+  - Public Cloud, Private Cloud, Hybrid Cloud
+  - 오픈스택(Open Stack), 클라우드 스택, 유칼립투스
+- 빅데이터 : 크기(Volume), 속도(Velocity), 다양성(Variety)
+
+<br>
+### ✔️ 임베디드 시스템(Embedded System)
+- 안드로이드, iOS, Maemo, Moblin, MeeGo, Limo, Tizen 등
+
+<br>
+
+### ✔️ 스마트 TV
+- 인터넷과 서비스가 통합된 TV
+- Tizen, WebOS
+
+<br>
+
+### ✔️ IVI(In Vegicle Infortainment)
+- 정보(information) + 오락(Entertainment)
+- GENIVI 표준 플랫폼 기반
+- 운전자 편의성/안전성 → AUTOSAR(상호운영)
+
+<br>
 
 
 

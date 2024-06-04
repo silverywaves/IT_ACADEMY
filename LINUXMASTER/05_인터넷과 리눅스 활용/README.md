@@ -190,6 +190,7 @@
 - 빅데이터 : 크기(Volume), 속도(Velocity), 다양성(Variety)
 
 <br>
+
 ### ✔️ 임베디드 시스템(Embedded System)
 - 안드로이드, iOS, Maemo, Moblin, MeeGo, Limo, Tizen 등
 

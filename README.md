@@ -26,8 +26,8 @@
 
 <br>
 
-### 📄 SERVLET
-* THEORY
+### 📄 DEPLOY
+* [BASIC](https://github.com/silverywaves/DEPLOY.git)
 
 <br>
 

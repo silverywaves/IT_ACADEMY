@@ -45,5 +45,6 @@
 * [ADsP](ADsP)
 * [cosPro2](https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/cosPro)
 * [SQLD](SQLD)
-* [정보처리산업기사](https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/IEIP)
+* [정보처리산업기사 필기](https://dailylifethatsnormal.tistory.com/category/CERTIFICATION/IEIP)
+* [정보처리산업기사 실기](./IEIP)
 * [리눅스](LINUXMASTER)

@@ -64,5 +64,156 @@
 
 - (4) 모형이 설명력을 갖는가 : **결정계수(R-Square) 값**
 
+```R
+  - 종속변수 height / 독립변수 age, no_sibilings
+
+  Call:
+  lm(formula = height ~ age + no_siblings, data = ageandheight)
+
+  Residuals:
+      Min        1Q      Median      3Q      Max
+  -0.28029  -0.22490  -0.02219  0.14418  0.48350
+
+  Coefficients:
+                Estimate  Std. Error  t value  Pr(>|t|)
+  (Intercept)  64.95872    0.55752    116.515  1.28e-15  ***
+  age           0.63516    0.02254     28.180  4.34e-10  ***
+  no_siblings  -0.01137    0.05893     -0.193     0.851
+  ---
+  Signif.  codes: 0 '***'  0.001 '**'  0.01 '*'  0.05 '.'  0.1 ' '  1
+
+  Residual standard error: 0.2693 on 9 degrees of freedom
+  Multiple R-squared: 0.9888,  Adjusted R-squared: 0.9863
+  F-statisticL 397.7 on 2 and 9 DF, p-value: 1.658e-09
+```
+- 회귀모형 F분포의 P-value(1.658e-09)가 0.05보다 작으므로 **모형 유의미**
+
+- age의 p-value(4.34e-10)가 0.05보다 작으므로 **회귀계수 유의미**
+
+- no_sibilings의 p-value(0.851)가 0.05보다 크므로 제외하고 회귀분석 **재수행 권장**
+
+- 위 모형은 **다중회귀 모형**
+
+- R-square:0.9888, Adjusted R-square:0.9863 (모형은 전체 데이터의 **98% 이상을 설명**)
+
+- 회귀 자유도 : 2, 잔차의 자유도 : 9 → 총 2 + 9 + 1 = **12개의 데이터**를 활용하여 분석
+
+- 모델 회귀 식
+
+|-|
+|-|
+|![image](https://github.com/user-attachments/assets/72d5d83e-8b40-45c8-83db-56276c40023d)|
+
+<br>
+
+비즈니스 기여도 평가
+---
+### 비즈니스 기여도 평가
+- 투자 대비 효과(ROI) : 투자로 얻을 수 있는 순 효과를 비용으로 나눈 값
+
+- 순현재가치(NPV) : 미래의 현금 흐름을 현재가치로 계산
+
+- 내부 수익률(IRR) : NPV = 0 일때의 수익률
+
+- 총 소유 비용(TCO) : 자산의 매입 가격과 운용 원가를 더한 금액
+
+<br>
+
+---
+
+<br>
+
+# 2. 분석결과 시각화
+시공간 시각화
+---
+### 시간 시각화
+- 시간에 따른 변화를 표현 (x축 시간, y축 값)
+
+|-|
+|-|
+|![image](https://github.com/user-attachments/assets/8e60b2d3-6738-4bff-80eb-a4132f244fa9)|
+
+<br>
+
+공간 시각화
+---
+- 장소나 지역에 대한 데이터의 분포를 표현
+
+|-|
+|-|
+|![image](https://github.com/user-attachments/assets/8e9108c7-d3a9-4c84-b98d-bdb381ba70e6)|
+
+<br>
+
+관계 시각화
+---
+### 관계 시각화
+- 데이터 사이의 관계나 분포, 패턴을 표현
+
+|-|
+|-|
+|![image](https://github.com/user-attachments/assets/1e4ce000-ceba-471f-a2ce-e6432fab7a0b)|
+|![image](https://github.com/user-attachments/assets/754245dc-8ba9-4dc5-8e32-c872b9eb9b66)|
+
+<br>
+
+비교 시각화
+---
+### 비교 시각화
+- 여러 변수들간의 차이나 유사성을 비교
+
+|-|
+|-|
+|![image](https://github.com/user-attachments/assets/a4196af3-938b-457d-9741-ad701db81ef6)|
+
+<br>
+
+인포그래픽
+---
+### 인포그래픽
+- 정보(Information) + 시각적 형상(Graphic)
+
+- 목적에 따라 정보를 시각적으로 표현
+
+- 분석 시각화와는 달리 패턴을 발견하는 것보다 일반인에게 **설득형 메시지 전달** 목적
+
+<br>
+
+### 인포그래픽의 유형
+- 지도형 : 지도 활용
+
+- 도표형 : 표와 그래프 활용
+
+- **타임라인형** : 시간 순서로 나열
+
+- 스토리텔링형 : 이야기를 구성
+
+- 만화형 : 만화적 요소를 활용
+
+- 비교분석형 : 두 가지 이상의 내용을 비교
+
+- **컨셉 맵** : 내용 간의 연관성
+
+<br>
+
+---
+
+<br>
+
+# 3. 분석결과 활용
+### 분석결과 활용
+- 분석모형 전개 : 분석결과를 확장 및 적용
+
+- 분석결과 활용 시나리오 개발 : 인사이트 발굴, 결과를 업무에 반영
+
+- 분석모형 모니터링 : 변화를 지속적 반영 위해 모니터링
+
+- 분석모형 리모델링 : 새로운 알고리즘 및 데이터 반영
+
+<br>
+
+
+
+
 
 
